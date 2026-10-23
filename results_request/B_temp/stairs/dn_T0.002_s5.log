@@ -1,0 +1,40 @@
+u_eff=0.19500 t=100000 n_end=-1.000 rows[-1.00,-1.00] slips=[(1000, np.float64(-0.0), np.float64(1.0)), (1050, np.float64(1.0), np.float64(-0.0)), (1100, np.float64(-0.0), np.float64(-1.0)), (1150, np.float64(-1.0), np.float64(0.0)), (1300, np.float64(0.0), np.float64(1.0)), (1550, np.float64(1.0), np.float64(0.0))]... My=0.8722 E=-399.579 wall=1421
+u_eff=0.19000 t=100000 n_end=-1.000 rows[-1.00,-1.00] slips=[(150, np.float64(-1.0), np.float64(-0.0)), (450, np.float64(-0.0), np.float64(-1.0)), (500, np.float64(-1.0), np.float64(-0.0)), (1050, np.float64(-0.0), np.float64(-1.0)), (1100, np.float64(-1.0), np.float64(0.0)), (1200, np.float64(0.0), np.float64(1.0))]... My=0.8721 E=-399.569 wall=1438
+u_eff=0.18500 t=100000 n_end=0.000 rows[0.00,0.00] slips=[(50, np.float64(-1.0), np.float64(0.0)), (300, np.float64(0.0), np.float64(1.0)), (350, np.float64(1.0), np.float64(0.0)), (600, np.float64(0.0), np.float64(1.0)), (750, np.float64(1.0), np.float64(2.0)), (800, np.float64(2.0), np.float64(-1.0))]... My=0.8553 E=-399.575 wall=1454
+u_eff=0.18000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[(1650, np.float64(0.0), np.float64(1.0)), (3050, np.float64(1.0), np.float64(0.0)), (3150, np.float64(0.0), np.float64(1.0)), (4050, np.float64(1.0), np.float64(0.0)), (4100, np.float64(0.0), np.float64(1.0)), (4250, np.float64(1.0), np.float64(2.0))]... My=0.8850 E=-399.595 wall=1470
+u_eff=0.17500 t=100000 n_end=0.000 rows[0.00,0.00] slips=[(50, np.float64(1.0), np.float64(0.0)), (250, np.float64(0.0), np.float64(-1.0)), (300, np.float64(-1.0), np.float64(1.0)), (350, np.float64(1.0), np.float64(0.0)), (450, np.float64(0.0), np.float64(-1.0)), (500, np.float64(-1.0), np.float64(0.0))]... My=0.9157 E=-399.594 wall=1485
+u_eff=0.17000 t=100000 n_end=-0.000 rows[-0.00,-0.00] slips=[(850, np.float64(0.0), np.float64(-1.0)), (900, np.float64(-1.0), np.float64(0.0)), (950, np.float64(0.0), np.float64(-1.0)), (1000, np.float64(-1.0), np.float64(-0.0)), (1300, np.float64(-0.0), np.float64(-1.0)), (1350, np.float64(-1.0), np.float64(-2.0))]... My=0.8290 E=-399.602 wall=1501
+u_eff=0.16500 t=100000 n_end=0.000 rows[0.00,0.00] slips=[(200, np.float64(-0.0), np.float64(-1.0)), (250, np.float64(-1.0), np.float64(-0.0)), (350, np.float64(-0.0), np.float64(-2.0)), (400, np.float64(-2.0), np.float64(0.0)), (850, np.float64(0.0), np.float64(1.0)), (950, np.float64(1.0), np.float64(-0.0))]... My=0.9250 E=-399.612 wall=1518
+u_eff=0.16000 t=100000 n_end=0.000 rows[0.00,0.00] slips=[(50, np.float64(0.0), np.float64(1.0)), (150, np.float64(1.0), np.float64(0.0)), (200, np.float64(0.0), np.float64(-1.0)), (250, np.float64(-1.0), np.float64(-0.0)), (400, np.float64(-0.0), np.float64(1.0)), (450, np.float64(1.0), np.float64(0.0))]... My=0.9453 E=-399.620 wall=1535
+u_eff=0.15500 t=100000 n_end=0.000 rows[0.00,0.00] slips=[(750, np.float64(-0.0), np.float64(1.0)), (800, np.float64(1.0), np.float64(0.0)), (1900, np.float64(0.0), np.float64(1.0)), (1950, np.float64(1.0), np.float64(0.0)), (2000, np.float64(0.0), np.float64(2.0)), (2050, np.float64(2.0), np.float64(1.0))]... My=0.9421 E=-399.624 wall=1551
+u_eff=0.15000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[(3200, np.float64(-0.0), np.float64(1.0)), (3450, np.float64(1.0), np.float64(0.0)), (3750, np.float64(0.0), np.float64(-1.0)), (3800, np.float64(-1.0), np.float64(-0.0)), (3900, np.float64(-0.0), np.float64(-1.0)), (3950, np.float64(-1.0), np.float64(0.0))]... My=0.7101 E=-399.610 wall=1567
+u_eff=0.14500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[(1200, np.float64(1.0), np.float64(2.0)), (1250, np.float64(2.0), np.float64(1.0)), (6500, np.float64(1.0), np.float64(2.0)), (6550, np.float64(2.0), np.float64(0.0)), (6600, np.float64(0.0), np.float64(1.0)), (6700, np.float64(1.0), np.float64(0.0))]... My=0.9086 E=-399.663 wall=1582
+u_eff=0.14000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[(100, np.float64(1.0), np.float64(-1.0)), (150, np.float64(-1.0), np.float64(2.0)), (250, np.float64(2.0), np.float64(1.0)), (300, np.float64(1.0), np.float64(2.0)), (350, np.float64(2.0), np.float64(4.0)), (400, np.float64(4.0), np.float64(1.0))]... My=0.8887 E=-399.672 wall=1599
+u_eff=0.13500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[(1000, np.float64(1.0), np.float64(0.0)), (1100, np.float64(0.0), np.float64(1.0)), (21950, np.float64(1.0), np.float64(0.0)), (22000, np.float64(0.0), np.float64(1.0)), (22150, np.float64(1.0), np.float64(0.0)), (22200, np.float64(0.0), np.float64(1.0))]... My=0.8589 E=-399.712 wall=1614
+u_eff=0.13000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[(25350, np.float64(1.0), np.float64(0.0)), (25400, np.float64(0.0), np.float64(1.0)), (25850, np.float64(1.0), np.float64(2.0)), (25900, np.float64(2.0), np.float64(1.0)), (27750, np.float64(1.0), np.float64(0.0)), (27800, np.float64(0.0), np.float64(1.0))]... My=0.8535 E=-399.720 wall=1630
+u_eff=0.12500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[(6750, np.float64(1.0), np.float64(2.0)), (6800, np.float64(2.0), np.float64(1.0)), (6900, np.float64(1.0), np.float64(2.0)), (6950, np.float64(2.0), np.float64(1.0)), (7300, np.float64(1.0), np.float64(2.0)), (7400, np.float64(2.0), np.float64(1.0))]... My=0.7826 E=-399.775 wall=1645
+u_eff=0.12000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.7743 E=-399.781 wall=1662
+u_eff=0.11500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.7278 E=-399.822 wall=1677
+u_eff=0.11000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.7181 E=-399.830 wall=1692
+u_eff=0.10500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.6876 E=-399.851 wall=1708
+u_eff=0.10000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.6201 E=-399.893 wall=1725
+u_eff=0.09500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.6009 E=-399.907 wall=1747
+u_eff=0.09000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.5914 E=-399.916 wall=1782
+u_eff=0.08500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.5462 E=-399.941 wall=1800
+u_eff=0.08000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.5108 E=-399.957 wall=1825
+u_eff=0.07500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.4751 E=-399.978 wall=1843
+u_eff=0.07000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.4737 E=-399.980 wall=1861
+u_eff=0.06500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.4197 E=-400.003 wall=1876
+u_eff=0.06000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.4076 E=-400.010 wall=1894
+u_eff=0.05500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.3624 E=-400.028 wall=1911
+u_eff=0.05000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.3195 E=-400.042 wall=1929
+u_eff=0.04500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.2739 E=-400.053 wall=1945
+u_eff=0.04000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.2366 E=-400.066 wall=1960
+u_eff=0.03500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.2401 E=-400.063 wall=1976
+u_eff=0.03000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.1781 E=-400.076 wall=1994
+u_eff=0.02500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.1490 E=-400.079 wall=2010
+u_eff=0.02000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.1171 E=-400.085 wall=2025
+u_eff=0.01500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.1071 E=-400.085 wall=2040
+u_eff=0.01000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.0574 E=-400.090 wall=2057
+u_eff=0.00500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.0264 E=-400.093 wall=2074
+u_eff=0.00000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.0100 E=-400.093 wall=2091

@@ -10,7 +10,7 @@ def uc_of(s):
     if s in ucD: return ucD[s]['u_c_dyn'], 'dyn'
     base = {'4x2': '4x1', '8x2': '8x1'}.get(s, s)
     if base in ucD: return ucD[base]['u_c_dyn'], 'dyn(' + base + ')'
-    return 0.981*ucB[base]['u_c_bloch'], 'bloch*0.981'
+    return 0.983*ucB[base]['u_c_bloch'], 'bloch*0.983 (mean lab/Bloch ratio of 4x1, 8x1, 12x3)'
 summ = {}
 for s in sizes:
     uc, how = uc_of(s); rows = {}
@@ -26,7 +26,7 @@ for s in sizes:
         rows[br] = sorted(L, key=lambda d: d['u'], reverse=(br == 'dn'))
     up = rows['up']; dn = rows['dn']
     nx_, ny_ = map(int, s.split('x')); reg0 = tuple(sorted([(0, 2*ny_), (nx_, -ny_), (nx_, ny_)]))
-    for d in up+dn: d['registry_changed'] = d['registry'] is not None and tuple(map(tuple, d['registry'])) != reg0
+    for d in up+dn: d['registry_changed'] = d['registry'] is not None and tuple(map(tuple, d['registry'])) != reg0 and d['A_reg'] is not None and d['A_reg'] < 0.5
     ud = next((d['u'] for d in up if d['fdef_max'] > 0), None)
     uslip = next((d['u'] for d in up if d['registry_changed']), None)
     dn_reg = [d['u'] for d in dn if d['registry_changed']]

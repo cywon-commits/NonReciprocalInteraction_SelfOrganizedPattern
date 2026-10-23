@@ -38,7 +38,7 @@ def ordp(S):
     try:
         N, P6, _, fd, _ = order(S); return N, P6, fd
     except Exception: return -1, np.nan, np.nan
-if args.holds: holds = [float(x) for x in args.holds.split(',')]
+if args.holds: holds = [float(x) for x in args.holds.split(',')]; holds = holds*len(us) if len(holds) == 1 else holds
 elif args.gamma:
     tab = np.array(json.load(open(args.gamma))); tab = tab[np.argsort(tab[:, 0])]
     holds = [float(np.clip(10/max(abs(np.interp(u, tab[:, 0], tab[:, 1])), 1e-12), args.tmin, args.tmax)) for u in us]
