@@ -39,17 +39,47 @@ for s, d in summ.items():
     print(f"{s}: u_c={d['u_c']:.5f} ({d['u_c_source']}) u_d={d['u_d']} u_d/u_c={d['u_d_over_uc']} defects persist down to {d['defects_persist_down_to']} | u_slip={d['u_slip']} (/uc={d['u_slip_over_uc']}) registry changed down to {d['registry_changed_down_to']}")
     for br in ['up', 'dn']:
         for x in d[br]: print(f"  {br} u/uc={x['r']:.3f} t={x['t']:.0f} A={x['A']:.3g} psi6={x['psi6']:.3f} fdef={x['fdef']:.3f}/{x['fdef_max']:.3f} Nsk={x['Nsk']} Vx/u={x['Vx']/max(x['u'],1e-9):.4f} Vy/Vx={x['Vy']/max(x['Vx'],1e-9):.3f} reg={x['registry']} A_reg={x['A_reg']}")
-# figure A1: A(u/u_c) and defect fraction per size
-fig, ax = plt.subplots(2, 1, figsize=(8, 7), sharex=True)
+# state class of each chain end state: original lattice / rotated lattice (registry change, no defects) /
+# strongly modulated (A_reg >= 0.5, no defects) / defective (defects at the end of the step)
+def cls(p):
+    if p['fdef_end'] > 0: return 'defects'
+    if p['registry_changed']: return 'rotated'
+    if p['A_reg'] is not None and p['A_reg'] >= 0.5: return 'modulated'
+    return 'lattice'
+MK = {'lattice': 'o', 'modulated': 'D', 'rotated': '^', 'defects': 's'}
+for s_ in sizes:
+    for p in summ[s_]['up']+summ[s_]['dn']: p['state'] = cls(p)
+json.dump(summ, open(f'{O}/A_summary.json', 'w'), indent=1)
+fig, ax = plt.subplots(3, 1, figsize=(8.5, 10), sharex=True)
 for i, s in enumerate(sizes):
     d = summ[s]
-    for br, ls, mk in [('up', '-', 'o'), ('dn', '--', 's')]:
-        x = [p['r'] for p in d[br]]; ax[0].plot(x, [max(p['A'], 1e-9) for p in d[br]], ls, marker=mk, ms=4, color=C[i], label=f'{s} {br}' if br == 'up' else None)
-        ax[1].plot(x, [p['fdef'] for p in d[br]], ls, marker=mk, ms=4, color=C[i])
-ax[0].set_yscale('log'); ax[0].set_ylim(1e-6, 30); ax[0].set_ylabel('deformation amplitude A (last quarter)'); ax[0].axvline(1, color='#52514e', lw=1, ls=':')
-ax[0].legend(fontsize=8, ncol=3, title='solid: up, dashed: down', title_fontsize=8)
-ax[1].set_ylabel('defect fraction (coordination ≠ 6)'); ax[1].set_xlabel(r'$u_{\rm eff}/u_c(L)$'); ax[1].axvline(1, color='#52514e', lw=1, ls=':')
+    for br, ls in [('up', '-'), ('dn', '--')]:
+        x = [p['r'] for p in d[br]]
+        ax[0].plot(x, [min(max(p['A'], 1e-7), 20) for p in d[br]], ls, color=C[i], lw=1.2, label=f'{s}' if br == 'up' else None)
+        ax[1].plot(x, [p['psi6'] for p in d[br]], ls, color=C[i], lw=1.2)
+        ax[2].plot(x, [p['fdef'] for p in d[br]], ls, color=C[i], lw=1.2)
+        for p in d[br]:
+            for k, y in [(0, min(max(p['A'], 1e-7), 20)), (1, p['psi6']), (2, p['fdef'])]:
+                ax[k].plot(p['r'], y, MK[p['state']], ms=5, color=C[i], mfc=C[i] if br == 'up' else 'none')
+ax[0].set_yscale('log'); ax[0].set_ylim(1e-7, 30); ax[0].set_ylabel('A vs. original lattice (clipped at 20)')
+ax[1].set_ylabel(r'$|\langle\psi_6\rangle|$'); ax[2].set_ylabel('defect fraction (coord. ≠ 6)'); ax[2].set_xlabel(r'$u_{\rm eff}/u_c(L)$')
+for a in ax: a.axvline(1, color='#52514e', lw=1, ls=':')
+from matplotlib.lines import Line2D
+h = [Line2D([], [], color='#52514e', marker=MK[k], ls='', label=k) for k in MK] + [Line2D([], [], color='#52514e', ls='-', label='up (filled)'), Line2D([], [], color='#52514e', ls='--', label='down (open)')]
+ax[0].legend(fontsize=8, ncol=3, loc='upper left'); ax[1].legend(handles=h, fontsize=8, ncol=3, loc='lower left')
 fig.savefig(f'{O}/fig_A_bifurcation.png')
+# figure D: drift velocity
+fig, ax = plt.subplots(1, 2, figsize=(11, 4))
+for i, s in enumerate(sizes):
+    for br in ['up', 'dn']:
+        for p in summ[s][br]:
+            if p['u'] == 0: continue
+            ax[0].plot(p['r'], p['Vx']/p['u'], MK[p['state']], color=C[i], mfc=C[i] if br == 'up' else 'none', ms=5, label=s if (br == 'up' and p is summ[s]['up'][0]) else None)
+            ax[1].plot(p['r'], p['Vy']/p['Vx'], MK[p['state']], color=C[i], mfc=C[i] if br == 'up' else 'none', ms=5)
+ax[0].set_ylabel(r'$V_x/u_{\rm eff}$'); ax[1].set_ylabel(r'$V_y/V_x$ (Hall ratio)')
+for a in ax: a.set_xlabel(r'$u_{\rm eff}/u_c(L)$'); a.axvline(1, color='#52514e', lw=1, ls=':')
+ax[0].legend(fontsize=8); ax[1].legend(handles=h[:4], fontsize=8)
+fig.savefig(f'{O}/fig_D_velocity.png')
 # figure A2: u_c and u_d vs 1/Lx
 fig, ax = plt.subplots(figsize=(6, 4.2))
 iL = np.array([1/summ[s]['Lx'] for s in sizes])

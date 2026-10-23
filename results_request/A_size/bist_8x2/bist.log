@@ -1,0 +1,50 @@
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request/skxrun.py", line 4, in <module>
+    from fastllg import Integrator
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request/skxrun.py", line 4, in <module>
+    from fastllg import Integrator
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request/../kt/fastllg.py", line 2, in <module>
+    from numba import njit, prange
+  File "/usr/local/lib/python3.13/dist-packages/numba/__init__.py", line 59, in <module>
+    _ensure_critical_deps()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "/usr/local/lib/python3.13/dist-packages/numba/__init__.py", line 48, in _ensure_critical_deps
+    import scipy
+  File "/usr/local/lib/python3.13/dist-packages/scipy/__init__.py", line 83, in <module>
+    from scipy._lib._ccallback import LowLevelCallable
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request/../kt/fastllg.py", line 2, in <module>
+    from numba import njit, prange
+  File "/usr/local/lib/python3.13/dist-packages/scipy/_lib/__init__.py", line 12, in <module>
+    from scipy._lib._testutils import PytestTester
+  File "/usr/local/lib/python3.13/dist-packages/scipy/_lib/_testutils.py", line 14, in <module>
+    from concurrent.futures import ThreadPoolExecutor
+  File "/usr/local/lib/python3.13/dist-packages/numba/__init__.py", line 59, in <module>
+    _ensure_critical_deps()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "<frozen importlib._bootstrap>", line 1429, in _handle_fromlist
+  File "/usr/local/lib/python3.13/dist-packages/numba/__init__.py", line 48, in _ensure_critical_deps
+    import scipy
+  File "/usr/lib/python3.13/concurrent/futures/__init__.py", line 50, in __getattr__
+    from .thread import ThreadPoolExecutor as te
+  File "/usr/local/lib/python3.13/dist-packages/scipy/__init__.py", line 83, in <module>
+    from scipy._lib._ccallback import LowLevelCallable
+  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 10, in <module>
+    import queue
+  File "/usr/local/lib/python3.13/dist-packages/scipy/_lib/__init__.py", line 12, in <module>
+    from scipy._lib._testutils import PytestTester
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request/queue.py", line 4, in <module>
+    jobs = [l.rstrip('\n').split('\t', 1) for l in open(sys.argv[1]) if l.strip() and not l.startswith('#')]
+                                                   ~~~~^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.13/dist-packages/scipy/_lib/_testutils.py", line 14, in <module>
+    from concurrent.futures import ThreadPoolExecutor
+FileNotFoundError: [Errno 2] No such file or directory: '--nx'
+  File "<frozen importlib._bootstrap>", line 1429, in _handle_fromlist
+  File "/usr/lib/python3.13/concurrent/futures/__init__.py", line 50, in __getattr__
+    from .thread import ThreadPoolExecutor as te
+  File "/usr/lib/python3.13/concurrent/futures/thread.py", line 10, in <module>
+    import queue
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request/queue.py", line 4, in <module>
+    jobs = [l.rstrip('\n').split('\t', 1) for l in open(sys.argv[1]) if l.strip() and not l.startswith('#')]
+                                                   ~~~~^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '--nx'

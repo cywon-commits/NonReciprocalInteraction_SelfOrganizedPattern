@@ -17,6 +17,7 @@ p.add_argument('--start', default=None); p.add_argument('--noise0', type=float, 
 p.add_argument('--every', type=float, default=50.0); p.add_argument('--dt', type=float, default=0.2)
 p.add_argument('--T', type=float, default=0.0); p.add_argument('--seed', type=int, default=0)
 p.add_argument('--nostop', action='store_true'); p.add_argument('--out', default='.'); p.add_argument('--decay', type=float, default=1e-9)
+p.add_argument('--ckpt', type=float, default=0, help='checkpoint every this many time units (resume from it on restart)')
 args = p.parse_args()
 J, D = 1.0, 0.4; B = 0.5*D*D/J; a, b = 0.3, 0.6
 nx, ny = args.nx, args.ny; us = [float(x) for x in args.us.split(',')]
@@ -48,8 +49,10 @@ nsub = int(round(args.every/args.dt)); t0 = time.time()
 for u_eff, hold in zip(us, holds):
     u = u_eff/(b/a-1)
     S = S + 1e-6*np.random.default_rng(int(u_eff*1e5)+7919*args.seed).standard_normal(S.shape); S /= np.linalg.norm(S, axis=-1)[..., None]
-    I = Integrator(S, J, D, B, a, np.array([-u, 0.]), np.array([b*u, 0.]), args.T, args.dt, seed=int(u_eff*1e5)+args.seed)
-    t = 0.0; rec = []; stop = ''
+    ck = f"{args.out}/ckpt_{args.tag}_{u_eff:.5f}.npz"; t = 0.0; rec = []; stop = ''
+    if args.ckpt and os.path.exists(ck):
+        z = np.load(ck); S = z['S']; rec = z['rec'].tolist(); t = float(z['t']); print(f"resumed {ck} at t={t:.0f}", flush=True)
+    I = Integrator(S, J, D, B, a, np.array([-u, 0.]), np.array([b*u, 0.]), args.T, args.dt, seed=int(u_eff*1e5)+args.seed+int(t))
     while t < hold-1e-9:
         S1 = I.S.copy(); I.run(5); dSdt = (I.S-S1)/(5*args.dt)
         gx, gy = grad(I.S); M = np.array([[np.sum(gx*gx), np.sum(gx*gy)], [np.sum(gx*gy), np.sum(gy*gy)]])
@@ -57,11 +60,14 @@ for u_eff, hold in zip(us, holds):
         I.run(nsub-5); t += args.every
         N, P6, fd = ordp(I.S)
         rec.append([t, amp(I.S), V[0], V[1], topo(I.S), P6, fd, N, energy(I.S, J, D, B), float(I.S[..., 1].mean())])
+        if args.ckpt and int(round(t/args.every)) % int(round(args.ckpt/args.every)) == 0:
+            np.savez(ck+'.tmp.npz', S=I.S, rec=np.array(rec), t=t); os.replace(ck+'.tmp.npz', ck)
         if not args.nostop and t >= args.tmin and len(rec) >= 40:
             A = np.array(rec)[:, 1]; w = max(20, len(rec)//10); l1, l2 = A[-w:], A[-2*w:-w]
             if A[-1] < args.decay: stop = 'decayed'; break
             if A[-1] > 1e-3 and abs(l1.mean()/l2.mean()-1) < 5e-3 and l1.std() < 5e-3*l1.mean(): stop = 'steady'; break
     rec = np.array(rec); S = I.S.copy()
+    if args.ckpt and os.path.exists(ck): os.remove(ck)
     np.save(f"{args.out}/rec_{args.tag}_{u_eff:.5f}.npy", rec); np.save(f"{args.out}/S_{args.tag}_{u_eff:.5f}.npy", S.astype(np.float32))
     np.save(f"{args.out}/S_{args.tag}_last.npy", S)
     q = rec[len(rec)*3//4:]

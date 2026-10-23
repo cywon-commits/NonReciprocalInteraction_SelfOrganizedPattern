@@ -43,7 +43,8 @@
     ],
     "bragg_w": 0.9820866373233366,
     "A_reg": 0.13505593019149234,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.08946,
@@ -76,7 +77,8 @@
     ],
     "bragg_w": 0.9820291325078313,
     "A_reg": 0.13527649280739198,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.09443,
@@ -109,7 +111,8 @@
     ],
     "bragg_w": 0.9819978158210457,
     "A_reg": 0.13539646926631546,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.0994,
@@ -142,7 +145,8 @@
     ],
     "bragg_w": 0.9819647840278818,
     "A_reg": 0.13552290960320684,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.10238,
@@ -175,7 +179,8 @@
     ],
     "bragg_w": 0.9819388015694487,
     "A_reg": 0.13562228937324378,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.10536,
@@ -208,7 +213,8 @@
     ],
     "bragg_w": 0.4257768159565996,
     "A_reg": 1.1613131842013549,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.10934,
@@ -241,7 +247,8 @@
     ],
     "bragg_w": 0.37159852704443297,
     "A_reg": 1.3004139067791938,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.11431,
@@ -274,7 +281,8 @@
     ],
     "bragg_w": 0.3814150952443903,
     "A_reg": 1.2735051932883983,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.11928,
@@ -307,7 +315,8 @@
     ],
     "bragg_w": 0.37366822561535773,
     "A_reg": 1.2946701569545354,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.12922,
@@ -340,7 +349,8 @@
     ],
     "bragg_w": 0.8459664078765223,
     "A_reg": 0.42670837088189395,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.13916,
@@ -373,7 +383,8 @@
     ],
     "bragg_w": 0.801598761858107,
     "A_reg": 0.4975006702552377,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.1491,
@@ -406,7 +417,8 @@
     ],
     "bragg_w": 0.6064271780609216,
     "A_reg": 0.8056069829598661,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.16401,
@@ -439,7 +451,8 @@
     ],
     "bragg_w": 0.3955893900398606,
     "A_reg": 1.2360718676022153,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.17892,
@@ -472,7 +485,8 @@
     ],
     "bragg_w": 0.5261579139185807,
     "A_reg": 0.9489837204945485,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.1988,
@@ -505,7 +519,8 @@
     ],
     "bragg_w": 0.5252414676711805,
     "A_reg": 0.9507293170681959,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    }
   ],
   "dn": [
@@ -540,7 +555,8 @@
     ],
     "bragg_w": 0.3722250976573583,
     "A_reg": 1.298671017030402,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.16401,
@@ -573,7 +589,8 @@
     ],
     "bragg_w": 0.388260405979943,
     "A_reg": 1.2552254702652414,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.1491,
@@ -606,7 +623,8 @@
     ],
     "bragg_w": 0.6359824605324336,
     "A_reg": 0.7565516548848709,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.13916,
@@ -639,7 +657,8 @@
     ],
     "bragg_w": 0.8166741719447168,
     "A_reg": 0.473791666023744,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.12922,
@@ -672,7 +691,8 @@
     ],
     "bragg_w": 0.8444451893046684,
     "A_reg": 0.4291963207654177,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.11928,
@@ -705,7 +725,8 @@
     ],
     "bragg_w": 0.9716965389128164,
     "A_reg": 0.17066892198547956,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.11431,
@@ -738,7 +759,8 @@
     ],
     "bragg_w": 0.9766503156367915,
     "A_reg": 0.15462188367221402,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.10934,
@@ -771,7 +793,8 @@
     ],
     "bragg_w": 0.976697978645581,
     "A_reg": 0.15446022157485242,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.10536,
@@ -804,7 +827,8 @@
     ],
     "bragg_w": 0.9767335817032999,
     "A_reg": 0.15433936391494804,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.10238,
@@ -837,7 +861,8 @@
     ],
     "bragg_w": 0.9767593449274132,
     "A_reg": 0.15425185486818704,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.0994,
@@ -870,7 +895,8 @@
     ],
     "bragg_w": 0.9767843444623538,
     "A_reg": 0.15416689674897083,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.09443,
@@ -903,7 +929,8 @@
     ],
     "bragg_w": 0.9768243460060279,
     "A_reg": 0.15403086756220327,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.08946,
@@ -936,7 +963,8 @@
     ],
     "bragg_w": 0.9768622383231387,
     "A_reg": 0.15390191040636916,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.07952,
@@ -969,7 +997,8 @@
     ],
     "bragg_w": 0.976931731254896,
     "A_reg": 0.15366515316560633,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.05964,
@@ -1002,7 +1031,8 @@
     ],
     "bragg_w": 0.9770457690701644,
     "A_reg": 0.15327591558613868,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.03976,
@@ -1035,7 +1065,8 @@
     ],
     "bragg_w": 0.9771269003673285,
     "A_reg": 0.15299844823046851,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.01988,
@@ -1068,7 +1099,8 @@
     ],
     "bragg_w": 0.9771754478103091,
     "A_reg": 0.15283219815864657,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.0,
@@ -1101,7 +1133,8 @@
     ],
     "bragg_w": 0.9771916082923111,
     "A_reg": 0.15277682033696505,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    }
   ]
  },
@@ -1149,7 +1182,8 @@
     ],
     "bragg_w": 0.9822484299876376,
     "A_reg": 0.1344335642159764,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.04482,
@@ -1182,7 +1216,8 @@
     ],
     "bragg_w": 0.9822340491629786,
     "A_reg": 0.13448899107057558,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.04731,
@@ -1215,7 +1250,8 @@
     ],
     "bragg_w": 0.9822262213704609,
     "A_reg": 0.13451915218402297,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.0498,
@@ -1248,7 +1284,8 @@
     ],
     "bragg_w": 0.982217970449865,
     "A_reg": 0.13455093684516506,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.05129,
@@ -1281,7 +1318,8 @@
     ],
     "bragg_w": 0.9822128303773805,
     "A_reg": 0.1345707341966693,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.05279,
@@ -1314,7 +1352,8 @@
     ],
     "bragg_w": 0.9773628881996326,
     "A_reg": 0.15218876253431118,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.05478,
@@ -1347,7 +1386,8 @@
     ],
     "bragg_w": 0.9777386523924644,
     "A_reg": 0.15089134629331244,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.05727,
@@ -1380,7 +1420,8 @@
     ],
     "bragg_w": 0.9778906213539414,
     "A_reg": 0.15036374307280023,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.05976,
@@ -1413,7 +1454,8 @@
     ],
     "bragg_w": 0.9778777672586134,
     "A_reg": 0.15040843499173762,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.06474,
@@ -1446,7 +1488,8 @@
     ],
     "bragg_w": 0.9778495515020237,
     "A_reg": 0.15050649487033282,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.06972,
@@ -1479,7 +1522,8 @@
     ],
     "bragg_w": 0.9772153994097903,
     "A_reg": 0.15269526107512965,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.0747,
@@ -1512,7 +1556,8 @@
     ],
     "bragg_w": 0.3998995441425765,
     "A_reg": 1.225001227275429,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.08217,
@@ -1545,7 +1590,8 @@
     ],
     "bragg_w": 0.36274869896122347,
     "A_reg": 1.3254166858287568,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.08964,
@@ -1578,7 +1624,8 @@
     ],
     "bragg_w": 0.382980902212704,
     "A_reg": 1.2692896660316786,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.0996,
@@ -1611,7 +1658,8 @@
     ],
     "bragg_w": 0.43500300393757335,
     "A_reg": 1.1396642926192895,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    }
   ],
   "dn": [
@@ -1646,7 +1694,8 @@
     ],
     "bragg_w": 0.42308235775743114,
     "A_reg": 1.1677354159564914,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.08217,
@@ -1679,7 +1728,8 @@
     ],
     "bragg_w": 0.5305437838493154,
     "A_reg": 0.9406692161666353,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.0747,
@@ -1712,7 +1762,8 @@
     ],
     "bragg_w": 0.3732092292578063,
     "A_reg": 1.295940638974561,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.06972,
@@ -1745,7 +1796,8 @@
     ],
     "bragg_w": 0.399340894779442,
     "A_reg": 1.2264282313447168,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.06474,
@@ -1778,7 +1830,8 @@
     ],
     "bragg_w": 0.3906604771859199,
     "A_reg": 1.248906528859849,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.05976,
@@ -1811,7 +1864,8 @@
     ],
     "bragg_w": 0.9108880321019797,
     "A_reg": 0.31277751092630157,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.05727,
@@ -1844,7 +1898,8 @@
     ],
     "bragg_w": 0.977851890811544,
     "A_reg": 0.15049836714428572,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.05478,
@@ -1877,7 +1932,8 @@
     ],
     "bragg_w": 0.9779031006087385,
     "A_reg": 0.15032034283542553,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.05279,
@@ -1910,7 +1966,8 @@
     ],
     "bragg_w": 0.9779126038522508,
     "A_reg": 0.15028728487961607,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.05129,
@@ -1943,7 +2000,8 @@
     ],
     "bragg_w": 0.9779195353088087,
     "A_reg": 0.15026316895308234,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.0498,
@@ -1976,7 +2034,8 @@
     ],
     "bragg_w": 0.9779262234198286,
     "A_reg": 0.15023989632906312,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.04731,
@@ -2009,7 +2068,8 @@
     ],
     "bragg_w": 0.97793696068596,
     "A_reg": 0.15020252698207098,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.04482,
@@ -2042,7 +2102,8 @@
     ],
     "bragg_w": 0.9779471488170952,
     "A_reg": 0.15016706097288224,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.03984,
@@ -2075,7 +2136,8 @@
     ],
     "bragg_w": 0.9779658756697124,
     "A_reg": 0.1501018508022603,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.02988,
@@ -2108,7 +2170,8 @@
     ],
     "bragg_w": 0.9779967282353027,
     "A_reg": 0.14999436040477962,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.01992,
@@ -2141,7 +2204,8 @@
     ],
     "bragg_w": 0.9780187718234592,
     "A_reg": 0.14991751745464707,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.00996,
@@ -2174,7 +2238,8 @@
     ],
     "bragg_w": 0.9780320006398003,
     "A_reg": 0.14987138514703766,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.0,
@@ -2207,7 +2272,8 @@
     ],
     "bragg_w": 0.9780364105975408,
     "A_reg": 0.14985600360383472,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    }
   ]
  },
@@ -2255,7 +2321,8 @@
     ],
     "bragg_w": 0.9820866378382186,
     "A_reg": 0.13505592821513954,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.08946,
@@ -2288,7 +2355,8 @@
     ],
     "bragg_w": 0.9820291326046742,
     "A_reg": 0.13527649243622739,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.09443,
@@ -2321,7 +2389,8 @@
     ],
     "bragg_w": 0.9819978150071339,
     "A_reg": 0.13539647238318753,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.0994,
@@ -2354,7 +2423,8 @@
     ],
     "bragg_w": 0.9819647838103485,
     "A_reg": 0.1355229104355286,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.10238,
@@ -2387,7 +2457,8 @@
     ],
     "bragg_w": 0.9819440219600795,
     "A_reg": 0.13560232743327855,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.10536,
@@ -2420,7 +2491,8 @@
     ],
     "bragg_w": 0.42882345742988237,
     "A_reg": 1.154106573355174,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.10934,
@@ -2453,7 +2525,8 @@
     ],
     "bragg_w": 0.3716294786250665,
     "A_reg": 1.3003277277728502,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.11431,
@@ -2486,7 +2559,8 @@
     ],
     "bragg_w": 0.38712104961974153,
     "A_reg": 1.2582413674404012,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.11928,
@@ -2519,7 +2593,8 @@
     ],
     "bragg_w": 0.9756557616142534,
     "A_reg": 0.1579609690181873,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.12922,
@@ -2552,7 +2627,8 @@
     ],
     "bragg_w": 0.9439586142007657,
     "A_reg": 0.24365647447617766,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.13916,
@@ -2585,7 +2661,8 @@
     ],
     "bragg_w": 0.9453639295813658,
     "A_reg": 0.24040318335279925,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.1491,
@@ -2618,7 +2695,8 @@
     ],
     "bragg_w": 0.296050396322753,
     "A_reg": 1.5420127369330388,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.16401,
@@ -2651,7 +2729,8 @@
     ],
     "bragg_w": 0.33457697319059654,
     "A_reg": 1.4102655229940846,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.17892,
@@ -2684,7 +2763,8 @@
     ],
     "bragg_w": 0.3886714311075219,
     "A_reg": 1.2541400480072884,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.1988,
@@ -2717,7 +2797,8 @@
     ],
     "bragg_w": 0.8314027349848537,
     "A_reg": 0.45031823991085185,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    }
   ],
   "dn": [
@@ -2752,7 +2833,8 @@
     ],
     "bragg_w": 0.3784513771507466,
     "A_reg": 1.28154101265912,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.16401,
@@ -2785,7 +2867,8 @@
     ],
     "bragg_w": 0.8834022247681823,
     "A_reg": 0.3633004096800226,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.1491,
@@ -2818,7 +2901,8 @@
     ],
     "bragg_w": 0.46011725360077016,
     "A_reg": 1.0832169940233993,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.13916,
@@ -2851,7 +2935,8 @@
     ],
     "bragg_w": 0.5867830286073199,
     "A_reg": 0.8391706827911376,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.12922,
@@ -2884,7 +2969,8 @@
     ],
     "bragg_w": 0.6019428944911182,
     "A_reg": 0.8131956451085077,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.11928,
@@ -2917,7 +3003,8 @@
     ],
     "bragg_w": 0.6091782885153874,
     "A_reg": 0.8009716282479192,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.11431,
@@ -2950,7 +3037,8 @@
     ],
     "bragg_w": 0.6057004834705048,
     "A_reg": 0.8068339461586188,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.10934,
@@ -2983,7 +3071,8 @@
     ],
     "bragg_w": 0.6128075438125146,
     "A_reg": 0.7948796747790494,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.10536,
@@ -3016,7 +3105,8 @@
     ],
     "bragg_w": 0.6152602320776577,
     "A_reg": 0.7907771595528967,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.10238,
@@ -3049,7 +3139,8 @@
     ],
     "bragg_w": 0.6146859260123997,
     "A_reg": 0.7917367452228293,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0994,
@@ -3082,7 +3173,8 @@
     ],
     "bragg_w": 0.6182303299534432,
     "A_reg": 0.7858244867994467,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.09443,
@@ -3115,7 +3207,8 @@
     ],
     "bragg_w": 0.6160817042123812,
     "A_reg": 0.7894056831567957,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.08946,
@@ -3148,7 +3241,8 @@
     ],
     "bragg_w": 0.6203356249227928,
     "A_reg": 0.782323836049301,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.07952,
@@ -3181,7 +3275,8 @@
     ],
     "bragg_w": 0.6222874372176936,
     "A_reg": 0.7790856374311215,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.05964,
@@ -3214,7 +3309,8 @@
     ],
     "bragg_w": 0.6191768769535106,
     "A_reg": 0.7842495722017148,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03976,
@@ -3247,7 +3343,8 @@
     ],
     "bragg_w": 0.629261301196258,
     "A_reg": 0.7675708066635272,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.01988,
@@ -3280,7 +3377,8 @@
     ],
     "bragg_w": 0.6347572974794287,
     "A_reg": 0.7585547331615683,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0,
@@ -3313,7 +3411,8 @@
     ],
     "bragg_w": 0.6435992480592931,
     "A_reg": 0.7441518089447874,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    }
   ]
  },
@@ -3361,7 +3460,8 @@
     ],
     "bragg_w": 0.9822484300756193,
     "A_reg": 0.13443356387681055,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.04482,
@@ -3394,7 +3494,8 @@
     ],
     "bragg_w": 0.9822340488117816,
     "A_reg": 0.13448899242390705,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.04731,
@@ -3427,7 +3528,8 @@
     ],
     "bragg_w": 0.9822262215807921,
     "A_reg": 0.13451915137368436,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.0498,
@@ -3460,7 +3562,8 @@
     ],
     "bragg_w": 0.9822179706421038,
     "A_reg": 0.13455093610469324,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.05129,
@@ -3493,7 +3596,8 @@
     ],
     "bragg_w": 0.9822128301695698,
     "A_reg": 0.134570734997012,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.05279,
@@ -3526,7 +3630,8 @@
     ],
     "bragg_w": 0.9817264836062218,
     "A_reg": 0.1364318631858566,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.05478,
@@ -3559,7 +3664,8 @@
     ],
     "bragg_w": 0.9756466163025874,
     "A_reg": 0.1579913770121106,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.05727,
@@ -3592,7 +3698,8 @@
     ],
     "bragg_w": 0.9778894192039513,
     "A_reg": 0.15036792329597312,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.05976,
@@ -3625,7 +3732,8 @@
     ],
     "bragg_w": 0.9778775749765264,
     "A_reg": 0.15040910343817826,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.06474,
@@ -3658,7 +3766,8 @@
     ],
     "bragg_w": 0.977840395031609,
     "A_reg": 0.1505383043783785,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.06972,
@@ -3691,7 +3800,8 @@
     ],
     "bragg_w": 0.9695539096227894,
     "A_reg": 0.17720655598680846,
-    "registry_changed": true
+    "registry_changed": true,
+    "state": "rotated"
    },
    {
     "u": 0.0747,
@@ -3724,7 +3834,8 @@
     ],
     "bragg_w": 0.2979687702438079,
     "A_reg": 1.5349450822252066,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.08217,
@@ -3757,7 +3868,8 @@
     ],
     "bragg_w": 0.3957971962835321,
     "A_reg": 1.2355348829527757,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.08964,
@@ -3790,7 +3902,8 @@
     ],
     "bragg_w": 0.6026835580271519,
     "A_reg": 0.8119393638458512,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0996,
@@ -3823,7 +3936,8 @@
     ],
     "bragg_w": 0.3896932582347992,
     "A_reg": 1.2514475069593236,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    }
   ],
   "dn": [
@@ -3858,7 +3972,8 @@
     ],
     "bragg_w": 0.40584904903916186,
     "A_reg": 1.2099464005991807,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.08217,
@@ -3891,7 +4006,8 @@
     ],
     "bragg_w": 0.37127380835648066,
     "A_reg": 1.3013185479571547,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0747,
@@ -3924,7 +4040,8 @@
     ],
     "bragg_w": 0.40306706062726844,
     "A_reg": 1.2169538753989173,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.06972,
@@ -3957,7 +4074,8 @@
     ],
     "bragg_w": 0.4186953116426704,
     "A_reg": 1.178291823185819,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.06474,
@@ -3990,7 +4108,8 @@
     ],
     "bragg_w": 0.3902965547450431,
     "A_reg": 1.2498617164349337,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.05976,
@@ -4023,7 +4142,8 @@
     ],
     "bragg_w": 0.4452304122999733,
     "A_reg": 1.116256270672999,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.05727,
@@ -4056,7 +4176,8 @@
     ],
     "bragg_w": 0.47389346179618547,
     "A_reg": 1.0536502901390066,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.05478,
@@ -4089,7 +4210,8 @@
     ],
     "bragg_w": 0.47569815926614323,
     "A_reg": 1.0498444478126652,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.05279,
@@ -4122,7 +4244,8 @@
     ],
     "bragg_w": 0.46359759720891625,
     "A_reg": 1.0756593809402997,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.05129,
@@ -4155,7 +4278,8 @@
     ],
     "bragg_w": 0.4914986065373453,
     "A_reg": 1.0171498238967354,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0498,
@@ -4188,7 +4312,8 @@
     ],
     "bragg_w": 0.44889094871103913,
     "A_reg": 1.1080219086030445,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.04731,
@@ -4221,7 +4346,8 @@
     ],
     "bragg_w": 0.46105765183025793,
     "A_reg": 1.081168883644909,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.04482,
@@ -4254,7 +4380,8 @@
     ],
     "bragg_w": 0.4641707503557608,
     "A_reg": 1.0744205925665344,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03984,
@@ -4287,7 +4414,8 @@
     ],
     "bragg_w": 0.4097960498997293,
     "A_reg": 1.2000992711356493,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.02988,
@@ -4320,7 +4448,8 @@
     ],
     "bragg_w": 0.40890043164388923,
     "A_reg": 1.2023240562210036,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.01992,
@@ -4353,7 +4482,8 @@
     ],
     "bragg_w": 0.4087102390639486,
     "A_reg": 1.2027972330834575,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.00996,
@@ -4386,7 +4516,8 @@
     ],
     "bragg_w": 0.4086532824568722,
     "A_reg": 1.202938983908229,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0,
@@ -4419,7 +4550,8 @@
     ],
     "bragg_w": 0.40863807991010753,
     "A_reg": 1.2029768231212943,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    }
   ]
  },
@@ -4467,7 +4599,8 @@
     ],
     "bragg_w": 0.9822786397992308,
     "A_reg": 0.13431705977187275,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.02979,
@@ -4500,7 +4633,8 @@
     ],
     "bragg_w": 0.9822722902747748,
     "A_reg": 0.1343415545684321,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.03144,
@@ -4533,7 +4667,8 @@
     ],
     "bragg_w": 0.9822688460196702,
     "A_reg": 0.134354839863637,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.0331,
@@ -4566,7 +4701,8 @@
     ],
     "bragg_w": 0.9822651935091309,
     "A_reg": 0.13436892711531992,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.03409,
@@ -4599,7 +4735,8 @@
     ],
     "bragg_w": 0.9822629257170318,
     "A_reg": 0.13437767300009998,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.03509,
@@ -4632,7 +4769,8 @@
     ],
     "bragg_w": 0.9822605668324735,
     "A_reg": 0.13438676962766533,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.03641,
@@ -4665,7 +4803,8 @@
     ],
     "bragg_w": 0.9820613231402442,
     "A_reg": 0.135153065182624,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.03806,
@@ -4698,7 +4837,8 @@
     ],
     "bragg_w": 0.3672948584563265,
     "A_reg": 1.3124817019030282,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.03972,
@@ -4731,7 +4871,8 @@
     ],
     "bragg_w": 0.448985654244535,
     "A_reg": 1.1078098454278524,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.04303,
@@ -4764,7 +4905,8 @@
     ],
     "bragg_w": 0.2919600119948539,
     "A_reg": 1.5572817949784998,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.04634,
@@ -4797,7 +4939,8 @@
     ],
     "bragg_w": 0.34806177661494236,
     "A_reg": 1.3685953371380686,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "modulated"
    },
    {
     "u": 0.04965,
@@ -4830,7 +4973,8 @@
     ],
     "bragg_w": 0.21014715239626905,
     "A_reg": 1.938703254603516,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.05461,
@@ -4863,7 +5007,8 @@
     ],
     "bragg_w": 0.2665332073684189,
     "A_reg": 1.6588784497738653,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.05958,
@@ -4896,7 +5041,8 @@
     ],
     "bragg_w": 0.21594110141799402,
     "A_reg": 1.9054900616307735,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0662,
@@ -4929,7 +5075,8 @@
     ],
     "bragg_w": 0.3287717652856357,
     "A_reg": 1.4288539885981502,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    }
   ],
   "dn": [
@@ -4964,7 +5111,8 @@
     ],
     "bragg_w": 0.2978145604440977,
     "A_reg": 1.535511050907648,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.05461,
@@ -4997,7 +5145,8 @@
     ],
     "bragg_w": 0.41786944417002186,
     "A_reg": 1.180293159699943,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.04965,
@@ -5030,7 +5179,8 @@
     ],
     "bragg_w": 0.4512103889031844,
     "A_reg": 1.1028422494688699,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.04634,
@@ -5063,7 +5213,8 @@
     ],
     "bragg_w": 0.3893408161565662,
     "A_reg": 1.252375257769626,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.04303,
@@ -5096,7 +5247,8 @@
     ],
     "bragg_w": 0.48103469924622955,
     "A_reg": 1.038678059369726,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03972,
@@ -5129,7 +5281,8 @@
     ],
     "bragg_w": 0.4506792548059863,
     "A_reg": 1.1040257846186956,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03806,
@@ -5162,7 +5315,8 @@
     ],
     "bragg_w": 0.46468994199561503,
     "A_reg": 1.073299842175733,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03641,
@@ -5195,7 +5349,8 @@
     ],
     "bragg_w": 0.49176516705335505,
     "A_reg": 1.0166075525901255,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03509,
@@ -5228,7 +5383,8 @@
     ],
     "bragg_w": 0.46377325006756315,
     "A_reg": 1.0752795588072896,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03409,
@@ -5261,7 +5417,8 @@
     ],
     "bragg_w": 0.431982487516325,
     "A_reg": 1.1466946659615158,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0331,
@@ -5294,7 +5451,8 @@
     ],
     "bragg_w": 0.4600507929806449,
     "A_reg": 1.083361909769351,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03144,
@@ -5327,7 +5485,8 @@
     ],
     "bragg_w": 0.4642038814544937,
     "A_reg": 1.0743490343604356,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.02979,
@@ -5360,7 +5519,8 @@
     ],
     "bragg_w": 0.4624859548216497,
     "A_reg": 1.0780667069321477,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.02648,
@@ -5393,7 +5553,8 @@
     ],
     "bragg_w": 0.46232878479179407,
     "A_reg": 1.0784075668792716,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.01986,
@@ -5426,7 +5587,8 @@
     ],
     "bragg_w": 0.46185906466741,
     "A_reg": 1.079427004402784,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.01324,
@@ -5459,7 +5621,8 @@
     ],
     "bragg_w": 0.46144955215578515,
     "A_reg": 1.0803166791467131,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.00662,
@@ -5492,7 +5655,8 @@
     ],
     "bragg_w": 0.4611544339660438,
     "A_reg": 1.0809583544492969,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0,
@@ -5525,7 +5689,8 @@
     ],
     "bragg_w": 0.4610464631298869,
     "A_reg": 1.0811932253665821,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    }
   ]
  },
@@ -5573,7 +5738,8 @@
     ],
     "bragg_w": 0.9822890126256872,
     "A_reg": 0.1342770352027776,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.02365,
@@ -5606,7 +5772,8 @@
     ],
     "bragg_w": 0.9822834746162314,
     "A_reg": 0.1342984055349037,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.0249,
@@ -5639,7 +5806,8 @@
     ],
     "bragg_w": 0.9822814064561786,
     "A_reg": 0.1343063854382192,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.02565,
@@ -5672,7 +5840,8 @@
     ],
     "bragg_w": 0.9822801139549069,
     "A_reg": 0.1343113722730507,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.02639,
@@ -5705,7 +5874,8 @@
     ],
     "bragg_w": 0.9822788012824679,
     "A_reg": 0.13431643675786678,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.02739,
@@ -5738,7 +5908,8 @@
     ],
     "bragg_w": 0.9822769683389613,
     "A_reg": 0.13432350822874395,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.02863,
@@ -5771,7 +5942,8 @@
     ],
     "bragg_w": 0.9822741875645871,
     "A_reg": 0.13433423575771905,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.02988,
@@ -5804,7 +5976,8 @@
     ],
     "bragg_w": 0.8954227540912222,
     "A_reg": 0.34174686321039355,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "lattice"
    },
    {
     "u": 0.03237,
@@ -5837,7 +6010,8 @@
     ],
     "bragg_w": 0.3682450019870858,
     "A_reg": 1.3098027945248192,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03486,
@@ -5870,7 +6044,8 @@
     ],
     "bragg_w": 0.3047481730140397,
     "A_reg": 1.5104296908230395,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03735,
@@ -5903,7 +6078,8 @@
     ],
     "bragg_w": 0.2038859473628476,
     "A_reg": 1.9760321134140633,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.04108,
@@ -5936,7 +6112,8 @@
     ],
     "bragg_w": 0.3950958210468249,
     "A_reg": 1.2373486087215178,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.04482,
@@ -5969,7 +6146,8 @@
     ],
     "bragg_w": 0.3278072606394895,
     "A_reg": 1.431982215516103,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0498,
@@ -6002,7 +6180,8 @@
     ],
     "bragg_w": 0.2711910898982961,
     "A_reg": 1.6393403498309682,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    }
   ],
   "dn": [
@@ -6037,7 +6216,8 @@
     ],
     "bragg_w": 0.3287082411461686,
     "A_reg": 1.4290596650545353,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.04108,
@@ -6070,7 +6250,8 @@
     ],
     "bragg_w": 0.33923390433154194,
     "A_reg": 1.3956427056584946,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03735,
@@ -6103,7 +6284,8 @@
     ],
     "bragg_w": 0.34397337648849735,
     "A_reg": 1.3810147515326499,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03486,
@@ -6136,7 +6318,8 @@
     ],
     "bragg_w": 0.38584430121912133,
     "A_reg": 1.2616334583089055,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.03237,
@@ -6169,7 +6352,8 @@
     ],
     "bragg_w": 0.3940046194096482,
     "A_reg": 1.2401779344125508,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.02988,
@@ -6202,7 +6386,8 @@
     ],
     "bragg_w": 0.37443536998942845,
     "A_reg": 1.292550915071094,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.02863,
@@ -6235,7 +6420,8 @@
     ],
     "bragg_w": 0.3745116052125851,
     "A_reg": 1.2923405996060808,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.02739,
@@ -6268,7 +6454,8 @@
     ],
     "bragg_w": 0.36758640582154467,
     "A_reg": 1.3116588006081105,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.02639,
@@ -6301,7 +6488,8 @@
     ],
     "bragg_w": 0.3742014459839588,
     "A_reg": 1.2931965787428688,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.02565,
@@ -6334,7 +6522,8 @@
     ],
     "bragg_w": 0.3677857203940672,
     "A_reg": 1.3110966833184596,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0249,
@@ -6367,7 +6556,8 @@
     ],
     "bragg_w": 0.3719894205624694,
     "A_reg": 1.2993261696147556,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.02365,
@@ -6400,7 +6590,8 @@
     ],
     "bragg_w": 0.3736527354743006,
     "A_reg": 1.2947130024054339,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.02241,
@@ -6433,7 +6624,8 @@
     ],
     "bragg_w": 0.3729825633080967,
     "A_reg": 1.2965687335531262,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.01992,
@@ -6466,7 +6658,8 @@
     ],
     "bragg_w": 0.3751877815238949,
     "A_reg": 1.29047743092279,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.01494,
@@ -6499,7 +6692,8 @@
     ],
     "bragg_w": 0.37693554949539776,
     "A_reg": 1.2856801454007232,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.00996,
@@ -6532,7 +6726,8 @@
     ],
     "bragg_w": 0.3788857073110668,
     "A_reg": 1.2803586803597649,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.00498,
@@ -6565,7 +6760,8 @@
     ],
     "bragg_w": 0.38074072495519085,
     "A_reg": 1.27532711602245,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    },
    {
     "u": 0.0,
@@ -6598,7 +6794,8 @@
     ],
     "bragg_w": 0.3825687795319505,
     "A_reg": 1.2703972067416451,
-    "registry_changed": false
+    "registry_changed": false,
+    "state": "defects"
    }
   ]
  }
