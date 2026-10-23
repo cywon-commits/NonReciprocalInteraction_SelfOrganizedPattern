@@ -1,0 +1,25 @@
+4x1 u_eff=0.08449 maxRe=-2.676e-04 at k=[0.08267 0.     ] V=[0.09792 0.03123] resid=7.9e-07
+4x1 u_eff=0.11431 maxRe=+1.977e-04 at k=[0.08267 0.     ] V=[0.13247 0.04223] resid=1.0e-06
+4x1 u_eff=0.09940 maxRe=-3.215e-05 at k=[0.08267 0.     ] V=[0.1152  0.03673] resid=9.0e-07
+4x1 u_eff=0.10685 maxRe=+8.348e-05 at k=[0.08267 0.     ] V=[0.12384 0.03948] resid=9.6e-07
+4x1 u_eff=0.10313 maxRe=+2.584e-05 at k=[0.08267 0.     ] V=[0.11952 0.03811] resid=9.3e-07
+4x1 u_eff=0.10126 maxRe=-3.113e-06 at k=[0.08267 0.     ] V=[0.11736 0.03742] resid=9.2e-07
+4x1 u_eff=0.10220 maxRe=+1.137e-05 at k=[0.08267 0.     ] V=[0.11844 0.03776] resid=9.2e-07
+4x1 u_eff=0.10173 maxRe=+4.134e-06 at k=[0.08267 0.     ] V=[0.1179  0.03759] resid=9.2e-07
+4x1 u_eff=0.10150 maxRe=+5.112e-07 at k=[0.08267 0.     ] V=[0.11763 0.03751] resid=9.2e-07
+4x1 u_eff=0.10138 maxRe=-1.300e-06 at k=[0.08267 0.     ] V=[0.11749 0.03746] resid=9.2e-07
+4x1 u_eff=0.10144 maxRe=-3.946e-07 at k=[0.08267 0.     ] V=[0.11756 0.03749] resid=9.2e-07
+4x1 u_eff=0.10147 maxRe=+5.836e-08 at k=[0.08267 0.     ] V=[0.1176 0.0375] resid=9.2e-07
+4x1 u_eff=0.10653 maxRe=+7.840e-05 at k=[0.08267 0.     ] V=[0.12346 0.03936] resid=9.5e-07
+4x1 u_eff=0.11160 maxRe=+1.563e-04 at k=[0.08267 0.     ] V=[0.12933 0.04123] resid=9.9e-07
+4x1 u_eff=0.12174 maxRe=+3.103e-04 at k=[0.08267 0.     ] V=[0.14109 0.04498] resid=1.1e-06
+4x1 u_eff=0.13696 maxRe=+5.366e-04 at k=[0.08267 0.     ] V=[0.15872 0.05059] resid=1.1e-06
+4x1 u_eff=0.15218 maxRe=+7.577e-04 at k=[0.08267 0.     ] V=[0.17634 0.05619] resid=1.2e-06
+4x1 u_eff=0.17754 maxRe=+1.115e-03 at k=[0.08267 0.     ] V=[0.20571 0.06552] resid=1.3e-06
+4x1 u_eff=0.20291 maxRe=+1.460e-03 at k=[0.08267 0.     ] V=[0.23508 0.07484] resid=1.3e-06
+Traceback (most recent call last):
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/results_request/A_size/../../code/request/bloch_uc.py", line 41, in <module>
+    os.makedirs(os.path.dirname(out), exist_ok=True); json.dump(res, open(out, 'w'), indent=1)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 228, in makedirs
+FileNotFoundError: [Errno 2] No such file or directory: ''

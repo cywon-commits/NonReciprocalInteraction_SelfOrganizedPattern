@@ -16,7 +16,7 @@ p.add_argument('--tmin', type=float, default=2e4); p.add_argument('--tmax', type
 p.add_argument('--start', default=None); p.add_argument('--noise0', type=float, default=1e-3)
 p.add_argument('--every', type=float, default=50.0); p.add_argument('--dt', type=float, default=0.2)
 p.add_argument('--T', type=float, default=0.0); p.add_argument('--seed', type=int, default=0)
-p.add_argument('--nostop', action='store_true'); p.add_argument('--out', default='.')
+p.add_argument('--nostop', action='store_true'); p.add_argument('--out', default='.'); p.add_argument('--decay', type=float, default=1e-9)
 args = p.parse_args()
 J, D = 1.0, 0.4; B = 0.5*D*D/J; a, b = 0.3, 0.6
 nx, ny = args.nx, args.ny; us = [float(x) for x in args.us.split(',')]
@@ -59,7 +59,7 @@ for u_eff, hold in zip(us, holds):
         rec.append([t, amp(I.S), V[0], V[1], topo(I.S), P6, fd, N, energy(I.S, J, D, B), float(I.S[..., 1].mean())])
         if not args.nostop and t >= args.tmin and len(rec) >= 40:
             A = np.array(rec)[:, 1]; w = max(20, len(rec)//10); l1, l2 = A[-w:], A[-2*w:-w]
-            if A[-1] < 1e-9: stop = 'decayed'; break
+            if A[-1] < args.decay: stop = 'decayed'; break
             if A[-1] > 1e-3 and abs(l1.mean()/l2.mean()-1) < 5e-3 and l1.std() < 5e-3*l1.mean(): stop = 'steady'; break
     rec = np.array(rec); S = I.S.copy()
     np.save(f"{args.out}/rec_{args.tag}_{u_eff:.5f}.npy", rec); np.save(f"{args.out}/S_{args.tag}_{u_eff:.5f}.npy", S.astype(np.float32))

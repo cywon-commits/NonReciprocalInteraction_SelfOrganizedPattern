@@ -1,0 +1,59 @@
+u_eff=0.06000 t=100000 n_end=9.000 rows[9.00,9.00] slips=[] My=0.6333 E=-1201.602 wall=20
+u_eff=0.06250 t=100000 n_end=9.000 rows[9.00,9.00] slips=[] My=0.6597 E=-1201.511 wall=40
+u_eff=0.06500 t=100000 n_end=9.000 rows[9.00,9.00] slips=[] My=0.6861 E=-1201.416 wall=59
+u_eff=0.06750 t=100000 n_end=9.000 rows[9.00,9.00] slips=[] My=0.7125 E=-1201.317 wall=78
+u_eff=0.07000 t=100000 n_end=9.000 rows[9.00,9.00] slips=[] My=0.7389 E=-1201.214 wall=97
+u_eff=0.07250 t=100000 n_end=9.000 rows[9.00,9.00] slips=[] My=0.7653 E=-1201.108 wall=117
+u_eff=0.07500 t=100000 n_end=7.000 rows[7.00,7.00] slips=[(60240, np.float64(9.0), np.float64(8.0)), (61320, np.float64(8.0), np.float64(7.0))] My=0.6481 E=-1201.474 wall=136
+u_eff=0.07750 t=100000 n_end=7.000 rows[7.00,7.00] slips=[] My=0.6697 E=-1201.402 wall=155
+u_eff=0.08000 t=100000 n_end=7.000 rows[7.00,7.00] slips=[] My=0.6913 E=-1201.327 wall=175
+u_eff=0.08250 t=100000 n_end=7.000 rows[7.00,7.00] slips=[] My=0.7129 E=-1201.250 wall=195
+u_eff=0.08500 t=100000 n_end=7.000 rows[7.00,7.00] slips=[] My=0.7345 E=-1201.171 wall=215
+u_eff=0.08750 t=100000 n_end=7.000 rows[7.00,7.00] slips=[] My=0.7561 E=-1201.089 wall=235
+u_eff=0.09000 t=100000 n_end=7.000 rows[7.00,7.00] slips=[] My=0.7777 E=-1201.005 wall=255
+u_eff=0.09250 t=100000 n_end=7.000 rows[7.00,7.00] slips=[] My=0.7994 E=-1200.918 wall=275
+u_eff=0.09500 t=100000 n_end=7.000 rows[7.00,7.00] slips=[] My=0.8210 E=-1200.829 wall=296
+u_eff=0.09750 t=100000 n_end=7.000 rows[7.00,7.00] slips=[] My=0.8426 E=-1200.738 wall=315
+u_eff=0.10000 t=100000 n_end=5.000 rows[5.00,5.00] slips=[(64150, np.float64(7.0), np.float64(6.0)), (69920, np.float64(6.0), np.float64(5.0))] My=0.7320 E=-1200.996 wall=335
+u_eff=0.10250 t=100000 n_end=5.000 rows[5.00,5.00] slips=[] My=0.7499 E=-1200.939 wall=355
+u_eff=0.10500 t=100000 n_end=5.000 rows[5.00,5.00] slips=[] My=0.7682 E=-1200.880 wall=378
+u_eff=0.10750 t=100000 n_end=5.000 rows[5.00,5.00] slips=[] My=0.7865 E=-1200.819 wall=398
+u_eff=0.11000 t=100000 n_end=5.000 rows[5.00,5.00] slips=[] My=0.8048 E=-1200.756 wall=417
+u_eff=0.11250 t=100000 n_end=5.000 rows[5.00,5.00] slips=[] My=0.8231 E=-1200.692 wall=437
+u_eff=0.11500 t=100000 n_end=5.000 rows[5.00,5.00] slips=[] My=0.8414 E=-1200.627 wall=457
+u_eff=0.11750 t=100000 n_end=5.000 rows[5.00,5.00] slips=[] My=0.8596 E=-1200.560 wall=477
+u_eff=0.12000 t=100000 n_end=5.000 rows[5.00,5.00] slips=[] My=0.8779 E=-1200.492 wall=497
+u_eff=0.12250 t=100000 n_end=5.000 rows[5.00,5.00] slips=[] My=0.8962 E=-1200.422 wall=517
+u_eff=0.12500 t=100000 n_end=5.000 rows[5.00,5.00] slips=[] My=0.9145 E=-1200.351 wall=537
+u_eff=0.12750 t=100000 n_end=3.000 rows[3.00,3.00] slips=[(85850, np.float64(5.0), np.float64(4.0)), (95020, np.float64(4.0), np.float64(3.0))] My=0.9078 E=-1200.315 wall=558
+u_eff=0.13000 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.8247 E=-1200.475 wall=577
+u_eff=0.13250 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.8405 E=-1200.436 wall=597
+u_eff=0.13500 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.8564 E=-1200.396 wall=618
+u_eff=0.13750 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.8723 E=-1200.355 wall=637
+u_eff=0.14000 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.8881 E=-1200.314 wall=658
+u_eff=0.14250 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.9040 E=-1200.272 wall=679
+u_eff=0.14500 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.9198 E=-1200.229 wall=699
+u_eff=0.14750 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.9357 E=-1200.185 wall=719
+u_eff=0.15000 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.9516 E=-1200.140 wall=740
+u_eff=0.15250 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.9674 E=-1200.095 wall=760
+u_eff=0.15500 t=100000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.9831 E=-1200.050 wall=781
+u_eff=0.15750 t=100000 n_end=2.000 rows[2.00,2.00] slips=[(93530, np.float64(3.0), np.float64(2.0))] My=0.9943 E=-1200.015 wall=801
+u_eff=0.16000 t=100000 n_end=2.000 rows[2.00,2.00] slips=[] My=0.9519 E=-1200.099 wall=822
+u_eff=0.16250 t=100000 n_end=2.000 rows[2.00,2.00] slips=[] My=0.9666 E=-1200.069 wall=841
+u_eff=0.16500 t=100000 n_end=2.000 rows[2.00,2.00] slips=[] My=0.9811 E=-1200.040 wall=862
+u_eff=0.16750 t=100000 n_end=2.000 rows[2.00,2.00] slips=[] My=0.9917 E=-1200.015 wall=882
+u_eff=0.17000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[(2040, np.float64(2.0), np.float64(1.0))] My=0.9598 E=-1200.044 wall=902
+u_eff=0.17250 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.9656 E=-1200.038 wall=923
+u_eff=0.17500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.9784 E=-1200.024 wall=944
+u_eff=0.17750 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.9896 E=-1200.012 wall=964
+u_eff=0.18000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.9970 E=-1200.003 wall=984
+/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request/helixrun.py:37: RuntimeWarning: All-NaN slice encountered
+  return np.nanmax(d), np.nanmax(sm)
+u_eff=0.18250 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=0.9997 E=-1200.000 wall=1004
+u_eff=0.18500 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=1.0000 E=-1200.000 wall=1023
+u_eff=0.18750 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=1.0000 E=-1200.000 wall=1043
+u_eff=0.19000 t=100000 n_end=1.000 rows[1.00,1.00] slips=[] My=1.0000 E=-1200.000 wall=1062
+u_eff=0.19250 t=100000 n_end=0.000 rows[0.00,0.00] slips=[(34460, np.float64(1.0), np.float64(-0.0))] My=1.0000 E=-1200.000 wall=1082
+u_eff=0.19500 t=100000 n_end=0.000 rows[0.00,0.00] slips=[(10, np.float64(1.0), np.float64(0.0))] My=1.0000 E=-1200.000 wall=1101
+u_eff=0.19750 t=100000 n_end=0.000 rows[0.00,0.00] slips=[] My=1.0000 E=-1200.000 wall=1121
+u_eff=0.20000 t=100000 n_end=0.000 rows[0.00,0.00] slips=[(10, np.float64(1.0), np.float64(0.0))] My=1.0000 E=-1200.000 wall=1140

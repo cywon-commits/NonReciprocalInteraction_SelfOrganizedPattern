@@ -1,0 +1,3 @@
+u_eff=0.01992 hold=400000/400000 A_end=1.809e-09 A_lastQ=6.430e-09 A_max=1.146e-04 psi6=1.000 fdef=0.000 fdef_end=0.000 Nsk=128 Q=-122.626 Vx=0.02309 Vy=0.00736 E=-84149.43 wall=6646
+u_eff=0.02365 hold=81200/300000(decayed) A_end=9.999e-09 A_lastQ=1.058e-08 A_max=1.241e-07 psi6=1.000 fdef=0.000 fdef_end=0.000 Nsk=128 Q=-122.626 Vx=0.02741 Vy=0.00874 E=-84149.35 wall=337
+u_eff=0.02490 hold=300000/300000 A_end=2.133e-08 A_lastQ=2.154e-08 A_max=1.204e-07 psi6=1.000 fdef=0.000 fdef_end=0.000 Nsk=128 Q=-122.626 Vx=0.02886 Vy=0.00920 E=-84149.32 wall=1648

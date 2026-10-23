@@ -1,2 +1,9 @@
 __pycache__/
 *.pyc
+# raw high-rate time series of the request campaign (downsampled copies are committed as ts_*.npz)
+results_request/C_helix/C1/rec_*.npy
+results_request/C_helix/C2/rec_*.npy
+results_request/C_helix/C3/rec_*.npy
+results_request/C_helix/test/
+results_request/B_temp/stairs/rec_*.npy
+results_request/B_temp/wait/S_*.npy

@@ -13,7 +13,7 @@ for n in ns:
         if abs(M) >= 1: return 1.0
         S, _ = cone(N, n, M); return np.linalg.eigvals(jac(S, (J, D, u, a, b, Om))).real.max()
     lo, hi = 0.3*uunw, 0.999*uunw
-    if g(hi) <= 1e-10: res[n] = dict(u_L=None, u_unw=uunw); print(N, n, 'stable to unwinding', uunw, flush=True); continue
+    if g(hi) <= 1e-10: res[n] = dict(u_L=None, u_unw=uunw); print(N, n, 'stable to unwinding', uunw, flush=True); json.dump(res, open(out, 'w'), indent=1); continue
     for _ in range(16):
         mid = (lo+hi)/2
         if g(mid) > 1e-10: hi = mid

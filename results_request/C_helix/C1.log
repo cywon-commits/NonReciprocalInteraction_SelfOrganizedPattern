@@ -1,0 +1,13 @@
+u_eff=0.07150 t=400000 n_end=3.000 rows[3.00,3.00] slips=[] My=0.7547 E=-400.384 wall=78
+u_eff=0.07250 t=221082 n_end=2.000 rows[2.00,2.00] slips=[(221082, np.float64(3.0), np.float64(2.0))] My=0.7664 E=-400.365 wall=43
+u_eff=0.07500 t=97208 n_end=2.000 rows[2.00,2.00] slips=[(97208, np.float64(3.0), np.float64(2.0))] My=0.7925 E=-400.328 wall=19
+u_eff=0.08000 t=47622 n_end=2.000 rows[2.00,2.00] slips=[(47622, np.float64(3.0), np.float64(2.0))] My=0.8434 E=-400.253 wall=8
+u_eff=0.08500 t=32244 n_end=2.000 rows[2.00,2.00] slips=[(32244, np.float64(3.0), np.float64(2.0))] My=0.8941 E=-400.175 wall=6
+u_eff=0.09000 t=24590 n_end=2.000 rows[2.00,2.00] slips=[(24590, np.float64(3.0), np.float64(2.0))] My=0.9459 E=-400.092 wall=4
+u_eff=0.11000 t=400000 n_end=2.000 rows[2.00,2.00] slips=[] My=0.8716 E=-400.190 wall=76
+u_eff=0.11250 t=193650 n_end=1.000 rows[1.00,1.00] slips=[(193650, np.float64(2.0), np.float64(1.0))] My=0.8913 E=-400.158 wall=38
+u_eff=0.11500 t=111124 n_end=1.000 rows[1.00,1.00] slips=[(111124, np.float64(2.0), np.float64(1.0))] My=0.9102 E=-400.131 wall=20
+u_eff=0.12000 t=60590 n_end=1.000 rows[1.00,1.00] slips=[(60590, np.float64(2.0), np.float64(1.0))] My=0.9481 E=-400.076 wall=11
+/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request/helixrun.py:37: RuntimeWarning: All-NaN slice encountered
+  return np.nanmax(d), np.nanmax(sm)
+u_eff=0.13000 t=33584 n_end=1.000 rows[1.00,1.00] slips=[(33584, np.float64(2.0), np.float64(1.0))] My=0.9992 E=-400.001 wall=6

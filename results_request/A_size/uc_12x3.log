@@ -1,0 +1,25 @@
+12x3 u_eff=0.02816 maxRe=-3.165e-05 at k=[0.02756 0.     ] V=[0.03264 0.01041] resid=2.8e-07
+12x3 u_eff=0.03810 maxRe=+2.383e-05 at k=[0.02756 0.     ] V=[0.04416 0.01409] resid=3.8e-07
+12x3 u_eff=0.03313 maxRe=-3.644e-06 at k=[0.02756 0.     ] V=[0.0384  0.01225] resid=3.3e-07
+12x3 u_eff=0.03562 maxRe=+1.016e-05 at k=[0.02756 0.     ] V=[0.04128 0.01317] resid=3.5e-07
+12x3 u_eff=0.03438 maxRe=+3.273e-06 at k=[0.02756 0.     ] V=[0.03984 0.01271] resid=3.4e-07
+12x3 u_eff=0.03375 maxRe=-1.811e-07 at k=[0.02756 0.     ] V=[0.03912 0.01248] resid=3.3e-07
+12x3 u_eff=0.03407 maxRe=+1.547e-06 at k=[0.02756 0.     ] V=[0.03948 0.0126 ] resid=3.4e-07
+12x3 u_eff=0.03391 maxRe=+6.832e-07 at k=[0.02756 0.     ] V=[0.0393  0.01254] resid=3.4e-07
+12x3 u_eff=0.03383 maxRe=+2.512e-07 at k=[0.02756 0.     ] V=[0.03921 0.01251] resid=3.4e-07
+12x3 u_eff=0.03379 maxRe=+3.506e-08 at k=[0.02756 0.     ] V=[0.03917 0.0125 ] resid=3.4e-07
+12x3 u_eff=0.03377 maxRe=-7.301e-08 at k=[0.02756 0.     ] V=[0.03915 0.01249] resid=3.3e-07
+12x3 u_eff=0.03378 maxRe=-1.897e-08 at k=[0.02756 0.     ] V=[0.03916 0.01249] resid=3.3e-07
+12x3 u_eff=0.03548 maxRe=+9.381e-06 at k=[0.02756 0.     ] V=[0.04112 0.01312] resid=3.5e-07
+12x3 u_eff=0.03717 maxRe=+1.869e-05 at k=[0.02756 0.     ] V=[0.04308 0.01374] resid=3.7e-07
+12x3 u_eff=0.04055 maxRe=+3.715e-05 at k=[0.02756 0.     ] V=[0.047   0.01499] resid=4.0e-07
+12x3 u_eff=0.04561 maxRe=+6.442e-05 at k=[0.02756 0.     ] V=[0.05287 0.01687] resid=4.5e-07
+12x3 u_eff=0.05068 maxRe=+9.127e-05 at k=[0.02756 0.     ] V=[0.05874 0.01874] resid=5.0e-07
+12x3 u_eff=0.05913 maxRe=+1.352e-04 at k=[0.02756 0.     ] V=[0.06853 0.02186] resid=5.7e-07
+12x3 u_eff=0.06758 maxRe=+1.782e-04 at k=[0.02756 0.     ] V=[0.07832 0.02498] resid=6.5e-07
+Traceback (most recent call last):
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/results_request/A_size/../../code/request/bloch_uc.py", line 41, in <module>
+    os.makedirs(os.path.dirname(out) or ".", exist_ok=True); json.dump(res, open(out, 'w'), indent=1)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen os>", line 228, in makedirs
+FileNotFoundError: [Errno 2] No such file or directory: ''
