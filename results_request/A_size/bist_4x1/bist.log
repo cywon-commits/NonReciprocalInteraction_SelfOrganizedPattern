@@ -1,2 +1,6 @@
 u_eff=0.10238 hold=284700/600000(steady) A_end=7.704e-01 A_lastQ=7.640e-01 A_max=7.704e-01 psi6=0.824 fdef=0.000 fdef_end=0.000 Nsk=8 Q=-7.655 Vx=0.11930 Vy=0.03744 E=-5257.96 wall=711
 u_eff=0.10238 hold=100000/600000(steady) A_end=7.695e-01 A_lastQ=7.669e-01 A_max=9.368e-01 psi6=0.823 fdef=0.000 fdef_end=0.000 Nsk=8 Q=-7.655 Vx=0.11930 Vy=0.03744 E=-5257.96 wall=231
+u_eff=0.10536 hold=149600/600000(steady) A_end=1.245e+00 A_lastQ=1.234e+00 A_max=1.245e+00 psi6=0.685 fdef=0.000 fdef_end=0.000 Nsk=8 Q=-7.646 Vx=0.12332 Vy=0.03819 E=-5256.92 wall=80
+u_eff=0.10536 hold=100000/600000(steady) A_end=1.245e+00 A_lastQ=1.245e+00 A_max=1.245e+00 psi6=0.683 fdef=0.000 fdef_end=0.000 Nsk=8 Q=-7.646 Vx=0.12333 Vy=0.03818 E=-5256.90 wall=58
+u_eff=0.10934 hold=100000/600000(steady) A_end=2.032e+00 A_lastQ=2.002e+00 A_max=2.032e+00 psi6=0.536 fdef=0.000 fdef_end=0.000 Nsk=8 Q=-7.636 Vx=0.12850 Vy=0.03919 E=-5255.55 wall=54
+u_eff=0.10934 hold=600000/600000 A_end=2.002e+00 A_lastQ=1.841e+00 A_max=2.033e+00 psi6=0.556 fdef=0.008 fdef_end=0.000 Nsk=8 Q=-7.635 Vx=0.12835 Vy=0.03924 E=-5255.82 wall=352

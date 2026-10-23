@@ -66,7 +66,7 @@ ax[1].set_ylabel(r'$|\langle\psi_6\rangle|$'); ax[2].set_ylabel('defect fraction
 for a in ax: a.axvline(1, color='#52514e', lw=1, ls=':')
 from matplotlib.lines import Line2D
 h = [Line2D([], [], color='#52514e', marker=MK[k], ls='', label=k) for k in MK] + [Line2D([], [], color='#52514e', ls='-', label='up (filled)'), Line2D([], [], color='#52514e', ls='--', label='down (open)')]
-ax[0].legend(fontsize=8, ncol=3, loc='upper left'); ax[1].legend(handles=h, fontsize=8, ncol=3, loc='lower left')
+ax[0].legend(fontsize=8, ncol=2, loc='center left'); ax[1].legend(handles=h, fontsize=8, ncol=3, loc='lower left')
 fig.savefig(f'{O}/fig_A_bifurcation.png')
 # figure D: drift velocity
 fig, ax = plt.subplots(1, 2, figsize=(11, 4))
@@ -80,15 +80,24 @@ ax[0].set_ylabel(r'$V_x/u_{\rm eff}$'); ax[1].set_ylabel(r'$V_y/V_x$ (Hall ratio
 for a in ax: a.set_xlabel(r'$u_{\rm eff}/u_c(L)$'); a.axvline(1, color='#52514e', lw=1, ls=':')
 ax[0].legend(fontsize=8); ax[1].legend(handles=h[:4], fontsize=8)
 fig.savefig(f'{O}/fig_D_velocity.png')
-# figure A2: u_c and u_d vs 1/Lx
-fig, ax = plt.subplots(figsize=(6, 4.2))
+# figure A2: u_c and u_d vs 1/Lx. u_d: first u with (transient) defects, from the up chain and from the long fixed-u runs
+B = json.load(open(f'{O}/bist_summary.json')) if os.path.exists(f'{O}/bist_summary.json') else {}
+fig, ax = plt.subplots(figsize=(6.5, 4.4))
 iL = np.array([1/summ[s]['Lx'] for s in sizes])
-ax.plot(iL, [summ[s]['u_c'] for s in sizes], 'o', color=C[0], label=r'$u_c$ (linear threshold)')
-xx = np.linspace(0, iL.max()*1.1, 10); ax.plot(xx, xx*np.mean([summ[s]['u_c']*summ[s]['Lx'] for s in sizes]), color=C[0], lw=1, ls='--')
-ud = [(1/summ[s]['Lx'], summ[s]['u_d']) for s in sizes if summ[s]['u_d']]
-if ud: ax.plot(*zip(*ud), 's', color=C[1], label=r'$u_d$ (first defects, up chain)')
-nd = [(1/summ[s]['Lx'], max(p['u'] for p in summ[s]['up'])) for s in sizes if not summ[s]['u_d'] and summ[s]['up']]
-if nd: ax.plot(*zip(*nd), '^', mfc='none', color=C[1], label=r'no defects up to (lower bound on $u_d$)')
-for s in sizes: ax.annotate(s, (1/summ[s]['Lx'], summ[s]['u_c']), textcoords='offset points', xytext=(5, -10), fontsize=8, color='#52514e')
+ax.plot(iL, [summ[s]['u_c'] for s in sizes], 'o', color=C[0], label=r'$u_c$ (linear threshold, lab-frame)')
+xx = np.linspace(0, iL.max()*1.1, 10); kc = np.mean([summ[s]['u_c']*summ[s]['Lx'] for s in sizes]); ax.plot(xx, xx*kc, color=C[0], lw=1, ls='--', label=f'$u_c = {kc:.2f}/L_x$')
+ax.plot(iL, [summ[s]['u_d'] for s in sizes], 's', color=C[1], mfc='none', label=r'$u_d$, up chain (hold-limited)')
+ud_fix = []
+for s in sizes:
+    if s in B:
+        rs = sorted(float(r) for r, x in B[s].items() if x.get('perf', {}).get('fdef_max', 0) > 0)
+        nd = sorted(float(r) for r, x in B[s].items() if x.get('perf', {}).get('fdef_max', 1) == 0)
+        if rs: ud_fix.append((1/summ[s]['Lx'], rs[0]*summ[s]['u_c']))
+        summ[s]['u_d_fixed_over_uc'] = rs[0] if rs else None; summ[s]['no_defects_up_to_over_uc'] = max(nd) if nd else None
+if ud_fix: ax.plot(*zip(*ud_fix), 's', color=C[1], label=r'$u_d$, long fixed-$u$ runs (upper bound)')
+xx2 = np.linspace(0, iL.max()*1.1, 10); ax.plot(xx2, 1.1*kc*xx2, color=C[1], lw=1, ls=':', label=r'$1.1\,u_c$')
+for Lx in sorted({summ[s]['Lx'] for s in sizes}):
+    lab = ', '.join(s for s in sizes if summ[s]['Lx'] == Lx); s0 = [s for s in sizes if summ[s]['Lx'] == Lx][0]
+    ax.annotate(lab, (1/Lx, summ[s0]['u_c']), textcoords='offset points', xytext=(6, -12), fontsize=8, color='#52514e')
 ax.set_xlabel(r'$1/L_x$'); ax.set_ylabel(r'$u_{\rm eff}$'); ax.set_xlim(0, iL.max()*1.15); ax.set_ylim(0, None); ax.legend(fontsize=8)
-fig.savefig(f'{O}/fig_A_uc_ud.png')
+fig.savefig(f'{O}/fig_A_uc_ud.png'); json.dump(summ, open(f'{O}/A_summary.json', 'w'), indent=1)

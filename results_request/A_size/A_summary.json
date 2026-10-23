@@ -1136,7 +1136,9 @@
     "registry_changed": true,
     "state": "rotated"
    }
-  ]
+  ],
+  "u_d_fixed_over_uc": null,
+  "no_defects_up_to_over_uc": 1.1
  },
  "8x1": {
   "u_c": 0.04983459757140583,
@@ -4553,7 +4555,9 @@
     "registry_changed": false,
     "state": "defects"
    }
-  ]
+  ],
+  "u_d_fixed_over_uc": 1.1,
+  "no_defects_up_to_over_uc": 1.06
  },
  "12x3": {
   "u_c": 0.033266558460054406,
@@ -5692,7 +5696,9 @@
     "registry_changed": false,
     "state": "defects"
    }
-  ]
+  ],
+  "u_d_fixed_over_uc": 1.1,
+  "no_defects_up_to_over_uc": 1.06
  },
  "16x4": {
   "u_c": 0.024915465077740603,
@@ -6797,6 +6803,8 @@
     "registry_changed": false,
     "state": "defects"
    }
-  ]
+  ],
+  "u_d_fixed_over_uc": 1.1,
+  "no_defects_up_to_over_uc": null
  }
 }

@@ -23,3 +23,4 @@ Traceback (most recent call last):
     jobs = [l.rstrip('\n').split('\t', 1) for l in open(sys.argv[1]) if l.strip() and not l.startswith('#')]
                                                    ~~~~^^^^^^^^^^^^^
 FileNotFoundError: [Errno 2] No such file or directory: '--nx'
+u_eff=0.03663 hold=1200000/1200000 A_end=7.374e+00 A_lastQ=5.190e+00 A_max=7.374e+00 psi6=0.946 fdef=0.000 fdef_end=0.000 Nsk=72 Q=-68.950 Vx=0.04145 Vy=0.01347 E=-47330.12 wall=5711

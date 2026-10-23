@@ -14,6 +14,11 @@ for f in sorted(glob.glob(f'{O}/C1/rec_*.npy')):
         ic = int(np.argmax(sy > 0.99)); iq = int(np.argmax(q5 > qs))
         d.update(t_cross=float(t[iq]), t_onset=float(t[ic]), t_slip=float(t[-1]), q_max_onset=float(np.nanmax(q5[:ic])), Sy_at_cross=float(sy[iq]),
                  lead=float(t[ic]-t[iq]))
+        dq = q5-q0
+        def rate(a, b):
+            m = (t > a) & (t < b) & (dq > 0); return float(np.polyfit(t[m], np.log(dq[m]), 1)[0])
+        # growth rate of the local compression before vs after it crosses q*: acceleration = onset of the runaway
+        d.update(rate_before=rate(t[iq]-30000, t[iq]-10000), rate_after=rate(t[iq], t[iq]+0.8*(t[ic]-t[iq])))
     res.append(d)
 json.dump(res, open(f'{O}/C1_summary.json', 'w'), indent=1)
 fig, ax = plt.subplots(1, 2, figsize=(11, 4.2))

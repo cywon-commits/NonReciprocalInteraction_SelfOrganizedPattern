@@ -48,3 +48,9 @@ FileNotFoundError: [Errno 2] No such file or directory: '--nx'
     jobs = [l.rstrip('\n').split('\t', 1) for l in open(sys.argv[1]) if l.strip() and not l.startswith('#')]
                                                    ~~~~^^^^^^^^^^^^^
 FileNotFoundError: [Errno 2] No such file or directory: '--nx'
+u_eff=0.05129 hold=128900/600000(steady) A_end=1.974e+00 A_lastQ=1.986e+00 A_max=2.643e+00 psi6=0.833 fdef=0.000 fdef_end=0.000 Nsk=32 Q=-30.628 Vx=0.05974 Vy=0.01875 E=-21033.63 wall=270
+u_eff=0.05129 hold=600000/600000 A_end=2.753e-02 A_lastQ=1.264e-02 A_max=2.753e-02 psi6=1.000 fdef=0.000 fdef_end=0.000 Nsk=32 Q=-30.656 Vx=0.05943 Vy=0.01895 E=-21037.08 wall=1291
+u_eff=0.05279 hold=100000/600000(steady) A_end=4.746e+00 A_lastQ=4.720e+00 A_max=4.746e+00 psi6=0.708 fdef=0.000 fdef_end=0.000 Nsk=32 Q=-30.602 Vx=0.06169 Vy=0.01911 E=-21030.58 wall=208
+u_eff=0.05279 hold=600000/600000 A_end=4.765e+00 A_lastQ=3.868e+00 A_max=4.765e+00 psi6=0.745 fdef=0.000 fdef_end=0.000 Nsk=32 Q=-30.602 Vx=0.06162 Vy=0.01917 E=-21031.50 wall=1265
+u_eff=0.05478 hold=600000/600000 A_end=9.890e+04 A_lastQ=1.647e+04 A_max=9.890e+04 psi6=0.901 fdef=0.000 fdef_end=0.000 Nsk=32 Q=-30.630 Vx=0.06117 Vy=0.02006 E=-21033.76 wall=1242
+u_eff=0.05478 hold=600000/600000 A_end=5.553e+09 A_lastQ=9.246e+08 A_max=5.553e+09 psi6=0.901 fdef=0.000 fdef_end=0.000 Nsk=32 Q=-30.630 Vx=0.06117 Vy=0.02006 E=-21033.76 wall=1231

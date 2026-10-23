@@ -1,0 +1,10 @@
+4x1 u/uc=1.03 def: t=100000 A=0.767 (x1.01) psi6=0.82 fdef=0.000/0.500 reg=orig A_reg=0.77 | perf: t=284700 A=0.764 (x1.05) psi6=0.82 fdef=0.000/0.000 reg=orig A_reg=0.77
+4x1 u/uc=1.06 def: t=100000 A=1.24 (x1.00) psi6=0.68 fdef=0.000/0.500 reg=chg A_reg=1.16 | perf: t=149600 A=1.23 (x1.05) psi6=0.69 fdef=0.000/0.000 reg=chg A_reg=1.16
+4x1 u/uc=1.10 def: t=600000 A=1.84 (x1.02) psi6=0.56 fdef=0.000/0.500 reg=chg A_reg=1.30 | perf: t=100000 A=2 (x1.03) psi6=0.54 fdef=0.000/0.000 reg=chg A_reg=1.33
+8x2 u/uc=1.03 def: t=128900 A=1.99 (x0.99) psi6=0.83 fdef=0.000/0.000 reg=chg A_reg=1.38 | perf: t=600000 A=0.0126 (x6.21) psi6=1.00 fdef=0.000/0.000 reg=orig A_reg=0.14
+8x2 u/uc=1.06 def: t=100000 A=4.72 (x1.01) psi6=0.71 fdef=0.000/0.000 reg=chg A_reg=1.29 | perf: t=600000 A=3.87 (x3.61) psi6=0.75 fdef=0.000/0.000 reg=chg A_reg=1.29
+8x2 u/uc=1.10 def: t=600000 A=9.25e+08 (x401.25) psi6=0.90 fdef=0.000/0.250 reg=chg A_reg=0.15 | perf: t=600000 A=1.65e+04 (x401.26) psi6=0.90 fdef=0.000/0.250 reg=chg A_reg=0.15
+12x3 u/uc=1.06 perf: t=1200000 A=3.74 (x1.97) psi6=0.77 fdef=0.000/0.000 reg=chg A_reg=1.69
+12x3 u/uc=1.10 def: t=400000 A=40.2 (x1.00) psi6=0.87 fdef=0.056/0.111 reg=chg A_reg=0.86 | perf: t=1200000 A=5.19 (x2.18) psi6=0.95 fdef=0.000/0.167 reg=chg A_reg=0.30
+16x4 u/uc=1.10 def: t=110400 A=8.73 (x1.00) psi6=0.63 fdef=0.062/0.062 reg=chg A_reg=1.30 | perf: t=1200000 A=2.87 (x1.62) psi6=0.82 fdef=0.000/0.125 reg=chg A_reg=1.65
+16x4 u/uc=1.20 perf: t=1200000 A=1.87 (x1.05) psi6=0.61 fdef=0.062/0.125 reg=chg A_reg=1.67
