@@ -512,6 +512,26 @@
   ],
   "4": [
    {
+    "r": 1.06,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.30701732925780795,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     -0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "fdef_max": 0.0
+   },
+   {
     "r": 1.1,
     "slipped": true,
     "t_slip": 106200.0,

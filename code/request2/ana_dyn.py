@@ -40,7 +40,8 @@ for i, (s, runs) in enumerate(B.items()):
     for d in ev: ax[1].plot(d['r'], d['gamma_star'] or np.nan, 'x' if not d['permanent'] else 's', color=C[i], ms=8)
 ax[0].set_xlabel(r'$u/u_c$'); ax[0].set_ylabel(r'$\gamma_{\max}^2/(u/u_c-1)$'); ax[0].legend(fontsize=8); ax[0].set_title('B: universal curve (intact saturated states)', fontsize=10)
 ax[1].set_xlabel(r'$u/u_c$'); ax[1].set_ylabel(r'$\gamma_{\max}$ (o: saturated, x: $\gamma^*$ transient, ■: $\gamma^*$ permanent)'); ax[1].legend(fontsize=8)
-S = json.load(open(f'{O}/A_S/S_summary.json')) if os.path.exists(f'{O}/A_S/S_summary.json') else {}
+S = {}
+if os.path.exists(f'{O}/A_S/gamma_s.json'): S['gamma_s0'] = json.load(open(f'{O}/A_S/gamma_s.json'))['0']['gamma_s']
 if 'gamma_s0' in S: ax[1].axhline(S['gamma_s0'], color='#52514e', ls='--', lw=1); ax[1].text(1.005, S['gamma_s0']+0.005, r'$\gamma_s(0)$ bulk', fontsize=8)
 # u_s/u_c vs 1/L: smallest r with a topological event (any start)
 us = {}
