@@ -25,3 +25,14 @@ fit residual rms 0.10948500238788296 max 0.20982602733134836 | d rms 2.778411311
 05:45 start results_request2/C_rows/4x1/sum_r1.15.json
 05:46 start results_request2/C_rows/4x2/sum_r1.06.json
 05:46 start results_request2/C_rows/4x2/sum_r1.10.json
+05:52 start results_request2/C_rows/4x2/sum_r1.15.json
+05:53 start results_request2/C_rows/4x3/sum_r1.06.json
+05:56 start results_request2/C_rows/4x3/sum_r1.10.json
+06:02 start results_request2/C_rows/4x3/sum_r1.15.json
+06:05 start results_request2/C_rows/4x4/sum_r1.06.json
+06:06 start results_request2/C_rows/4x4/sum_r1.10.json
+06:13 start results_request2/C_rows/4x4/sum_r1.15.json
+06:17 start results_request2/B_univ/12x3/sum_seed_r1.01.json
+fit residual rms 0.008323524623021723 max 0.018077013553563948 | d rms 1.802433354089778
+06:17 start results_request2/B_univ/12x3/sum_seed_r1.02.json
+fit residual rms 0.0169852834352232 max 0.034990038869565865 | d rms 2.5445786466045637
