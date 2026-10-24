@@ -81,7 +81,7 @@ for ny in [1, 2, 3, 4]:
 res['C'] = {ny: [{k: d[k] for k in ('r', 'slipped', 't_slip', 'gamma_star', 'gamma_star_mean5', 'gamma_star_max5', 'gamma_sat', 'permanent', 'n_events', 'intact_end', 'm_end', 'ndef_end', 'fdef_max')} for d in v] for ny, v in Cr.items()}
 fig, ax = plt.subplots(figsize=(6, 4.2))
 for i, r_ in enumerate(['1.06', '1.1', '1.15']):
-    pts = [(2*ny, d['gamma_star']) for ny, v in Cr.items() for d in v if abs(d['r']-float(r_)) < 1e-3 and d['slipped']]
+    pts = [(2*ny, d['gamma_star_mean5']) for ny, v in Cr.items() for d in v if abs(d['r']-float(r_)) < 1e-3 and d['slipped']]
     sat = [(2*ny, d['gamma_sat']) for ny, v in Cr.items() for d in v if abs(d['r']-float(r_)) < 1e-3 and not d['slipped']]
     if pts: ax.plot(*zip(*sorted(pts)), 'o-', color=C[i], label=f'{r_} u_c: gamma*')
     if sat: ax.plot(*zip(*sorted(sat)), 'o', mfc='none', color=C[i], label=f'{r_} u_c: intact, gamma_sat')

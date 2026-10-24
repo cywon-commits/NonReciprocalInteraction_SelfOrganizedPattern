@@ -90,6 +90,72 @@
     "t_end": 200000.0
    },
    {
+    "file": "results_request2/B_univ/4x1/sum_chain_r1.09.json",
+    "r": 1.09,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.3715144931182445,
+    "gamma_sat_std": 0.006524544778290286,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     -0.0,
+     -0.0,
+     -0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 200000.0
+   },
+   {
+    "file": "results_request2/B_univ/4x1/sum_chain_r1.10.json",
+    "r": 1.1,
+    "slipped": true,
+    "t_slip": 10000.0,
+    "gamma_star": 0.40496323691221026,
+    "gamma_star_mean5": 0.4815723363428237,
+    "gamma_star_max5": 0.7966730698485631,
+    "gamma_sat": 0.42324053459160055,
+    "gamma_sat_std": 0.10841508728820588,
+    "permanent": false,
+    "n_events": 3,
+    "intact_end": true,
+    "m_end": [
+     0.0,
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 40000.0
+   },
+   {
+    "file": "results_request2/B_univ/4x1/sum_chain_r1.12.json",
+    "r": 1.12,
+    "slipped": true,
+    "t_slip": 4400.0,
+    "gamma_star": 0.3930537755743662,
+    "gamma_star_mean5": 0.4136323960416245,
+    "gamma_star_max5": 0.42917308906059276,
+    "gamma_sat": 0.4090426881900051,
+    "gamma_sat_std": 0.01480920517078287,
+    "permanent": true,
+    "n_events": 3,
+    "intact_end": false,
+    "m_end": [
+     -0.0,
+     -1.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 5,
+    "t_end": 34400.0
+   },
+   {
     "file": "results_request2/B_univ/4x1/sum_r1.01.json",
     "r": 1.01,
     "slipped": false,
@@ -1225,11 +1291,11 @@
   "4x1": {
    "Lx": 76,
    "u_s_upper": 1.1,
-   "u_s_lower": 1.08,
-   "gamma_star": 0.4062231282447111,
-   "gamma_star_last": 0.4046759541999064,
+   "u_s_lower": 1.09,
+   "gamma_star": 0.4815723363428237,
+   "gamma_star_last": 0.40496323691221026,
    "permanent": false,
-   "source": "results_request2/C_rows/4x1/sum_r1.10.json"
+   "source": "results_request2/B_univ/4x1/sum_chain_r1.10.json"
   },
   "8x2": {
    "Lx": 152,
@@ -1775,6 +1841,21 @@
     ],
     "ndef_end": 0,
     "gamma_star": 0.41080540408912486,
+    "usign": -1,
+    "bsign": 1
+   },
+   {
+    "tag": "mu_s2",
+    "slipped": true,
+    "permanent": false,
+    "m_end": [
+     -0.0,
+     0.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "gamma_star": 0.406275760121013,
     "usign": -1,
     "bsign": 1
    },
