@@ -1830,6 +1830,36 @@
     "bsign": -1
    },
    {
+    "tag": "mB_s2",
+    "slipped": true,
+    "permanent": true,
+    "m_end": [
+     -1.0,
+     2.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "gamma_star": 0.4005455706928693,
+    "usign": 1,
+    "bsign": -1
+   },
+   {
+    "tag": "mB_s3",
+    "slipped": true,
+    "permanent": true,
+    "m_end": [
+     -1.0,
+     2.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "gamma_star": 0.39590920343320607,
+    "usign": 1,
+    "bsign": -1
+   },
+   {
     "tag": "mu_s1",
     "slipped": true,
     "permanent": true,
@@ -1860,6 +1890,21 @@
     "bsign": 1
    },
    {
+    "tag": "mu_s3",
+    "slipped": true,
+    "permanent": true,
+    "m_end": [
+     1.0,
+     -2.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "gamma_star": 0.4058991621539821,
+    "usign": -1,
+    "bsign": 1
+   },
+   {
     "tag": "ref_s1",
     "slipped": true,
     "permanent": true,
@@ -1886,6 +1931,21 @@
     ],
     "ndef_end": 0,
     "gamma_star": 0.39898911252564323,
+    "usign": 1,
+    "bsign": 1
+   },
+   {
+    "tag": "ref_s3",
+    "slipped": true,
+    "permanent": true,
+    "m_end": [
+     1.0,
+     -2.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "gamma_star": 0.39326214336232024,
     "usign": 1,
     "bsign": 1
    }
