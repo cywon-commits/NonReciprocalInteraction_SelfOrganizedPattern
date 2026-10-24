@@ -101,3 +101,26 @@ def jac_k(m, blocks, k):
             for c in range(2):
                 np.add.at(Jm, (r*N+ii, c*N+j), Bl[:, r, c]*ph)
     return Jm
+def shear_guess(S, Lx, Ly, ds):
+    # add a uniform increment ds/Lx of du_y/dx: column x is moved up by ds*x/Lx (periodic linear interpolation in y)
+    S = S.reshape(Lx, Ly, 3).copy(); out = np.empty_like(S); y = np.arange(Ly)
+    for x in range(Lx):
+        yy = (y-ds*x/Lx) % Ly; y0 = np.floor(yy).astype(int); f = (yy-y0)[:, None]
+        out[x] = (1-f)*S[x, y0]+f*S[x, (y0+1) % Ly]
+    out /= np.linalg.norm(out, axis=-1)[..., None]; return out.reshape(-1, 3)
+def shapes(m, S):
+    # skyrmion cores (m_z < 0) on a 3x3 periodic image of the twisted cell: area, aspect ratio, orientation
+    from scipy import ndimage
+    Sz = S[:, 2].reshape(m.Lx, m.Ly)
+    big = np.zeros((3*m.Lx, 3*m.Ly))
+    for i in range(3):
+        for j in range(3):
+            big[i*m.Lx:(i+1)*m.Lx, j*m.Ly:(j+1)*m.Ly] = np.roll(Sz, (i-1)*m.sh, axis=1)   # images shifted by s per x-wrap
+    lab, n = ndimage.label(big < 0); out = []
+    for c in range(1, n+1):
+        X, Y = np.nonzero(lab == c); cx, cy = X.mean(), Y.mean()
+        if not (m.Lx <= cx < 2*m.Lx and m.Ly <= cy < 2*m.Ly): continue
+        if X.min() == 0 or Y.min() == 0 or X.max() == 3*m.Lx-1 or Y.max() == 3*m.Ly-1: continue
+        C = np.cov(np.stack([X, Y])); ev, V = np.linalg.eigh(C)
+        out.append([len(X), float(np.sqrt(ev[1]/ev[0])), float(np.degrees(np.arctan2(V[1, 1], V[0, 1])))])
+    return out

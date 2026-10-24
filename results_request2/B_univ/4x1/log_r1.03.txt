@@ -1,0 +1,2 @@
+resumed at t=360000
+{"nx": 4, "ny": 1, "u": 0.102382, "usign": 1, "bsign": 1, "t_end": 500000.0, "slipped": false, "t_slip": null, "gamma_star": null, "gamma_end": 0.22681317566296652, "gamma_lastQ": 0.22089060796733048, "gamma_lastQ_std": 0.0048282405303359645, "intact_end": true, "Ux": 1.7012581505569808, "Uy": 3.022539296133978, "Nsk_end": 8, "fdef_end": 0.0, "psi6_end": 0.8218820724679031, "ndef_end": 0, "m_end": [0.0, 0.0, 0.0, 0.0], "Vx": 0.11931073887437539, "Vy": 0.03743892896944117, "wall": 274.16845631599426}
