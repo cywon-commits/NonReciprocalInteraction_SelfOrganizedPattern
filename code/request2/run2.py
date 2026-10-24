@@ -5,9 +5,9 @@ sys.path.insert(0, here); sys.path.insert(1, os.path.join(root, 'code', 'kt'))
 from fastllg import Integrator
 from orderpar import order, energy
 from strain import tri_strain
-from regist import disp
+from regist import topo
 # Request 2, tasks B-D: lab-frame driven SkX on an nx x ny tiling of the 19x33 cell at fixed u_eff (T = 0).
-# Topological registry via strain.py (one-to-one assignment to the ideal lattice and max |d| < a/2); the maximum
+# Topological registry via Bragg phases (regist.topo: Burgers circuits and box-cycle Bragg-index change m); the maximum
 # local shear gamma_max = max |du_y/dx| over the triangles. A slip = first record where the registry is lost;
 # gamma* = gamma_max of the last intact record. A ring buffer of states before the slip is saved.
 # Options: start = perfect + noise | file | scaled seed (seed.py), current sign (--usign), field sign (--bsign).
@@ -35,16 +35,18 @@ def obs(S):
     Sp = S.copy()
     if a_.bsign < 0: Sp = -Sp                                           # analyse the mirrored texture with the B > 0 tools
     try:
-        X, d, ok = disp(Sp, nx, ny); st = tri_strain(X, d, Lx, Ly); k = 2*np.pi/Lx
-        F = lambda v: 2*abs(np.mean(v*np.exp(-1j*k*X[:, 0])))
-        dm = float(np.abs(d).max()); intact = bool(ok and dm < HALF)
+        r = topo(Sp); intact = r['intact']; k = 2*np.pi/Lx; X, d = r['X'], r['u']
+        st = tri_strain(X, d, Lx, Ly); F = lambda v: 2*abs(np.mean(v*np.exp(-1j*k*X[:, 0])))
         gam = float(np.abs(st[:, 6]).max()); sh = float(st[:, 4].max()); Ux, Uy = F(d[:, 0]), F(d[:, 1])
-        sgn = float(np.sign(st[np.argmax(np.abs(st[:, 6])), 6]))
+        sgn = float(np.sign(st[np.argmax(np.abs(st[:, 6])), 6])); um = float(np.abs(d).max()); nd = r['ndef']; m = np.array(r['m']).ravel().tolist()
     except Exception:
-        intact, dm, gam, sh, Ux, Uy, sgn = False, np.nan, np.nan, np.nan, np.nan, np.nan, 0.0
+        intact, um, gam, sh, Ux, Uy, sgn, nd, m = False, np.nan, np.nan, np.nan, np.nan, np.nan, 0.0, -1, [np.nan]*4
     try: N, P6, _, fd, _ = order(Sp)
     except Exception: N, P6, fd = -1, np.nan, np.nan
-    return [float(intact), dm, gam, sh, Ux, Uy, sgn, N, P6, fd]
+    return [float(intact), um, gam, sh, Ux, Uy, sgn, N, P6, fd, nd, *m]
+# record columns: 0 t, 1 intact (Burgers circuits all zero and Bragg-index change m = 0), 2 max|u|, 3 gamma_max = max|du_y/dx|,
+# 4 max symmetric shear, 5 U_x(k1), 6 U_y(k1), 7 sign of du_y/dx at the max, 8 N_sk, 9 |psi6|, 10 coordination-defect fraction,
+# 11 Burgers-defect triangles, 12-15 m (x-cycle a1, a2, y-cycle a1, a2), 16 Vx, 17 Vy, 18 energy
 u = a_.usign*a_.u/(b/a-1)
 ck = f"{a_.out}/ckpt_{a_.tag}.npz"; t = 0.0; rec = []; slip_t = None
 os.makedirs(a_.out, exist_ok=True)
@@ -76,7 +78,7 @@ q = rec[len(rec)*3//4:]
 summ = dict(nx=nx, ny=ny, u=a_.u, usign=a_.usign, bsign=a_.bsign, t_end=float(t), slipped=slip_t is not None, t_slip=slip_t, gamma_star=gstar,
             gamma_end=float(rec[-1, 3]), gamma_lastQ=float(np.nanmean(q[:, 3])), gamma_lastQ_std=float(np.nanstd(q[:, 3])), intact_end=bool(rec[-1, 1] > 0.5),
             Ux=float(np.nanmean(q[:, 5])), Uy=float(np.nanmean(q[:, 6])), Nsk_end=int(rec[-1, 8]), fdef_end=float(rec[-1, 10]), psi6_end=float(rec[-1, 9]),
-            Vx=float(np.mean(q[:, 11])), Vy=float(np.mean(q[:, 12])), wall=time.time()-t0)
+            ndef_end=int(rec[-1, 11]), m_end=rec[-1, 12:16].tolist(), Vx=float(np.mean(q[:, 16])), Vy=float(np.mean(q[:, 17])), wall=time.time()-t0)
 json.dump(summ, open(f"{a_.out}/sum_{a_.tag}.json", 'w'), indent=1)
 if os.path.exists(ck): os.remove(ck)
 print(json.dumps(summ), flush=True)

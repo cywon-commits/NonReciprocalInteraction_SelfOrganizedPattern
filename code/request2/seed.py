@@ -2,7 +2,7 @@ import sys, os, numpy as np
 here = os.path.dirname(os.path.abspath(__file__)); root = os.path.join(here, '..', '..')
 os.environ.setdefault('SKX_CELL', os.path.join(root, 'states', 'S_B0.5.npy'))
 sys.path.insert(0, here)
-from regist import disp
+from regist import topo
 # Scaled seed (scale invariance r -> s r, u -> s u): the displacement field of a small saturated state, d(x),
 # is fitted by a Fourier series on its torus, stretched to d_big(r) = s d(r/s), and applied to the perfect
 # big lattice: S(r) = S0(r - d_big(r)) (bilinear interpolation inside the periodic 19x33 cell).
@@ -23,7 +23,7 @@ def bilinear(S0, x, y):
     return S/np.linalg.norm(S, axis=-1)[..., None]
 def make(Ssmall, nx0, ny0, nx, ny):
     s = nx/nx0; assert abs(ny/ny0-s) < 1e-12, 'aspect ratio must be kept'
-    Lx0, Ly0 = 19*nx0, 33*ny0; X, d, ok = disp(Ssmall, nx0, ny0); assert ok, 'small state is not topologically intact'
+    Lx0, Ly0 = 19*nx0, 33*ny0; r = topo(Ssmall); X, d, ok = r['X'], r['u'], r['intact']; assert ok, 'small state is not topologically intact'
     ev = fit(X, d, Lx0, Ly0, min(2, nx0//2), 0 if ny0 == 1 else 1)
     xs, ys = np.meshgrid(np.arange(19*nx, dtype=float), np.arange(33*ny, dtype=float), indexing='ij')
     db = s*ev(xs/s, ys/s); S0 = np.load(os.environ['SKX_CELL'])
