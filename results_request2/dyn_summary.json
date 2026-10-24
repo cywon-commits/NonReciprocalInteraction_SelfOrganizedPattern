@@ -954,6 +954,28 @@
     "t_end": 200000.0
    },
    {
+    "file": "results_request2/B_univ/16x4/sum_chain_r1.08.json",
+    "r": 1.08,
+    "slipped": true,
+    "t_slip": 104600.0,
+    "gamma_star": 0.35685516616282387,
+    "gamma_star_mean5": 0.34528734127420374,
+    "gamma_star_max5": 0.35685516616282387,
+    "gamma_sat": 0.33202275840761847,
+    "gamma_sat_std": 0.003382234095141446,
+    "permanent": true,
+    "n_events": 1,
+    "intact_end": false,
+    "m_end": [
+     1.0,
+     -2.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 134600.0
+   },
+   {
     "file": "results_request2/B_univ/16x4/sum_seed_r1.01.json",
     "r": 1.01,
     "slipped": false,
@@ -1201,26 +1223,52 @@
  },
  "u_s": {
   "4x1": {
-   "first_event": null,
-   "no_event_up_to": 1.08
+   "Lx": 76,
+   "u_s_upper": 1.1,
+   "u_s_lower": 1.08,
+   "gamma_star": 0.4062231282447111,
+   "gamma_star_last": 0.4046759541999064,
+   "permanent": false,
+   "source": "results_request2/C_rows/4x1/sum_r1.10.json"
   },
   "8x2": {
-   "first_event": 1.08,
-   "no_event_up_to": 1.075
+   "Lx": 152,
+   "u_s_upper": 1.09,
+   "u_s_lower": 1.08,
+   "gamma_star": 0.38535327362897176,
+   "gamma_star_last": 0.4048897417863357,
+   "permanent": true,
+   "source": "results_request2/B_univ/8x2/sum_chain_r1.09.json"
   },
   "12x3": {
-   "first_event": 1.08,
-   "no_event_up_to": 1.075
+   "Lx": 228,
+   "u_s_upper": 1.08,
+   "u_s_lower": 1.075,
+   "gamma_star": 0.36325526623841886,
+   "gamma_star_last": 0.3780076348489485,
+   "permanent": true,
+   "source": "results_request2/B_univ/12x3/sum_chain_r1.08.json"
   },
   "16x4": {
-   "first_event": 1.08,
-   "no_event_up_to": 1.075
+   "Lx": 304,
+   "u_s_upper": 1.08,
+   "u_s_lower": 1.075,
+   "gamma_star": 0.34528734127420374,
+   "gamma_star_last": 0.35685516616282387,
+   "permanent": true,
+   "source": "results_request2/B_univ/16x4/sum_chain_r1.08.json"
   },
   "24x6": {
-   "first_event": 1.06,
-   "no_event_up_to": 1.04
+   "Lx": 456,
+   "u_s_upper": 1.06,
+   "u_s_lower": 1.04,
+   "gamma_star": 0.34969558517500476,
+   "gamma_star_last": 0.3555336391053266,
+   "permanent": true,
+   "source": "results_request2/B_univ/24x6/sum_seed_r1.06.json"
   }
  },
+ "u_s_pred_bulk": 1.0613,
  "C": {
   "1": [
    {
@@ -1701,6 +1749,36 @@
   ],
   "8x2": [
    {
+    "tag": "mB_s1",
+    "slipped": true,
+    "permanent": false,
+    "m_end": [
+     0.0,
+     -0.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "gamma_star": 0.4134968273569807,
+    "usign": 1,
+    "bsign": -1
+   },
+   {
+    "tag": "mu_s1",
+    "slipped": true,
+    "permanent": true,
+    "m_end": [
+     1.0,
+     -2.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "gamma_star": 0.41080540408912486,
+    "usign": -1,
+    "bsign": 1
+   },
+   {
     "tag": "ref_s1",
     "slipped": true,
     "permanent": true,
@@ -1712,6 +1790,21 @@
     ],
     "ndef_end": 0,
     "gamma_star": 0.37853692250255344,
+    "usign": 1,
+    "bsign": 1
+   },
+   {
+    "tag": "ref_s2",
+    "slipped": true,
+    "permanent": true,
+    "m_end": [
+     1.0,
+     -2.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "gamma_star": 0.39898911252564323,
     "usign": 1,
     "bsign": 1
    }

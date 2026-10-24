@@ -45,3 +45,5 @@ fit residual rms 0.10948500238788296 max 0.20982602733134836 | d rms 2.778411311
 09:41 start results_request2/D_dir/8x1/sum_mB_s5.json
 09:47 start results_request2/D_dir/8x2/sum_mu_s1.json
 09:53 start results_request2/D_dir/8x2/sum_mB_s1.json
+10:13 start results_request2/D_dir/8x2/sum_mB_s2.json
+10:18 start results_request2/D_dir/8x2/sum_ref_s3.json

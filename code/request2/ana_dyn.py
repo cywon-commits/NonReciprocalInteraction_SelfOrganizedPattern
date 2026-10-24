@@ -29,32 +29,50 @@ for size in ['4x1', '8x2', '12x3', '16x4', '24x6']:
     runs = load(f'{O}/B_univ/{size}/sum_*.json')
     if runs: B[size] = runs
 res['B'] = {s: [{k: d[k] for k in ('file', 'r', 'slipped', 't_slip', 'gamma_star', 'gamma_star_mean5', 'gamma_star_max5', 'gamma_sat', 'gamma_sat_std', 'permanent', 'n_events', 'intact_end', 'm_end', 'ndef_end', 't_end')} for d in v] for s, v in B.items()}
-fig, ax = plt.subplots(1, 3, figsize=(15, 4.3))
-for i, (s, runs) in enumerate(B.items()):
-    ok = [d for d in runs if d['gamma_sat'] is not None and not d['slipped'] and 'seed' in d['file'] or (d['gamma_sat'] is not None and not d['slipped'] and s == '4x1')]
-    ok = sorted(ok, key=lambda d: d['r'])
-    if ok:
-        x = np.array([d['r'] for d in ok]); g = np.array([d['gamma_sat'] for d in ok])
-        ax[0].plot(x, g**2/(x-1), 'o-', color=C[i], label=s); ax[1].plot(x, g, 'o-', color=C[i], label=s)
-    ev = [d for d in runs if d['slipped']]
-    for d in ev: ax[1].plot(d['r'], d['gamma_star'] or np.nan, 'x' if not d['permanent'] else 's', color=C[i], ms=8)
-ax[0].set_xlabel(r'$u/u_c$'); ax[0].set_ylabel(r'$\gamma_{\max}^2/(u/u_c-1)$'); ax[0].legend(fontsize=8); ax[0].set_title('B: universal curve (intact saturated states)', fontsize=10)
-ax[1].set_xlabel(r'$u/u_c$'); ax[1].set_ylabel(r'$\gamma_{\max}$ (o: saturated, x: $\gamma^*$ transient, ■: $\gamma^*$ permanent)'); ax[1].legend(fontsize=8)
 S = {}
 if os.path.exists(f'{O}/A_S/gamma_s.json'): S['gamma_s0'] = json.load(open(f'{O}/A_S/gamma_s.json'))['0']['gamma_s']
-if 'gamma_s0' in S: ax[1].axhline(S['gamma_s0'], color='#52514e', ls='--', lw=1); ax[1].text(1.005, S['gamma_s0']+0.005, r'$\gamma_s(0)$ bulk', fontsize=8)
-# u_s/u_c vs 1/L: smallest r with a topological event (any start)
+fig, ax = plt.subplots(1, 3, figsize=(15, 4.3))
+CR = {}
+for ny in [1]:
+    CR['4x1'] = load(f'{O}/C_rows/4x1/sum_*.json')                       # 4x1 at 1.10, 1.15 (events)
+for i, (s, runs) in enumerate(B.items()):
+    ok = sorted([d for d in runs if d['gamma_sat'] is not None and not d['slipped'] and d['r'] <= 1.081], key=lambda d: d['r'])
+    if ok:
+        x = np.array([d['r'] for d in ok]); g = np.array([d['gamma_sat'] for d in ok])
+        ax[0].plot(x, g**2/(x-1), 'o', color=C[i], label=s); ax[1].plot(x, g, 'o', color=C[i], label=s)
+    for d in [d for d in runs if d['slipped'] and 'chain' in d['file']]+[d for d in CR.get(s, []) if d['slipped']]:
+        ax[1].plot(d['r'], d['gamma_star_mean5'], 's' if d['permanent'] else 'x', color=C[i], ms=8)
+ax[0].set_xlabel(r'$u/u_c$'); ax[0].set_ylabel(r'$\gamma_{\max}^2/(u/u_c-1)$'); ax[0].legend(fontsize=8); ax[0].set_title('B: universal curve (intact saturated states)', fontsize=10)
+ax[1].set_xlabel(r'$u/u_c$'); ax[1].set_ylabel(r'$\gamma_{\max}$  (o saturated, ■ $\gamma^*$ permanent slip, x transient)'); ax[1].legend(fontsize=8)
+if 'gamma_s0' in S: ax[1].axhline(S['gamma_s0'], color='#52514e', ls='--', lw=1); ax[1].text(1.005, S['gamma_s0']+0.005, r'$\gamma_s(0)$ (task A)', fontsize=8)
+# u_s/u_c and gamma* vs 1/L from the quasi-static chains (seeded runs above u_s overshoot and are not used);
+# 4x1: chain intact to 1.08, first events at 1.10 (C_rows). 24x6: chain if finished, else the seeded event as an upper bound.
 us = {}
 for s, runs in B.items():
-    ev = sorted(d['r'] for d in runs if d['slipped']); nev = sorted(d['r'] for d in runs if not d['slipped'])
-    us[s] = dict(first_event=ev[0] if ev else None, no_event_up_to=max([x for x in nev if not ev or x < ev[0]], default=None))
+    ch = [d for d in runs if 'chain' in d['file'] or (s == '4x1' and 'seed' not in d['file'])] + CR.get(s, [])
+    ch += [d for d in runs if 'seed' in d['file'] and not d['slipped']]
+    ev = sorted([d for d in ch if d['slipped']], key=lambda d: d['r'])
+    if s == '24x6' and not ev: ev = sorted([d for d in runs if d['slipped'] and (d['gamma_star'] is not None)], key=lambda d: d['r'])
+    lo = max([d['r'] for d in ch if not d['slipped'] and (not ev or d['r'] < ev[0]['r'])], default=None)
+    us[s] = dict(Lx=19*int(s.split('x')[0]), u_s_upper=ev[0]['r'] if ev else None, u_s_lower=lo, gamma_star=ev[0]['gamma_star_mean5'] if ev else None,
+                 gamma_star_last=ev[0]['gamma_star'] if ev else None, permanent=ev[0]['permanent'] if ev else None, source=ev[0]['file'] if ev else None)
 res['u_s'] = us
 for i, (s, v) in enumerate(us.items()):
-    Lx = 19*int(s.split('x')[0])
-    if v['first_event']: ax[2].plot(1/Lx, v['first_event'], 's', color=C[i], label=f'{s}: first event')
-    if v['no_event_up_to']: ax[2].plot(1/Lx, v['no_event_up_to'], 'o', mfc='none', color=C[i])
-ax[2].set_xlabel(r'$1/L_x$'); ax[2].set_ylabel(r'$u_s/u_c$ (■ first event, ○ largest intact)'); ax[2].set_xlim(0, None); ax[2].legend(fontsize=7)
+    if v['u_s_upper']: ax[2].errorbar(1/v['Lx'], (v['u_s_upper']+(v['u_s_lower'] or v['u_s_upper']))/2, yerr=(v['u_s_upper']-(v['u_s_lower'] or v['u_s_upper']))/2, fmt='s', color=C[i], label=s)
+if 'gamma_s0' in S:
+    # bulk prediction: universal curve reaches gamma_s(0)
+    allok = [(d['r'], d['gamma_sat']) for runs in B.values() for d in runs if d['gamma_sat'] and not d['slipped'] and d['r'] <= 1.081]
+    x, g = np.array(allok).T; p = np.polyfit(x-1, g**2, 2); rr = np.linspace(0, 0.1, 1001); r_pred = 1+rr[np.argmin(abs(np.polyval(p, rr)-S['gamma_s0']**2))]
+    ax[2].axhline(r_pred, color='#52514e', ls='--', lw=1); ax[2].text(0.0002, r_pred+0.002, r'universal curve reaches $\gamma_s(0)$', fontsize=8); res['u_s_pred_bulk'] = float(r_pred)
+ax[2].set_xlabel(r'$1/L_x$'); ax[2].set_ylabel(r'$u_s/u_c$ (quasi-static)'); ax[2].set_xlim(0, None); ax[2].legend(fontsize=7)
 fig.savefig(f'{O}/fig_B_universal.png')
+fig, ax = plt.subplots(figsize=(6, 4.2))
+for i, (s, v) in enumerate(us.items()):
+    if v['gamma_star']: ax.plot(1/v['Lx'], v['gamma_star'], 's' if v['permanent'] else 'x', color=C[i], ms=8, label=s)
+if 'gamma_s0' in S: ax.axhline(S['gamma_s0'], color='#52514e', ls='--', lw=1, label=r'$\gamma_s(0)$, task A')
+ax.axhline(1/(2*np.sqrt(3)), color=C[5], ls=':', lw=1, label='Frenkel b/4d')
+ax.set_xlabel(r'$1/L_x$'); ax.set_ylabel(r'$\gamma^*$ (mean of 5 records before the slip)'); ax.set_xlim(0, None); ax.legend(fontsize=8)
+fig.savefig(f'{O}/fig_B_gammastar.png')
 # C: rows
 Cr = {}
 for ny in [1, 2, 3, 4]:
