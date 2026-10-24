@@ -158,6 +158,94 @@
   ],
   "8x2": [
    {
+    "file": "results_request2/B_univ/8x2/sum_chain_r1.065.json",
+    "r": 1.065,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.32023568077308834,
+    "gamma_sat_std": 0.0015540697478868654,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     -0.0,
+     0.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 200000.0
+   },
+   {
+    "file": "results_request2/B_univ/8x2/sum_chain_r1.07.json",
+    "r": 1.07,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.33090314251297526,
+    "gamma_sat_std": 0.0015240208430490959,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     -0.0,
+     0.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 200000.0
+   },
+   {
+    "file": "results_request2/B_univ/8x2/sum_chain_r1.075.json",
+    "r": 1.075,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.34102894828490365,
+    "gamma_sat_std": 0.0014883711191036912,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     -0.0,
+     -0.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 200000.0
+   },
+   {
+    "file": "results_request2/B_univ/8x2/sum_chain_r1.08.json",
+    "r": 1.08,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.35074411427373015,
+    "gamma_sat_std": 0.0015185369006020944,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     0.0,
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 200000.0
+   },
+   {
     "file": "results_request2/B_univ/8x2/sum_seed_r1.01.json",
     "r": 1.01,
     "slipped": false,
@@ -311,6 +399,162 @@
     "ndef_end": 0,
     "t_end": 22200.0
    }
+  ],
+  "12x3": [
+   {
+    "file": "results_request2/B_univ/12x3/sum_seed_r1.01.json",
+    "r": 1.01,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.13567530379405807,
+    "gamma_sat_std": 0.0006292978887589404,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     -0.0,
+     0.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 300000.0
+   },
+   {
+    "file": "results_request2/B_univ/12x3/sum_seed_r1.02.json",
+    "r": 1.02,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.18801176426244137,
+    "gamma_sat_std": 0.000602424049610755,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     0.0,
+     -0.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 300000.0
+   },
+   {
+    "file": "results_request2/B_univ/12x3/sum_seed_r1.03.json",
+    "r": 1.03,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.2260271147240021,
+    "gamma_sat_std": 0.000595262881031298,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     -0.0,
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 300000.0
+   },
+   {
+    "file": "results_request2/B_univ/12x3/sum_seed_r1.04.json",
+    "r": 1.04,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.2567024976779679,
+    "gamma_sat_std": 0.0006641568371122304,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     0.0,
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 300000.0
+   },
+   {
+    "file": "results_request2/B_univ/12x3/sum_seed_r1.05.json",
+    "r": 1.05,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.28275722850594465,
+    "gamma_sat_std": 0.0006557926790159408,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 300000.0
+   },
+   {
+    "file": "results_request2/B_univ/12x3/sum_seed_r1.06.json",
+    "r": 1.06,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.3055338542829126,
+    "gamma_sat_std": 0.0007382538040392123,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     -0.0,
+     0.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 300000.0
+   },
+   {
+    "file": "results_request2/B_univ/12x3/sum_seed_r1.08.json",
+    "r": 1.08,
+    "slipped": true,
+    "t_slip": 200.0,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": null,
+    "gamma_sat_std": null,
+    "permanent": true,
+    "n_events": 1,
+    "intact_end": false,
+    "m_end": [
+     1.0,
+     -2.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 20200.0
+   }
   ]
  },
  "u_s": {
@@ -319,6 +563,10 @@
    "no_event_up_to": 1.08
   },
   "8x2": {
+   "first_event": 1.08,
+   "no_event_up_to": 1.075
+  },
+  "12x3": {
    "first_event": 1.08,
    "no_event_up_to": 1.06
   }
