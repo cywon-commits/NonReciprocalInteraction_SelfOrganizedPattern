@@ -37,3 +37,11 @@ fit residual rms 0.09367676358050772 max 0.20058580621211597 | d rms 4.308896048
 fit residual rms 0.10948500238788296 max 0.20982602733134836 | d rms 2.778411311414601
 08:41 start results_request2/B_univ/8x2/sum_noise_r1.04.json
 08:44 start results_request2/B_univ/12x3/sum_noise_r1.04.json
+09:00 start results_request2/B_univ/16x4/sum_noise_r1.04.json
+09:04 start results_request2/D_dir/8x1/sum_mu_s2.json
+09:17 start results_request2/D_dir/8x1/sum_mu_s3.json
+09:29 start results_request2/D_dir/8x1/sum_mu_s4.json
+09:35 start results_request2/D_dir/8x1/sum_ref_s5.json
+09:41 start results_request2/D_dir/8x1/sum_mB_s5.json
+09:47 start results_request2/D_dir/8x2/sum_mu_s1.json
+09:53 start results_request2/D_dir/8x2/sum_mB_s1.json
