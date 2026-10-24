@@ -24,6 +24,72 @@
     "t_end": 200000.0
    },
    {
+    "file": "results_request2/B_univ/4x1/sum_chain_r1.07.json",
+    "r": 1.07,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.33016318507395387,
+    "gamma_sat_std": 0.006224519535068642,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     0.0,
+     0.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 200000.0
+   },
+   {
+    "file": "results_request2/B_univ/4x1/sum_chain_r1.075.json",
+    "r": 1.075,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.340976495316723,
+    "gamma_sat_std": 0.006320078069008963,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     0.0,
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 200000.0
+   },
+   {
+    "file": "results_request2/B_univ/4x1/sum_chain_r1.08.json",
+    "r": 1.08,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.3514624595835047,
+    "gamma_sat_std": 0.006388455108430836,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     0.0,
+     -0.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 200000.0
+   },
+   {
     "file": "results_request2/B_univ/4x1/sum_r1.01.json",
     "r": 1.01,
     "slipped": false,
@@ -600,6 +666,50 @@
     "t_end": 30200.0
    },
    {
+    "file": "results_request2/B_univ/12x3/sum_chain_r1.10.json",
+    "r": 1.1,
+    "slipped": true,
+    "t_slip": 200.0,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": null,
+    "gamma_sat_std": null,
+    "permanent": true,
+    "n_events": 0,
+    "intact_end": false,
+    "m_end": [
+     1.0,
+     -2.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 30200.0
+   },
+   {
+    "file": "results_request2/B_univ/12x3/sum_chain_r1.12.json",
+    "r": 1.12,
+    "slipped": true,
+    "t_slip": 200.0,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": null,
+    "gamma_sat_std": null,
+    "permanent": true,
+    "n_events": 0,
+    "intact_end": false,
+    "m_end": [
+     1.0,
+     -2.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 30200.0
+   },
+   {
     "file": "results_request2/B_univ/12x3/sum_seed_r1.01.json",
     "r": 1.01,
     "slipped": false,
@@ -866,6 +976,28 @@
     "t_end": 250000.0
    },
    {
+    "file": "results_request2/B_univ/16x4/sum_seed_r1.06.json",
+    "r": 1.06,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.2958609549648996,
+    "gamma_sat_std": 0.000581587259560745,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     0.0,
+     -0.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 250000.0
+   },
+   {
     "file": "results_request2/B_univ/16x4/sum_seed_r1.08.json",
     "r": 1.08,
     "slipped": true,
@@ -882,6 +1014,52 @@
      1.0,
      -2.0,
      1.0,
+     0.0
+    ],
+    "ndef_end": 6,
+    "t_end": 20200.0
+   }
+  ],
+  "24x6": [
+   {
+    "file": "results_request2/B_univ/24x6/sum_seed_r1.06.json",
+    "r": 1.06,
+    "slipped": true,
+    "t_slip": 9200.0,
+    "gamma_star": 0.3555336391053266,
+    "gamma_star_mean5": 0.34969558517500476,
+    "gamma_star_max5": 0.3555336391053266,
+    "gamma_sat": 0.3460497793223292,
+    "gamma_sat_std": 0.003888882757397001,
+    "permanent": true,
+    "n_events": 1,
+    "intact_end": false,
+    "m_end": [
+     2.0,
+     -4.0,
+     -0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 29200.0
+   },
+   {
+    "file": "results_request2/B_univ/24x6/sum_seed_r1.08.json",
+    "r": 1.08,
+    "slipped": true,
+    "t_slip": 200.0,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": null,
+    "gamma_sat_std": null,
+    "permanent": true,
+    "n_events": 0,
+    "intact_end": false,
+    "m_end": [
+     -0.0,
+     0.0,
+     -0.0,
      0.0
     ],
     "ndef_end": 6,
@@ -904,7 +1082,11 @@
   },
   "16x4": {
    "first_event": 1.08,
-   "no_event_up_to": 1.05
+   "no_event_up_to": 1.06
+  },
+  "24x6": {
+   "first_event": 1.06,
+   "no_event_up_to": null
   }
  },
  "C": {
