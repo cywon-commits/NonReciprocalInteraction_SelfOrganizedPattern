@@ -7,3 +7,8 @@ results_request/C_helix/C3/rec_*.npy
 results_request/C_helix/test/
 results_request/B_temp/stairs/rec_*.npy
 results_request/B_temp/wait/S_*.npy
+# request 2: regenerable seeds (code/request2/mkseed.sh), checkpoints and queue locks
+results_request2/B_univ/seeds/*.npy
+results_request2/**/ckpt_*.npz
+results_request2/**/*.lock
+results_request2/A_S/state_*.npy
