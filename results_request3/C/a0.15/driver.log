@@ -1,1 +1,0 @@
-05:47 python3 code/request3/run3.py --nx 4 --ny 1 --uc 0.10070235402960527 --rs 0.99,1.0,1.01,1.02,1.03,1.04,1.05,1.06,1.08 --hold 2e5 --hold_max 4e5 --alpha 0.15 --start perfect --out results_request3/C/a0.15/4x1 > results_request3/C/a0.15/log_4x1.txt 2>&1

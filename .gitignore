@@ -14,3 +14,7 @@ results_request2/**/*.lock
 results_request2/A_S/state_*.npy
 results_request3/**/ckpt_*.npz
 results_request3/**/*.lock
+# live logs of running request-3 jobs (summaries are in sum_*.json)
+results_request3/**/log_*.txt
+results_request3/**/driver.log
+results_request3/jobs/queue.log
