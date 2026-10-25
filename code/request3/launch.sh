@@ -16,3 +16,5 @@ running "jobqueue.py $O/jobs/extra.txt" || setsid nohup python3 code/request2/jo
 # second 32x8 seed (from the equilibrated 1.06 state) and the alpha = 0.6 16x4 chain, started when cores became free
 running "jobqueue.py $O/jobs/extra2.txt" || setsid nohup python3 code/request2/jobqueue.py $O/jobs/extra2.txt 2 > $O/jobs/queue_extra2.log 2>&1 < /dev/null &
 running "jobqueue.py $O/jobs/extra3.txt" || setsid nohup python3 code/request2/jobqueue.py $O/jobs/extra3.txt 2 > $O/jobs/queue_extra3.log 2>&1 < /dev/null &
+# alpha = 0.15 16x4 restarted from the alpha = 0.3 equilibrated 16x4 state at 1.06 (the scaled 4x1 seed overshoots at low damping)
+running "jobqueue.py $O/jobs/extra4.txt" || setsid nohup python3 code/request2/jobqueue.py $O/jobs/extra4.txt 1 > $O/jobs/queue_extra4.log 2>&1 < /dev/null &
