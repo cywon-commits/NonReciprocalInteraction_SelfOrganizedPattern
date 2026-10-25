@@ -15,3 +15,4 @@ done
 running "jobqueue.py $O/jobs/extra.txt" || setsid nohup python3 code/request2/jobqueue.py $O/jobs/extra.txt 1 > $O/jobs/queue_extra.log 2>&1 < /dev/null &
 # second 32x8 seed (from the equilibrated 1.06 state) and the alpha = 0.6 16x4 chain, started when cores became free
 running "jobqueue.py $O/jobs/extra2.txt" || setsid nohup python3 code/request2/jobqueue.py $O/jobs/extra2.txt 2 > $O/jobs/queue_extra2.log 2>&1 < /dev/null &
+running "jobqueue.py $O/jobs/extra3.txt" || setsid nohup python3 code/request2/jobqueue.py $O/jobs/extra3.txt 2 > $O/jobs/queue_extra3.log 2>&1 < /dev/null &
