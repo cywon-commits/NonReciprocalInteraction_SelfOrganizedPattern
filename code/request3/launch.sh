@@ -10,3 +10,5 @@ fi
 for a in 0.15 0.6; do
   [ -f $O/C/a$a/DONE ] || running "taskC.py $a" || { mkdir -p $O/C/a$a; NUMBA_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 setsid nohup sh -c "python3 code/request3/taskC.py $a && touch $O/C/a$a/DONE" >> $O/C/a$a/driver.log 2>&1 < /dev/null & }
 done
+# 24x6 restarted from the intact request-2 chain state (the request-2 seed file at 1.06 is a post-slip state)
+running "jobqueue.py $O/jobs/extra.txt" || setsid nohup python3 code/request2/jobqueue.py $O/jobs/extra.txt 1 > $O/jobs/queue_extra.log 2>&1 < /dev/null &
