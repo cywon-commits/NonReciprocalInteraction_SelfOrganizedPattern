@@ -8,5 +8,5 @@ if [ ! -f $O/A32/DONE ] && ! running "out $O/A32/chain"; then
   NUMBA_NUM_THREADS=${T32:-1} OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 setsid nohup sh -c "python3 code/request3/run3.py --nx 32 --ny 8 --uc 0.012451 --rs $RS --hold 4e5 --hold_max 8e5 --every 200 --start $O/A32/S_seed32x8_r1.06.npy --seed 1 --out $O/A32/chain && touch $O/A32/DONE" >> $O/A32/log_chain.txt 2>&1 < /dev/null &
 fi
 for a in 0.15 0.6; do
-  [ -f $O/C/a$a/DONE ] || running "taskC.py $a" || { mkdir -p $O/C/a$a; setsid nohup sh -c "python3 code/request3/taskC.py $a && touch $O/C/a$a/DONE" >> $O/C/a$a/driver.log 2>&1 < /dev/null & }
+  [ -f $O/C/a$a/DONE ] || running "taskC.py $a" || { mkdir -p $O/C/a$a; NUMBA_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1 setsid nohup sh -c "python3 code/request3/taskC.py $a && touch $O/C/a$a/DONE" >> $O/C/a$a/driver.log 2>&1 < /dev/null & }
 done
