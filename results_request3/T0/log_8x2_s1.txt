@@ -1,0 +1,1 @@
+r1.0600: t=100000 eq=True event=False perm=False sat gmax=0.309 gbar=0.241 gwave=0.312 star={'gmax_n5': None, 'gbar_n5': None, 'gwave_n5': None}
