@@ -8,7 +8,7 @@ from scipy.spatial import Delaunay
 #   profile(X, u)      : 1D profile of du_y/dx along x (least-squares Fourier harmonics 0..3 of 2 pi/Lx over the triangles)
 #   critical(prof)     : peak position/value and width of the region with profile > gamma_s(0)
 #   softamp(X, u, x0)  : soft-mode amplitude in the strip |x - x0| < hw of the lattice: residual displacement after removing the
-#                        smooth field (harmonics |m| <= 3 along x, |n| <= 1 along y), projected on plane waves of the band
+#                        strain wave (harmonics |m| <= 6 along x that are uniform along y), projected on plane waves of the band
 #                        0.06 < |k| < 0.11 (wavelength 4a = 75 sites, |k| = 0.084) with 0.045 < |k_y| < 0.1 (soft mode k = (-0.043, 0.071); the strain wave itself has
 #                        k_y = 0); the maximum over the band is the local amplitude a.
 GS = 0.30776; NX = 400
@@ -24,7 +24,7 @@ def critical(xs, prof, Lx, sign=None):
     s = sign if sign is not None else np.sign(prof[np.argmax(np.abs(prof))]); p = s*prof; i = int(np.argmax(p))
     return dict(xpeak=float(xs[i]), gpeak=float(p[i]), w=float((p > GS).sum()*Lx/NX), sign=float(s))
 def smooth_resid(X, u, Lx, Ly):
-    ks = [(m, n) for m in range(-3, 4) for n in range(-1, 2)]
+    ks = [(m, 0) for m in range(-6, 7)]
     ph = np.exp(2j*np.pi*(np.outer(X[:, 0], [m/Lx for m, n in ks])+np.outer(X[:, 1], [n/Ly for m, n in ks])))
     A = np.concatenate([ph.real, ph.imag], 1); return u-A@np.linalg.lstsq(A, u, rcond=None)[0]
 def kband(Lx, Ly):
