@@ -50,7 +50,7 @@ def measures(S):
     return r, X, d, dict(gmax=float(np.abs(g).max()), gbar=float(np.abs(gb[ib])), gwave=float(np.abs(prof[iw])), xbar=float(Xm[ib, 0]),
                           xwave=float(xs[iw]), Ux=F(d[:, 0]), Uy=F(d[:, 1]))
 rs = [float(x) for x in A.rs.split(',')]
-S = np.load(A.start).astype(float)
+S = np.tile(np.load(os.environ['SKX_CELL']), (nx, ny, 1)) if A.start == 'perfect' else np.load(A.start).astype(float)
 if A.noise_start > 0: S = S+A.noise_start*np.random.default_rng(100+A.seed).standard_normal(S.shape)
 S /= np.linalg.norm(S, axis=-1)[..., None]; assert S.shape[:2] == (Lx, Ly)
 nsub = int(round(A.every/A.dt)); COLS = ['t', 'intact', 'ndef', 'm1', 'm2', 'm3', 'm4', 'gmax', 'gbar', 'gwave', 'xbar', 'xwave', 'Ux', 'Uy', 'Vx', 'Vy', 'E']
