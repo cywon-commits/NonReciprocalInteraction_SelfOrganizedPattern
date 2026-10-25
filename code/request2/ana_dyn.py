@@ -52,6 +52,7 @@ for s, runs in B.items():
     ch = [d for d in runs if 'chain' in d['file'] or (s == '4x1' and 'seed' not in d['file'])] + CR.get(s, [])
     ch += [d for d in runs if 'seed' in d['file'] and not d['slipped']]
     ev = sorted([d for d in ch if d['slipped']], key=lambda d: d['r'])
+    if s == '4x1': ev = sorted([d for d in CR.get(s, []) if d['slipped']], key=lambda d: d['r']) or ev   # 4x1: gamma* from the long fixed-u runs (C_rows)
     if s == '24x6' and not ev: ev = sorted([d for d in runs if d['slipped'] and (d['gamma_star'] is not None)], key=lambda d: d['r'])
     lo = max([d['r'] for d in ch if not d['slipped'] and (not ev or d['r'] < ev[0]['r'])], default=None)
     us[s] = dict(Lx=19*int(s.split('x')[0]), u_s_upper=ev[0]['r'] if ev else None, u_s_lower=lo, gamma_star=ev[0]['gamma_star_mean5'] if ev else None,

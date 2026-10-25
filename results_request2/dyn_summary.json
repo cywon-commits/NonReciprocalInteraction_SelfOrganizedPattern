@@ -1286,6 +1286,94 @@
     "t_end": 150000.0
    },
    {
+    "file": "results_request2/B_univ/24x6/sum_chain_r1.065.json",
+    "r": 1.065,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.29180630258815554,
+    "gamma_sat_std": 0.0007004646805467802,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     0.0,
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 150000.0
+   },
+   {
+    "file": "results_request2/B_univ/24x6/sum_chain_r1.07.json",
+    "r": 1.07,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.30291489232242585,
+    "gamma_sat_std": 0.0006345471193493165,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     -0.0,
+     0.0,
+     0.0,
+     -0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 150000.0
+   },
+   {
+    "file": "results_request2/B_univ/24x6/sum_chain_r1.075.json",
+    "r": 1.075,
+    "slipped": false,
+    "t_slip": null,
+    "gamma_star": null,
+    "gamma_star_mean5": NaN,
+    "gamma_star_max5": NaN,
+    "gamma_sat": 0.31355741334937354,
+    "gamma_sat_std": 0.0006413237541243183,
+    "permanent": false,
+    "n_events": 0,
+    "intact_end": true,
+    "m_end": [
+     -0.0,
+     -0.0,
+     0.0,
+     0.0
+    ],
+    "ndef_end": 0,
+    "t_end": 150000.0
+   },
+   {
+    "file": "results_request2/B_univ/24x6/sum_chain_r1.08.json",
+    "r": 1.08,
+    "slipped": true,
+    "t_slip": 36400.0,
+    "gamma_star": 0.333140906549828,
+    "gamma_star_mean5": 0.32766205808126764,
+    "gamma_star_max5": 0.333140906549828,
+    "gamma_sat": 0.3190334163558605,
+    "gamma_sat_std": 0.0033766982181867495,
+    "permanent": true,
+    "n_events": 1,
+    "intact_end": false,
+    "m_end": [
+     1.0,
+     -0.0,
+     -0.0,
+     -0.0
+    ],
+    "ndef_end": 13,
+    "t_end": 56400.0
+   },
+   {
     "file": "results_request2/B_univ/24x6/sum_seed_r1.02.json",
     "r": 1.02,
     "slipped": false,
@@ -1380,10 +1468,10 @@
    "Lx": 76,
    "u_s_upper": 1.1,
    "u_s_lower": 1.09,
-   "gamma_star": 0.4815723363428237,
-   "gamma_star_last": 0.40496323691221026,
+   "gamma_star": 0.4062231282447111,
+   "gamma_star_last": 0.4046759541999064,
    "permanent": false,
-   "source": "results_request2/B_univ/4x1/sum_chain_r1.10.json"
+   "source": "results_request2/C_rows/4x1/sum_r1.10.json"
   },
   "8x2": {
    "Lx": 152,
@@ -1414,15 +1502,15 @@
   },
   "24x6": {
    "Lx": 456,
-   "u_s_upper": 1.06,
-   "u_s_lower": 1.055,
-   "gamma_star": 0.34969558517500476,
-   "gamma_star_last": 0.3555336391053266,
+   "u_s_upper": 1.08,
+   "u_s_lower": 1.075,
+   "gamma_star": 0.32766205808126764,
+   "gamma_star_last": 0.333140906549828,
    "permanent": true,
-   "source": "results_request2/B_univ/24x6/sum_seed_r1.06.json"
+   "source": "results_request2/B_univ/24x6/sum_chain_r1.08.json"
   }
  },
- "u_s_pred_bulk": 1.0633,
+ "u_s_pred_bulk": 1.0641,
  "C": {
   "1": [
    {
