@@ -12,3 +12,5 @@ results_request2/B_univ/seeds/*.npy
 results_request2/**/ckpt_*.npz
 results_request2/**/*.lock
 results_request2/A_S/state_*.npy
+results_request3/**/ckpt_*.npz
+results_request3/**/*.lock
