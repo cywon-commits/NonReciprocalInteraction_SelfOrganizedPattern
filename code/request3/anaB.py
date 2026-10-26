@@ -74,6 +74,7 @@ if __name__ == '__main__':
     # request 3 buffers (registry ring + traj of the step)
     for f in sorted(glob.glob('results_request3/**/slipbuf_r*.npz', recursive=True)):
         dn = os.path.dirname(f); s = json.load(open(glob.glob(f'{dn}/sum_*.json')[0])); nx, ny = s['nx'], s['ny']; Lx, Ly = 19*nx, 33*ny
+        if nx < 8: continue                                    # 4x1: no wavevector of the soft-mode band fits
         tag = os.path.basename(f)[8:-4]; ft = f'{dn}/traj_{tag}.npz'; extra = []
         recs = load_buffer(f, Lx, Ly)
         if os.path.exists(ft):
