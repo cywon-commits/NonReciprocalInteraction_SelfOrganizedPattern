@@ -13,6 +13,7 @@ from sparse_bloch import jac_sparse
 # comoving functional); the asymmetry is reported and the lowest eigenvalues of the symmetric part are computed (shift-invert).
 # V_w: lab velocity of the strain wave along x (12.2/Lx from request 3, measured here from the snapshots) and the lattice
 # drift along y (the wave is uniform along y, so its y velocity is that of the lattice).
+# For comparison the plain energy Hessian of every snapshot (w1 = 0) is also diagonalised.
 p = argparse.ArgumentParser()
 p.add_argument('--state'); p.add_argument('--uc', type=float); p.add_argument('--r', type=float); p.add_argument('--nsnap', type=int, default=12)
 p.add_argument('--alpha', type=float, default=0.3); p.add_argument('--out'); p.add_argument('--check', action='store_true'); p.add_argument('--nev', type=int, default=8)
@@ -52,7 +53,9 @@ Vy = float(np.polyfit(tt, np.unwrap(np.array(ym)*2*np.pi/33)*33/(2*np.pi), 1)[0]
 out = []
 for i, Sn in enumerate(snaps):
     t0 = time.time(); Hs, asym = hess(m, Sn, w1, sign); ev = lowest(Hs, A.nev)
-    out.append(dict(i=i, asym=asym, ev=ev.tolist())); print(f'r={A.r} snap {i} asym={asym:.3e} lowest={np.round(ev[:5], 7)} ({time.time()-t0:.0f}s)', flush=True)
+    H0, asym0 = hess(m, Sn, z, sign); ev0 = lowest(H0, A.nev)          # plain energy Hessian (lab frame, w1 = 0)
+    out.append(dict(i=i, asym=asym, ev=ev.tolist(), asym0=asym0, ev0=ev0.tolist()))
+    print(f'r={A.r} snap {i} asym={asym:.3e} lowest={np.round(ev[:4], 7)} | w1=0: asym={asym0:.2e} lowest={np.round(ev0[:4], 7)} ({time.time()-t0:.0f}s)', flush=True)
 lo = [o['ev'] for o in out]
 json.dump(dict(state=A.state, r=A.r, u=u, Lx=Lx, Ly=Ly, V_w=[Vwx, Vy], w1=w1.tolist(), T=T, sign=sign, snaps=out,
-               min_ev=float(np.min(lo)), min_ev_nonzero=float(np.min([e for row in lo for e in row if abs(e) > 1e-7] or [np.nan]))), open(A.out, 'w'))
+               min_ev=float(np.min(lo)), min_ev_nonzero=float(np.min([e for row in lo for e in row if abs(e) > 1e-7] or [np.nan])), min_ev0=float(np.min([o['ev0'] for o in out]))), open(A.out, 'w'))
