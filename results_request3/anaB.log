@@ -2,3 +2,16 @@ results_request2/B_univ/12x3/slip_chain_r1.08.npz {'Lx': 228, 'Ly': 99, 't_first
 results_request2/B_univ/16x4/slip_chain_r1.08.npz {'Lx': 304, 'Ly': 132, 't_first_broken': 104600.0, 'x_slip': 172.0, 'v': 0.0402, 'vLx': 12.2172, 'w': 42.864, 'gpeak': 0.3381, 'Delta': 0.0304, 'I_slip': 1.2164, 't_in_critical': 800.0, 'Gamma_wave': 0.0011, 'Gamma_median': 0.0011, 'a_wave_end': 0.2078, 'a_median_end': 0.0463, 'a_end': 0.2162, 'a_enter': 0.064}
 results_request2/B_univ/24x6/slip_chain_r1.08.npz {'Lx': 456, 'Ly': 198, 't_first_broken': 36400.0, 'x_slip': 236.0, 'v': 0.0269, 'vLx': 12.2476, 'w': 46.284, 'gpeak': 0.3228, 'Delta': 0.015, 'I_slip': 0.4222, 't_in_critical': 200.0, 'Gamma_wave': 0.0014, 'Gamma_median': 0.0013, 'a_wave_end': 0.164, 'a_median_end': 0.0053, 'a_end': 0.1553, 'a_enter': 0.1018}
 results_request2/B_univ/8x2/slip_chain_r1.09.npz {'Lx': 152, 'Ly': 66, 't_first_broken': 48200.0, 'x_slip': 72.0, 'v': 0.0807, 'vLx': 12.267, 'w': 31.54, 'gpeak': 0.3808, 'Delta': 0.073, 'I_slip': nan, 't_in_critical': 0.0, 'Gamma_wave': 0.0017, 'Gamma_median': 0.0016, 'a_wave_end': 0.0217, 'a_median_end': 0.0122, 'a_end': 0.0051, 'a_enter': 0.0051}
+results_request3/A32/chain/slipbuf_r1.0700.npz {'Lx': 608, 'Ly': 264, 't_first_broken': 368200.0, 'x_slip': 140.0, 'v': 0.02, 'vLx': 12.1549, 'w': 30.4, 'gpeak': 0.3113, 'Delta': 0.0035, 'I_slip': 0.5662, 't_in_critical': 200.0, 'Gamma_wave': 0.0011, 'Gamma_median': 0.0006, 'a_wave_end': 0.2242, 'a_median_end': 0.0008, 'a_end': 0.2373, 'a_enter': 0.1347}
+results_request3/C/a0.15/12x3_s1/slipbuf_r1.1000.npz {'Lx': 228, 'Ly': 99, 't_first_broken': 30900.0, 'x_slip': 120.0, 'v': 0.0512, 'vLx': 11.6726, 'w': 40.812, 'gpeak': 0.3498, 'Delta': 0.0421, 'I_slip': 0.0, 't_in_critical': 0.0, 'Gamma_wave': 0.0024, 'Gamma_median': 0.0019, 'a_wave_end': 2.3276, 'a_median_end': 0.0602, 'a_end': 2.6666, 'a_enter': 2.6666}
+results_request3/C/a0.15/12x3_s2/slipbuf_r1.1000.npz {'Lx': 228, 'Ly': 99, 't_first_broken': 31100.0, 'x_slip': 136.0, 'v': 0.051, 'vLx': 11.6262, 'w': 41.496, 'gpeak': 0.3532, 'Delta': 0.0454, 'I_slip': nan, 't_in_critical': 0.0, 'Gamma_wave': 0.0025, 'Gamma_median': 0.002, 'a_wave_end': 1.3108, 'a_median_end': 0.0282, 'a_end': 1.4994, 'a_enter': 1.4994}
+Traceback (most recent call last):
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request3/anaB.py", line 82, in <module>
+    d = analyse(recs, Lx, Ly, extra)
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request3/anaB.py", line 40, in analyse
+    amps = [softamp(Xb, ub, Lx, Ly, x0, HW, K)[0] for x0 in grid]; xsl = float(grid[int(np.nanargmax(amps))])
+            ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/NonReciprocalInteraction_SelfOrganizedPattern/code/request3/chain_tools.py", line 37, in softamp
+    w = np.exp(-1j*(X[sel]@K.T))                          # (n_sel, n_k)
+                    ~~~~~~^~~~
+ValueError: matmul: Input operand 1 has a mismatch in its core dimension 0, with gufunc signature (n?,k),(k,m?)->(n?,m?) (size 0 is different from 2)
