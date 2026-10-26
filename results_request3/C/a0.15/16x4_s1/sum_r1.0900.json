@@ -1,0 +1,60 @@
+{
+ "nx": 16,
+ "ny": 4,
+ "alpha": 0.15,
+ "r": 1.09,
+ "u": 0.02660450335376505,
+ "t_end": 250000.0,
+ "equilibrated": true,
+ "event": false,
+ "t_event": null,
+ "permanent": false,
+ "transient": false,
+ "m_end": [
+  -0.0,
+  0.0,
+  0.0,
+  -0.0
+ ],
+ "ndef_end": 0,
+ "sat": {
+  "gmax": 0.32169744213433693,
+  "gbar": 0.3094309822825869,
+  "gwave": 0.3245605818657899,
+  "Ux": 8.882409097377858,
+  "Uy": 15.804829271708494,
+  "Vx": 0.028145877771531783,
+  "Vy": 0.005440502117572858
+ },
+ "star": {
+  "gmax_n1": null,
+  "gmax_n3": null,
+  "gmax_n5": null,
+  "gbar_n1": null,
+  "gbar_n3": null,
+  "gbar_n5": null,
+  "gwave_n1": null,
+  "gwave_n3": null,
+  "gwave_n5": null
+ },
+ "wall": 3618.8634717464447,
+ "cols": [
+  "t",
+  "intact",
+  "ndef",
+  "m1",
+  "m2",
+  "m3",
+  "m4",
+  "gmax",
+  "gbar",
+  "gwave",
+  "xbar",
+  "xwave",
+  "Ux",
+  "Uy",
+  "Vx",
+  "Vy",
+  "E"
+ ]
+}
