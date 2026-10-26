@@ -29,3 +29,4 @@ results_request4/**/ckpt_*.npz
 results_request4/**/*.lock
 results_request4/**/log_*.txt
 results_request4/C1/test/
+results_request4/B/queue_*.log

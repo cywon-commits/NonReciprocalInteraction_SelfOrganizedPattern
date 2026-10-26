@@ -3,7 +3,8 @@ here = os.path.dirname(os.path.abspath(__file__)); root = os.path.join(here, '..
 sys.path.insert(0, os.path.join(root, 'code', 'kt'))
 from fastllg import Integrator
 # Task C1: noise-free linear stability of the saturated strain-wave state (Floquet / Lyapunov exponents).
-# The state is periodic in the frame of the strain wave with period T = 19/v (one lattice cell passes the wave, v L_x = 12.2),
+# The state is periodic in the frame of the strain wave with period T = 19/v_rel (one lattice cell passes the wave; the wave
+# moves at 12.2/L_x in the lab and the lattice at 9.5/L_x, so v_rel L_x = 2.7),
 # up to the discreteness of the grid, so the exponents are measured by subspace iteration over time windows of length T:
 #   q_j (unit tangent vectors, j = 1..K) -> integrate S + eps q_j and S for T with the full nonlinear Heun integrator
 #   (T = 0, no noise) -> d_j = (S_j(T) - S(T))/eps projected on the tangent planes -> remove the neutral directions
@@ -19,7 +20,7 @@ p.add_argument('--eps', type=float, default=1e-5); p.add_argument('--out', requi
 A = p.parse_args()
 J, D = 1.0, 0.4; B = 0.5*D*D/J; a = A.alpha; b = 2*a; u = A.r*A.uc; w1 = np.array([-u, 0.]); w2 = np.array([b*u, 0.])
 S = np.load(A.start).astype(float); S /= np.linalg.norm(S, axis=-1)[..., None]; Lx, Ly = S.shape[:2]
-T = A.T or 19*Lx/12.2; nT = int(round(T/A.dt)); T = nT*A.dt
+T = A.T or 19*Lx/2.7; nT = int(round(T/A.dt)); T = nT*A.dt     # the wave moves relative to the lattice at v_rel L = 2.7 (lab 12.2, lattice drift 9.5)
 def integ(S0, n):
     I = Integrator(S0.copy(), J, D, B, a, w1, w2, 0.0, A.dt); I.run(n); return I.S          # copy: the integrator works in place
 def tang(S0, d): return d-np.sum(d*S0, -1)[..., None]*S0
