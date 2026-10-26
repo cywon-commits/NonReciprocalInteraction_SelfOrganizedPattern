@@ -24,3 +24,8 @@ results_request3/jobs/queue_extra3.log
 results_request3/jobs/queue_extra4.log
 results_request3/anaG.log
 results_request3/anaB.log
+results_request4/**/pid_*
+results_request4/**/ckpt_*.npz
+results_request4/**/*.lock
+results_request4/**/log_*.txt
+results_request4/C1/test/
