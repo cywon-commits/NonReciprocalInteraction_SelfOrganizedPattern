@@ -24,8 +24,9 @@ def rate(t, a, t_end):
     if m.sum() < 4: return np.nan, np.nan
     P, C = np.polyfit(t[m], np.log(a[m]), 1, cov=True); return float(P[0]), float(np.sqrt(C[0, 0]))
 if __name__ == '__main__':
-    out = {}
-    dirs = sorted(glob.glob('results_request3/T0/*'))+sorted(glob.glob('results_request3/A32/chain'))+sorted(glob.glob('results_request3/C/*/12x3_s*'))
+    # optional arguments: only these chain directories, merged into the existing B_growth.json
+    out = json.load(open('results_request3/B_growth.json')) if len(sys.argv) > 1 and os.path.exists('results_request3/B_growth.json') else {}
+    dirs = sys.argv[1:] or (sorted(glob.glob('results_request3/T0/*'))+sorted(glob.glob('results_request3/A32/chain*'))+sorted(glob.glob('results_request3/C/*/12x3_s*'))+sorted(glob.glob('results_request3/C/*/16x4_s*')))
     for dn in dirs:
         S = sorted(glob.glob(f'{dn}/sum_r*.json'))
         if not S: continue
