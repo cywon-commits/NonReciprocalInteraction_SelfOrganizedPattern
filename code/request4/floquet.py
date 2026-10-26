@@ -60,5 +60,5 @@ res = dict(start=A.start, r=A.r, u=u, alpha=a, Lx=Lx, Ly=Ly, T=T, K=A.K, iters=A
            k_peak=[float(KX.ravel()[np.argmax(P)]), float(KY.ravel()[np.argmax(P)])], env=envs.tolist(), env_x_peak=float(np.argmax(envs)), env_width=width,
            wall=time.time()-t0)
 os.makedirs(os.path.dirname(A.out) or '.', exist_ok=True); json.dump(res, open(A.out, 'w'))
-np.save(A.out.replace('.json', '_S.npy'), S.astype(np.float32)); np.save(A.out.replace('.json', '_q0.npy'), Q[0].astype(np.float32))
+np.save(A.out.replace('.json', '_S.npy'), S.astype(np.float32)); [np.save(A.out.replace('.json', f'_q{j}.npy'), Q[j].astype(np.float32)) for j in range(min(4, len(Q)))]
 print('RESULT', A.r, 'Gamma', np.round(Gm[:4], 7), '+-', np.round(Ge[:4], 7), 'band', round(res['band_weight'], 3), 'width', width, flush=True)
