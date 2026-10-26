@@ -4,7 +4,7 @@ from twist import TwistModel, find_V, link_blocks
 from sparse_bloch import soft_eigs
 # Bloch threshold of the driven lattice in an nx x 1 box stretched along x to Lx (external strain eps0 = Lx/(19 nx) - 1),
 # alpha = 0.3, beta = 2 alpha. The k1 strain-wave mode of the box (wavelength Lx along x) is a k = 0 mode of the box, so the
-# eigenvalues at k = 0 are scanned (translation Goldstone modes, |lambda| < 1e-8, excluded); bisection in u.
+# eigenvalues at k = 0 are scanned (translation Goldstone modes, |lambda| < 1e-7, excluded); bisection in u.
 # usage: python bloch_uc_s.py nx Lx out.json
 J, D = 1.0, 0.4; B = 0.5*D*D/J; a = 0.3; b = 2*a; nx, Lx, out = int(sys.argv[1]), int(sys.argv[2]), sys.argv[3]; Lx0 = 19*nx; Ly = 33
 S0 = np.tile(np.load(os.path.join(root, 'states', 'S_B0.5.npy')), (nx, 1, 1))
@@ -15,7 +15,7 @@ m = TwistModel(Lx, Ly, 0, J, D, B); S0 = S0.reshape(-1, 3)
 def g(ue):
     S, V, w1, w2, r = find_V(m, S0.copy(), np.array([ue, 0.]), a, b)
     bl, _ = link_blocks(m, S, w1, w2, a); ev = soft_eigs(m, bl, (0., 0.), nev=10, sigma=1e-5)
-    ev = ev[np.abs(ev) > 1e-8]; return float(ev.real.max())
+    ev = ev[np.abs(ev) > 1e-7]; return float(ev.real.max())        # Goldstone and near-Goldstone numerical modes (|lambda| < 1e-7) excluded
 guess = 7.72/Lx; lo, hi = 0.93*guess, 1.07*guess; pts = []
 for _ in range(9):
     mid = 0.5*(lo+hi); gm = g(mid); pts.append((mid, gm)); print(nx, Lx, f'u={mid:.6f} maxRe={gm:+.3e}', flush=True)
