@@ -16,7 +16,7 @@ from sparse_bloch import jac_sparse
 # For comparison the plain energy Hessian of every snapshot (w1 = 0) is also diagonalised.
 p = argparse.ArgumentParser()
 p.add_argument('--state'); p.add_argument('--uc', type=float); p.add_argument('--r', type=float); p.add_argument('--nsnap', type=int, default=12)
-p.add_argument('--alpha', type=float, default=0.3); p.add_argument('--out'); p.add_argument('--check', action='store_true'); p.add_argument('--nev', type=int, default=8)
+p.add_argument('--alpha', type=float, default=0.3); p.add_argument('--dt', type=float, default=0.2); p.add_argument('--out'); p.add_argument('--check', action='store_true'); p.add_argument('--nev', type=int, default=8)
 A = p.parse_args(); J, D = 1.0, 0.4; B = 0.5*D*D/J; z = np.zeros(2)
 def omega(N, sign):
     I = sp.identity(N, format='csc'); Z = sp.csc_matrix((N, N))
@@ -39,7 +39,7 @@ if A.check:
 sign = float(os.environ.get('C2_SIGN', '1'))
 S = np.load(A.state).astype(float); Lx, Ly = S.shape[:2]; m = TwistModel(Lx, Ly, 0, J, D, B); u = A.r*A.uc; a = A.alpha; b = 2*a
 # snapshots over one period of the lattice passing the wave (T = 19/v_rel, v_rel Lx = 2.7) and the wave velocity
-T = 19*Lx/2.7; dt = 0.2; n = int(round(T/A.nsnap/dt))
+T = 19*Lx/2.7; dt = A.dt; n = int(round(T/A.nsnap/dt))     # dt = 0.1 at alpha = 0.15 (dt = 0.2 is unstable there)
 sys.path.insert(3, os.path.join(root, 'code', 'request3'))
 from regist import topo
 from chain_tools import profile, critical

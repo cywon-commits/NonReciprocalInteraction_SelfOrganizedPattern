@@ -8,5 +8,5 @@ for r in $RS; do
   while [ ! -f $ST/S_r$r.json ]; do sleep 120; done
   python3 -c "import json,sys; sys.exit(0 if json.load(open('$ST/S_r$r.json'))['intact'] else 1)" || continue
   [ -f results_request4/C/C1/$SZ/f_r$r.json ] || python3 code/request4/floquet.py --start $ST/S_r$r.npy --uc $UC --r $r --alpha $AL --dt $DT --K 6 --iters 30 --out results_request4/C/C1/$SZ/f_r$r.json > results_request4/C/C1/$SZ/log_r$r.txt 2>&1
-  [ -f results_request4/C/C2/$SZ/h_r$r.json ] || python3 code/request4/c2.py --state $ST/S_r$r.npy --uc $UC --r $r --alpha $AL --out results_request4/C/C2/$SZ/h_r$r.json > results_request4/C/C2/$SZ/log_r$r.txt 2>&1
+  [ -f results_request4/C/C2/$SZ/h_r$r.json ] || python3 code/request4/c2.py --state $ST/S_r$r.npy --uc $UC --r $r --alpha $AL --dt $DT --out results_request4/C/C2/$SZ/h_r$r.json > results_request4/C/C2/$SZ/log_r$r.txt 2>&1
 done
