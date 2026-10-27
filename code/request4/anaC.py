@@ -59,9 +59,16 @@ if __name__ == '__main__':
     R = {}
     for fj in sorted(glob.glob('results_request4/C/C1/*/f_r*.json')):
         if fj.endswith('_S.json'): continue
-        try: a = analyse(fj)
-        except Exception as ex: print('fail', fj, ex); continue
-        R[fj] = a; print(fj.split('/')[-2], a['r'], 'Gamma', np.round(a['Gamma'][:3], 6), 'gw %.4f' % a['gamma_wave'], 'band %.2f' % a['band_weight'], 'k', np.round(a['k_peak'], 3),
+        # the critical (soft-band) vector: below threshold the leading one is a slow y-uniform mode, so all saved vectors are
+        # analysed and the one with the largest soft-band weight is kept
+        cand = []
+        for iq in range(4):
+            if not os.path.exists(fj.replace('.json', f'_q{iq}.npy')): continue
+            try: cand.append(analyse(fj, iq) | dict(iq=iq))
+            except Exception as ex: print('fail', fj, iq, ex)
+        if not cand: continue
+        a = max(cand, key=lambda c: c['band_weight']); a['band_weights_all'] = [c['band_weight'] for c in cand]
+        R[fj] = a; print(fj.split('/')[-2], a['r'], 'iq', a['iq'], 'Gamma', np.round(a['Gamma'][:3], 6), 'gw %.4f' % a['gamma_wave'], 'band %.2f' % a['band_weight'], 'k', np.round(a['k_peak'], 3),
                          'env off %.0f width %.0f' % (a['env_offset'], a['env_width']), 'win %.0f overlap %.2f' % (a['window_width'], a['window_overlap']), flush=True)
     C2 = {}
     for fj in sorted(glob.glob('results_request4/C/C2/*/h_*.json')):

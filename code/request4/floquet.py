@@ -23,6 +23,11 @@ S = np.load(A.start).astype(float); S /= np.linalg.norm(S, axis=-1)[..., None]; 
 T = A.T or 19*Lx/2.7; nT = int(round(T/A.dt)); T = nT*A.dt     # the wave moves relative to the lattice at v_rel L = 2.7 (lab 12.2, lattice drift 9.5)
 def integ(S0, n):
     I = Integrator(S0.copy(), J, D, B, a, w1, w2, 0.0, A.dt); I.run(n); return I.S          # copy: the integrator works in place
+def clean(S0):
+    # restore the y period 33 of the base state (removes the roundoff growth of unstable k_y != 0 modes in the base
+    # trajectory above threshold; the perturbation vectors are formed before this step)
+    n = S0.shape[1]//33; M = np.mean([np.roll(S0, -33*j, 1) for j in range(n)], 0); M /= np.linalg.norm(M, axis=-1)[..., None]
+    return np.tile(M[:, :33], (1, n, 1))
 def tang(S0, d): return d-np.sum(d*S0, -1)[..., None]*S0
 def grad(S0): return (np.roll(S0, -1, 0)-np.roll(S0, 1, 0))/2, (np.roll(S0, -1, 1)-np.roll(S0, 1, 1))/2
 t0 = time.time()
@@ -45,7 +50,7 @@ for it in range(A.iters):
     Sn = integ(S, nT); D_ = []
     for q in Q:
         Sp = S+A.eps*q; Sp /= np.linalg.norm(Sp, axis=-1)[..., None]; D_.append(tang(Sn, (integ(Sp, nT)-Sn)/A.eps))
-    Q, rd = orth(D_, Sn); S = Sn; g = np.log(np.abs(rd))/T; logs.append(g); hist.append(g.tolist())
+    Q, rd = orth(D_, Sn); S = clean(Sn); g = np.log(np.abs(rd))/T; logs.append(g); hist.append(g.tolist())
     print(f'it={it} Gamma_top={np.round(g[:4], 7)} wall={time.time()-t0:.0f}', flush=True)
 L = np.array(logs); half = L[len(L)//2:]; Gm = half.mean(0); Ge = half.std(0)/np.sqrt(len(half))
 # leading vector: soft-band weight (2D FFT of the in-plane perturbation) and envelope along x
