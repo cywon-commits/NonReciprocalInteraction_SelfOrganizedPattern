@@ -42,6 +42,10 @@ def analyse(fj, iq=0):
     xs = np.arange(Lx); w2 = (dd**2).sum(1); dxk = (xs[:, None]-X[None, :, 0]+Lx/2) % Lx-Lx/2
     env = (np.exp(-dxk**2/(2*8.0**2))*w2[None, :]).sum(1); env /= env.max()
     xe = float(np.angle(np.sum(env*np.exp(2j*np.pi*xs/Lx)))*Lx/(2*np.pi)) % Lx; width = float((env > 0.5).sum())
+    # kernel-free width: rms spread of |d|^2 along x about the circular centre xe, and the half-weight width (shortest interval
+    # holding half of sum |d|^2)
+    dxe = (X[:, 0]-xe+Lx/2) % Lx-Lx/2; rms = float(np.sqrt(np.sum(w2*dxe**2)/np.sum(w2)))
+    o = np.argsort(np.abs(dxe)); cw = np.cumsum(w2[o])/w2.sum(); half = float(2*np.abs(dxe[o])[np.searchsorted(cw, 0.5)])
     # strain profile and the local stiffness window
     tp = topo(S); xs4, pg = profile(tp['X'], tp['u'], Lx, Ly); cr = critical(xs4, pg, Lx); sg = np.sign(pg[np.argmax(abs(pg))])
     st = tri_strain(tp['X'], tp['u'], Lx, Ly); cc = centroids(tp['X'], Lx, Ly); k = 2*np.pi/Lx
@@ -52,7 +56,7 @@ def analyse(fj, iq=0):
     overlap = float(np.sum(env4*win)/np.sum(env4))
     dx = ((xe-cr['xpeak'])+Lx/2) % Lx-Lx/2; Dl = cr['gpeak']-gsH
     return dict(file=fj, r=d['r'], alpha=d['alpha'], Lx=Lx, Gamma=d['Gamma'][:4], Gamma_err=d['Gamma_err'][:4], gamma_wave=cr['gpeak'], xpeak=cr['xpeak'],
-                band_weight=float(Pw[band].sum()/Pw.sum()), k_peak=kpk.tolist(), env_center=xe, env_offset=float(dx), env_width=width,
+                band_weight=float(Pw[band].sum()/Pw.sum()), k_peak=kpk.tolist(), env_center=xe, env_offset=float(dx), env_width=width, env_rms=rms, env_half=half,
                 width_over_LsqrtD=float(width/(Lx*np.sqrt(Dl))) if Dl > 0 else None, window_width=wwidth, window_overlap=overlap, Delta_local=float(Dl),
                 env=env.tolist(), gam=gam.tolist(), gs_local=gs_of(sg*exx).tolist(), xs=xs4.tolist())
 if __name__ == '__main__':
@@ -69,7 +73,7 @@ if __name__ == '__main__':
         if not cand: continue
         a = max(cand, key=lambda c: c['band_weight']); a['band_weights_all'] = [c['band_weight'] for c in cand]
         R[fj] = a; print(fj.split('/')[-2], a['r'], 'iq', a['iq'], 'Gamma', np.round(a['Gamma'][:3], 6), 'gw %.4f' % a['gamma_wave'], 'band %.2f' % a['band_weight'], 'k', np.round(a['k_peak'], 3),
-                         'env off %.0f width %.0f' % (a['env_offset'], a['env_width']), 'win %.0f overlap %.2f' % (a['window_width'], a['window_overlap']), flush=True)
+                         'env off %.0f width %.0f rms %.1f half %.0f' % (a['env_offset'], a['env_width'], a['env_rms'], a['env_half']), 'win %.0f overlap %.2f' % (a['window_width'], a['window_overlap']), flush=True)
     C2 = {}
     for fj in sorted(glob.glob('results_request4/C/C2/*/h_*.json')):
         d = json.load(open(fj)); C2[fj] = dict(r=d['r'], min_ev=d['min_ev'], min_ev0=d.get('min_ev0'), V_w=d['V_w'],

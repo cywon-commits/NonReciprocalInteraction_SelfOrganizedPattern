@@ -17,29 +17,32 @@ for i, (name, F) in enumerate(AS['fits_gamma_c'].items()):
 ax.set_xlim(0, None); ax.set_xlabel(r'$1/L_x$'); ax.set_ylabel(r'$\gamma_c$'); ax.legend(fontsize=6); fig.savefig(f'{O}/fig2_gamma_c_fit.png')
 # ---- 3 ----
 B = json.load(open(f'{O}/B_summary.json')); LA = json.load(open(f'{O}/B_localavg.json'))
-pts = {}
-for dn, d in B.items():
-    if d['gamma_c'] is None or '/16x4/' not in dn: continue
-    eps0 = d['steps'][0]['eps0']; key = round(eps0, 3)
-    pts.setdefault(key, []).append(d['gamma_c'])
-pts.setdefault(0.0, []).append(dict(lo=GC['16x4_main']['gamma_c']['lo'], hi=GC['16x4_main']['gamma_c']['hi'], est=GC['16x4_main']['gamma_c']['est']))
 fig, ax = plt.subplots(1, 2, figsize=(12, 4.4))
-for k, v in sorted(pts.items()):
-    best = min(v, key=lambda q: q['hi']-q['lo'])
-    ax[0].errorbar(k, best['est'], yerr=[[best['est']-best['lo']], [best['hi']-best['est']]], fmt='o', color=C[0], capsize=4)
-ex = np.linspace(-0.035, 0.035, 10); g0 = GC['16x4_main']['gamma_c']['est']
-ax[0].plot(ex, g0+0.48*ex, '--', color='#52514e', lw=1, label=r'$\gamma_c(0) + (d\gamma_s/d\varepsilon_{xx})\,\varepsilon_0$')
-ax[0].set_xlabel(r'external strain $\varepsilon_0$ (16x4)'); ax[0].set_ylabel(r'$\gamma_c$'); ax[0].legend(fontsize=8)
-for i, (kk, lab) in enumerate([('exx_peak', 'at the peak'), ('exx_mode', 'over the mode window (0..30 downstream)'), ('exx_strip', 'strip |dx| < 37.5')]):
-    xs_ = [LA[n][kk] for n in ('eps0=-0.03', 'eps0=0', 'eps0=+0.03')]; ys = [LA[n]['DcL_'+kk] for n in ('eps0=-0.03', 'eps0=0', 'eps0=+0.03')]
-    ax[1].plot([-0.03, 0, 0.03], ys, 'o-', color=C[i], label=f'local strain {lab}')
-ax[1].set_xlabel(r'$\varepsilon_0$'); ax[1].set_ylabel(r'$\Delta_c L = (\gamma_c - \gamma_s(\varepsilon_{xx}^{loc})) L$'); ax[1].legend(fontsize=7); ax[1].set_ylim(0, None)
+for ci, (sz, g0k) in enumerate([('16x4', '16x4_main'), ('12x3', '12x3_main')]):
+    pts = {}
+    for dn, d in B.items():
+        if d['gamma_c'] is None or f'/{sz}/' not in dn: continue
+        pts.setdefault(round(d['steps'][0]['eps0'], 3), []).append(d['gamma_c'])
+    pts[0.0] = [dict(lo=GC[g0k]['gamma_c']['lo'], hi=GC[g0k]['gamma_c']['hi'], est=GC[g0k]['gamma_c']['est'])]
+    for k, v in sorted(pts.items()):
+        b_ = min(v, key=lambda q: q['hi']-q['lo'])
+        ax[0].errorbar(k, b_['est'], yerr=[[b_['est']-b_['lo']], [b_['hi']-b_['est']]], fmt='o', color=C[ci], capsize=4, label=sz if k == 0 else None)
+    ex = np.linspace(-0.035, 0.035, 10); ax[0].plot(ex, GC[g0k]['gamma_c']['est']+0.46*ex, '--', color=C[ci], lw=0.8)
+ax[0].set_xlabel(r'external strain $\varepsilon_0$'); ax[0].set_ylabel(r'$\gamma_c$ (growth onset)'); ax[0].legend(fontsize=8)
+ax[0].text(-0.034, 0.36, r'dashed: $\gamma_c(0) + (d\gamma_s/d\varepsilon_{xx})\,\varepsilon_0$', fontsize=7)
+for i, (kk, lab) in enumerate([('exx_peak', 'at the peak'), ('exx_mode', 'mode window (0..30 downstream)'), ('exx_strip', 'strip |dx| < 37.5')]):
+    sz = [(int(n.split()[1].split('x')[0])*19, LA[n]['DcL_'+kk]) for n in LA if n.startswith('size')] + [(304, LA['eps0=0']['DcL_'+kk])]
+    sz.sort(); ax[1].plot(*zip(*sz), 'o-', color=C[i], label=f'eps0 = 0, local strain {lab}')
+    for n, mk in (('eps0=-0.03', 'v'), ('eps0=+0.03', '^'), ('12x3 eps0=+0.03', '^')):
+        if n in LA: ax[1].plot(228 if n.startswith('12x3') else 304, LA[n]['DcL_'+kk], mk, color=C[i], ms=8, mfc='none')
+ax[1].set_xlabel(r'$L_x$'); ax[1].set_ylabel(r'$\Delta_c L_x = (\gamma_c - \gamma_s(\varepsilon_{xx}^{loc}))\,L_x$'); ax[1].set_ylim(0, None); ax[1].legend(fontsize=7, loc='lower right')
+ax[1].text(150, 33, 'open triangles: external strain -0.03 (v) / +0.03 (^)', fontsize=7)
 fig.savefig(f'{O}/fig3_external_strain.png')
 # ---- 4 ----
 CS = json.load(open(f'{O}/C_summary.json'))
 fig, ax = plt.subplots(1, 2, figsize=(12, 4.4))
 for i, sz in enumerate(['8x2', '12x3', '16x4', '12x3_a0.15', '12x3_a0.6']):
-    rows = sorted([v for k, v in CS['C1'].items() if f'/C1/{sz}/' in k], key=lambda v: v['r'])
+    rows = sorted([v for k, v in CS['C1'].items() if f'/C1/{sz}/' in k and v['gamma_wave'] > 0.25], key=lambda v: v['r'])   # alpha 0.15, 1.096: base state broke down
     if not rows: continue
     # critical exponent: below threshold the leading exponent belongs to the slow y-uniform mode, the critical pair is next
     ax[0].plot([v['gamma_wave'] for v in rows], np.array([max(v['Gamma'][1:3]) if v['Gamma'][0] < 0 else v['Gamma'][0] for v in rows])*1e4, 'o-', color=C[i], label=sz)

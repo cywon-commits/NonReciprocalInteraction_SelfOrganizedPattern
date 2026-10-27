@@ -17,11 +17,15 @@ def prof(S, sx):
 out = {}
 cases = [('eps0=-0.03', 'results_request4/B/16x4/m03_s1/S_r1.1000.npy', 295/304, 0.3219), ('eps0=0', 'results_request3/T0/16x4_s1/S_r1.0775.npy', 1.0, 0.3333),
          ('eps0=+0.03', 'results_request4/B/16x4/p03f_s1/S_r1.0630.npy', 313/304, 0.3481)]
+GC = json.load(open('results_request3/final_summary.json'))['T0']
+cases += [(f'size {sz}', f, 1.0, GC[f'{sz}_main']['gamma_c']['est']) for sz, f in [('8x2', 'results_request3/T0/8x2_s1/S_r1.0850.npy'), ('12x3', 'results_request3/T0/12x3_s1/S_r1.0775.npy'),
+          ('24x6', 'results_request3/T0/24x6_s1/S_r1.0700.npy'), ('32x8', 'results_request3/A32/chain/S_r1.0650.npy')]]
+cases += [('12x3 eps0=+0.03', 'results_request4/B/12x3/p03_s1/S_r1.0675.npy', 235/228, 0.3610)]
 for name, f, sx, gc in cases:
     xs, g, e, Lx = prof(np.load(f).astype(float), sx); i = int(np.argmax(g)); xp = xs[i]; dx = (xs-xp+Lx/2) % Lx-Lx/2
     res = dict(gamma_peak=float(g[i]), exx_peak=float(e[i]), exx_mode=float(e[(dx > 0) & (dx < 30)].mean()), exx_mode_m=float(e[(dx < 0) & (dx > -30)].mean()),
                exx_strip=float(e[np.abs(dx) < 37.5].mean()), gamma_c=gc)
     for k in ('exx_peak', 'exx_mode', 'exx_mode_m', 'exx_strip'):
-        gs = float(np.polyval(P2, res[k])); res['gs_'+k] = gs; res['DcL_'+k] = (gc-gs)*304
+        gs = float(np.polyval(P2, res[k])); res['gs_'+k] = gs; res['DcL_'+k] = (gc-gs)*Lx
     out[name] = res; print(name, {k: round(v, 4) for k, v in res.items()})
 json.dump(out, open('results_request4/B_localavg.json', 'w'), indent=1)
