@@ -38,9 +38,9 @@ def analyse(fj, iq=0):
     ph = np.exp(-1j*(X@K.T)); Pw = np.abs(ph.T@dd[:, 0])**2+np.abs(ph.T@dd[:, 1])**2; kk = np.hypot(K[:, 0], K[:, 1])
     band = (kk > 0.06) & (kk < 0.11) & (np.abs(K[:, 1]) > 0.045); kpk = K[np.argmax(Pw)]
     # (ii) envelope along x
-    xs = np.arange(Lx); env = np.zeros(Lx)
-    for (x, y), v in zip(X, dd): env[int(np.floor(x)) % Lx] += v@v
-    env = np.convolve(np.concatenate([env[-9:], env, env[:9]]), np.ones(19)/19, 'valid'); env /= env.max()
+    # envelope: Gaussian kernel (sigma = 8 sites, periodic) of |d_j|^2 over the skyrmion x positions, normalised to 1
+    xs = np.arange(Lx); w2 = (dd**2).sum(1); dxk = (xs[:, None]-X[None, :, 0]+Lx/2) % Lx-Lx/2
+    env = (np.exp(-dxk**2/(2*8.0**2))*w2[None, :]).sum(1); env /= env.max()
     xe = float(np.angle(np.sum(env*np.exp(2j*np.pi*xs/Lx)))*Lx/(2*np.pi)) % Lx; width = float((env > 0.5).sum())
     # strain profile and the local stiffness window
     tp = topo(S); xs4, pg = profile(tp['X'], tp['u'], Lx, Ly); cr = critical(xs4, pg, Lx); sg = np.sign(pg[np.argmax(abs(pg))])
