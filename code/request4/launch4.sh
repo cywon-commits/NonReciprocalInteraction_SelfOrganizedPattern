@@ -23,3 +23,5 @@ running "run_c.sh 12x3 0.0333 1.0785" || setsid nohup sh code/request4/run_c.sh 
 running "run_c.sh 16x4 0.0249 1.0770" || setsid nohup sh code/request4/run_c.sh 16x4 0.0249 "1.0770" > /dev/null 2>&1 < /dev/null &
 running "1.0960 0.15" || setsid nohup sh code/request4/run_c.sh 12x3_a0.15 0.032543734989315044 "1.0960" 0.15 0.1 > /dev/null 2>&1 < /dev/null &
 running "jobqueue.py $O/B/jobs_pf.txt" || setsid nohup python3 code/request2/jobqueue.py $O/B/jobs_pf.txt 2 > $O/B/queue_pf.log 2>&1 < /dev/null &
+running "jobqueue.py $O/B/jobs_12.txt" || setsid nohup python3 code/request2/jobqueue.py $O/B/jobs_12.txt 2 > $O/B/queue_12.log 2>&1 < /dev/null &
+running "run_c.sh 12x3_a0.15 0.032543734989315044 1.0925 1.0950 1.0960" || setsid nohup sh code/request4/run_c.sh 12x3_a0.15 0.032543734989315044 "1.0925 1.0950 1.0960" 0.15 0.1 > /dev/null 2>&1 < /dev/null &
