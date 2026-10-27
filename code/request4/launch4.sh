@@ -6,7 +6,7 @@ export NUMBA_NUM_THREADS=1 OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
 running "jobqueue.py" || python3 -c "import glob,os; [os.remove(f) for f in glob.glob('$O/**/*.lock', recursive=True)]"
 for q in p m; do running "jobqueue.py $O/B/jobs_$q.txt" || setsid nohup python3 code/request2/jobqueue.py $O/B/jobs_$q.txt 2 > $O/B/queue_$q.log 2>&1 < /dev/null & done
 # task C: clean states (prep_c.py resumes at the first missing u/u_c)
-running "states/16x4 " || running "out $O/C/states/16x4" || setsid nohup python3 code/request4/prep_c.py --start results_request3/T0/16x4_s1/S_r1.0700.npy --uc 0.0249 --rs 1.0725,1.075,1.0765,1.0775,1.0785 --hold 2.5e5 --out $O/C/states/16x4 >> $O/C/states/log_16x4.txt 2>&1 < /dev/null &
+[ -f $O/C/states/16x4/S_r1.0775.json ] || running "out $O/C/states/16x4" || setsid nohup python3 code/request4/prep_c.py --start results_request3/T0/16x4_s1/S_r1.0700.npy --uc 0.0249 --rs 1.0725,1.075,1.0765,1.0775,1.0785 --hold 2.5e5 --out $O/C/states/16x4 >> $O/C/states/log_16x4.txt 2>&1 < /dev/null &
 running "out $O/C/states/12x3_a0.15" || setsid nohup python3 code/request4/prep_c.py --start results_request3/C/a0.15/12x3_s1/S_r1.0900.npy --uc 0.032543734989315044 --alpha 0.15 --dt 0.1 --rs 1.0925,1.0950,1.0975,1.1000 --hold 1.5e5 --out $O/C/states/12x3_a0.15 >> $O/C/states/log_12x3_a0.15.txt 2>&1 < /dev/null &
 # task C: C1 + C2 per size
 running "run_c.sh 8x2 " || setsid nohup sh code/request4/run_c.sh 8x2 0.0498 "1.0775 1.0800 1.0825 1.0850" > /dev/null 2>&1 < /dev/null &
