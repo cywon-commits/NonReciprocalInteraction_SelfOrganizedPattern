@@ -33,7 +33,7 @@ ax[0].text(-0.034, 0.36, r'dashed: $\gamma_c(0) + (d\gamma_s/d\varepsilon_{xx})\
 for i, (kk, lab) in enumerate([('exx_peak', 'at the peak'), ('exx_mode', 'mode window (0..30 downstream)'), ('exx_strip', 'strip |dx| < 37.5')]):
     sz = [(int(n.split()[1].split('x')[0])*19, LA[n]['DcL_'+kk]) for n in LA if n.startswith('size')] + [(304, LA['eps0=0']['DcL_'+kk])]
     sz.sort(); ax[1].plot(*zip(*sz), 'o-', color=C[i], label=f'eps0 = 0, local strain {lab}')
-    for n, mk in (('eps0=-0.03', 'v'), ('eps0=+0.03', '^'), ('12x3 eps0=+0.03', '^')):
+    for n, mk in (('eps0=-0.03', 'v'), ('eps0=+0.03', '^'), ('12x3 eps0=+0.03', '^'), ('12x3 eps0=-0.03', 'v')):
         if n in LA: ax[1].plot(228 if n.startswith('12x3') else 304, LA[n]['DcL_'+kk], mk, color=C[i], ms=8, mfc='none')
 ax[1].set_xlabel(r'$L_x$'); ax[1].set_ylabel(r'$\Delta_c L_x = (\gamma_c - \gamma_s(\varepsilon_{xx}^{loc}))\,L_x$'); ax[1].set_ylim(0, None); ax[1].legend(fontsize=7, loc='lower right')
 ax[1].text(150, 33, 'open triangles: external strain -0.03 (v) / +0.03 (^)', fontsize=7)
