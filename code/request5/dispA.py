@@ -4,6 +4,8 @@ here = os.path.dirname(os.path.abspath(__file__)); root = os.path.join(here, '..
 sys.path.insert(0, os.path.join(root, 'code', 'request4')); sys.path.insert(1, os.path.join(root, 'code', 'request2'))
 from twist import TwistModel, relax, link_blocks, shear_guess, basis
 from sparse_bloch import jac_sparse
+sys.path.insert(2, here)
+from unfold import trans_basis
 # Request 5, task A: full dispersion of the soft (elastic) branch of the uniformly deformed lattice
 # H = gamma y x^T + eps_xx x x^T (u = 0): relaxed twisted cell nx x 1 (Lx0 = 19 nx) resampled to Lx (eps_xx = Lx/Lx0 - 1), gamma = s/Lx0.
 # For every s the Bloch Jacobian is diagonalised by shift-invert near 0 (6 eigenpairs) on
@@ -26,25 +28,6 @@ if Lx != Lx0:
     S0 = (1-f)*S0[x0 % Lx0]+f*S0[(x0+1) % Lx0]; S0 /= np.linalg.norm(S0, axis=-1)[..., None]
 KM = np.geomspace(0.005, 0.20, A.nkm); TH = np.arange(90, 151, 3.0)
 KY = sorted(set(round(2*np.pi*n/(0.434*L), 6) for L in (152, 228, 304, 456, 608) for n in (1, 2, 3))); KX = np.round(np.arange(-0.30, 0.1201, 0.01), 4)
-def trans_basis(m, S):
-    # rigid-translation basis of every skyrmion core (tangent components of dS/dx, dS/dy times exp(i k.(r - r_c)))
-    e1, e2 = basis(S); gx, gy = m.grads(S); N = m.N; cores = []
-    lab, n = ndimage.label(S[:, 2].reshape(m.Lx, m.Ly) < 0)
-    I, Jj = np.meshgrid(np.arange(m.Lx), np.arange(m.Ly), indexing='ij'); pos = np.stack([I.ravel(), Jj.ravel()], 1).astype(float)
-    for c in range(1, n+1):
-        idx = np.nonzero(lab.ravel() == c)[0]
-        if len(idx) >= 5: cores.append((idx, pos[idx].mean(0)))
-    T = [(np.concatenate([np.sum(g[idx]*e1[idx], 1), np.sum(g[idx]*e2[idx], 1)])) for idx, rc in cores for g in (gx, gy)]
-    def amps(v, k):
-        # displacement amplitude d_j (2 complex numbers) of every skyrmion: least squares of the core part of v on the
-        # Bloch-phased translation vectors
-        out = []; R = []
-        for c, (idx, rc) in enumerate(cores):
-            ph = np.exp(1j*((pos[idx]-rc)@np.asarray(k))); ph2 = np.concatenate([ph, ph])
-            G = np.stack([T[2*c]*ph2, T[2*c+1]*ph2], 1); vv = np.concatenate([v[:N][idx], v[N:][idx]])
-            out.append(np.linalg.lstsq(G, vv, rcond=None)[0]); R.append(rc)
-        return np.array(out), np.array(R)
-    return amps
 def soft(m, bl, amps, k, nev=12):
     # unfolding: the supercell spectrum at k contains the branches of all k + G (supercell reciprocal vectors); the eigenpair whose
     # skyrmion displacement field is the purest plane wave exp(i k.R_j) belongs to k itself. Returns (max Re overall, Re of the
