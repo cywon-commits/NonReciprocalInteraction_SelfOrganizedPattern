@@ -9,7 +9,7 @@ from margin5 import margin, gs
 #   computed states (MODEL_FORM=pw; reproduces the independent k_x cuts at k_y = 0.127, 0.19 to 10-20 %, the linear form only to a
 #   factor 3 at m = 0.04). Grid points without a soft-branch eigenpair (large k, outside the soft cone; strongly
 #   stable) take the most negative Q of their k row. Bilinear interpolation in (log k, theta); |k| < 0.005 uses the k = 0.005 value
-#   (lambda ~ k^2), |k| > 0.2 uses the k = 0.2 value of Q (stable, grows as k^2); theta clamped to [90, 150] (plateau, stable);
+#   (lambda ~ k^2), beyond the largest |k| of the grid (0.2, or 0.4 with the disphi continuation) Q is held (stable); theta clamped to [90, 150] (plateau, stable);
 #   eps interpolated linearly between the four lines and clamped to [-0.105, 0] (the margin always uses the full map gamma_s(eps));
 #   lambda(-k) = lambda(k). The soft branch is the larger of the two acoustic branches; the other one is insensitive to m and sits on
 #   the plateau Q ~ -0.23 seen at theta = 90 and 150 deg, so the linear form is floored there: Q = max(A m + B, F(k; eps)),
@@ -27,11 +27,16 @@ def build_model():
         d = json.load(open(f)); disp[(d['Lx'], d['s'])] = d
     lines = {}
     for (Lx, s), d in disp.items(): lines.setdefault(Lx, []).append(d)
+    # continuation |k| in [0.23, 0.40] (disphi_*.json) appended when it exists for every state of every line
+    hi = all(os.path.exists(f"results_request5/A/disphi_nx8_Lx{d['Lx']}_s{d['s']}_a0.3.json") for d in disp.values()) and os.environ.get('KHI', '1') == '1'
     M = {}
     for Lx, ds in lines.items():
         eps = ds[0]['exx']; km = np.array(ds[0]['km']); ms, Qs = [], []
+        if hi: km = np.concatenate([km, json.load(open(f"results_request5/A/disphi_nx8_Lx{Lx}_s{ds[0]['s']}_a0.3.json"))['km']])
         for d in ds:
-            Q = np.array(d['polar'])[..., 1]/km[:, None]**2
+            P = np.array(d['polar'])[..., 1]
+            if hi: P = np.concatenate([P, np.array(json.load(open(f"results_request5/A/disphi_nx8_Lx{Lx}_s{d['s']}_a0.3.json"))['polar'])[..., 1]])
+            Q = P/km[:, None]**2
             for i in range(len(km)):
                 bad = ~np.isfinite(Q[i])
                 if bad.any(): Q[i, bad] = np.nanmin(Q[i]) if (~bad).any() else np.nan
@@ -53,7 +58,7 @@ def q_of_m(M, G, m):
     lo = m < ms[0]; hi = m > ms[-1]
     q[lo] = G[0]+(m[lo]-ms[0])*(G[1]-G[0])/(ms[1]-ms[0]); q[hi] = G[-1]+(m[hi]-ms[-1])*(G[-1]-G[-2])/(ms[-1]-ms[-2])
     return q
-MODEL = build_model(); EPS = np.array(sorted(MODEL)); LK = MODEL[EPS[0]]['lk']
+MODEL = build_model(); KHI = len(next(iter(MODEL.values()))['lk']) > 22; EPS = np.array(sorted(MODEL)); LK = MODEL[EPS[0]]['lk']
 def lam_local(kx, ky, m, eps):
     # kx, ky scalars; m, eps arrays over x
     k = np.hypot(kx, ky)
@@ -73,7 +78,8 @@ def lam_local(kx, ky, m, eps):
         t = np.clip(np.searchsorted(EPS, e)-1, 0, len(EPS)-2); w = (e-EPS[t])/(EPS[t+1]-EPS[t]); ix = np.arange(len(m))
         Q = (1-w)*QL[t, ix]+w*QL[t+1, ix]
     return np.maximum(Q, F_)*k**2
-def operator(xs, m, eps, Lx, ky, scheme='weyl', vrel=0.0, kmax=0.2):
+def operator(xs, m, eps, Lx, ky, scheme='weyl', vrel=0.0, kmax=None):
+    kmax = kmax or (0.35 if KHI else 0.2)
     J = int(kmax*Lx/(2*np.pi)); jj = np.arange(-J, J+1)
     if ky == 0: jj = jj[jj != 0]                                           # k = 0: uniform translation (Goldstone), not a mode
     ks = 2*np.pi*jj/Lx; n = len(ks); H = np.zeros((n, n), complex); N = len(xs)
@@ -95,7 +101,7 @@ def solve(xs, m, eps, Lx, Ly, scheme='weyl', vrel=0.0):
     best = None; per_n = []
     for nn in range(0, 40):
         ky = 2*np.pi*nn/Ly
-        if ky > 0.2: break
+        if ky > (0.35 if KHI else 0.2): break
         ks, H = operator(xs, m, eps, Lx, ky, scheme, vrel)
         ev, V = np.linalg.eig(H) if vrel else np.linalg.eigh(0.5*(H+H.conj().T))
         i = int(np.argmax(ev.real)); per_n.append((nn, float(ky), float(ev[i].real)))
