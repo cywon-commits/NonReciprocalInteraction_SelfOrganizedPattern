@@ -2,6 +2,8 @@ import sys, os, json, glob, numpy as np
 here = os.path.dirname(os.path.abspath(__file__)); root = os.path.join(here, '..', '..')
 sys.path.insert(0, here); sys.path.insert(1, os.path.join(root, 'code', 'request'))
 from style import plt, C
+from matplotlib.ticker import NullFormatter
+os.environ.setdefault('MODEL_FORM', 'pw')                          # primary dispersion model of task B
 from margin5 import margin
 from weylB import solve
 # Figures 2-6 of request 5 (figure 1 is written by anaA5.py).
@@ -21,18 +23,18 @@ for a_, Lx in zip(ax, (152, 144, 136)):
     a_.set_title(f"Lx = {Lx}, eps = {Lx/152-1:+.3f}", fontsize=10); a_.legend(fontsize=7)
 fig.savefig(f'{O}/fig2_alpha.png'); plt.close(fig)
 # ---- figure 3: gamma_c^pred(L) against Floquet and dynamics
-B = json.load(open(f'{O}/B_shift.json'))
 fig, ax = plt.subplots(1, 1, figsize=(6.5, 4.5))
-for key, mk, col, lab in (('gc_pred_sym', 's', C[2], 'local theory, symmetric ordering'), ('gc_pred_weyl', 'D', C[3], 'local theory, Weyl ordering')):
-    L, g, e = [], [], []
+for fn, key, mk, col, ls, lab in (('B_shift_pw', 'gc_pred_sym', 's', C[2], '-', 'local theory: piecewise model, symmetric'), ('B_shift_pw', 'gc_pred_weyl', 'D', C[3], '-', 'piecewise, Weyl'),
+                                  ('B_shift', 'gc_pred_sym', 's', C[2], ':', 'linear model, symmetric'), ('B_shift', 'gc_pred_weyl', 'D', C[3], ':', 'linear model, Weyl')):
+    B = json.load(open(f'{O}/{fn}.json')); L, g, e = [], [], []
     for sz, rows in B.items():
         v = [r[key] for r in rows if key in r and np.isfinite(r[key])]
         if v: L.append(LS[sz]); g.append(np.median(v)); e.append(np.ptp(v)/2)
-    ax.errorbar(L, g, yerr=e, fmt=mk+'-', color=col, label=lab, capsize=3)
+    ax.errorbar(L, g, yerr=e, fmt=mk+ls, color=col, label=lab, capsize=3, mfc='none' if ls == ':' else col, alpha=1 if ls == '-' else 0.6)
 ax.plot([LS[s] for s in DYN], list(DYN.values()), 'o--', color=C[0], label='dynamics (request 3)')
 ax.plot([LS[s] for s in FLQ], list(FLQ.values()), 'x', ms=11, mew=2.5, color=C[1], label='Floquet (request 4, 5)')
 ax.axhline(0.2933, color='#52514e', lw=0.8, ls=':'); ax.text(470, 0.295, r'uniform $\gamma_s(0)$', fontsize=8)
-ax.set_xscale('log'); ax.set_xticks(list(LS.values())); ax.set_xticklabels(list(LS.values())); ax.set_xlabel(r'$L_x$'); ax.set_ylabel(r'$\gamma_c$ (shear peak of the wave)')
+ax.set_xscale('log'); ax.set_xticks(list(LS.values())); ax.set_xticklabels(list(LS.values())); ax.xaxis.set_minor_formatter(NullFormatter()); ax.set_xlabel(r'$L_x$'); ax.set_ylabel(r'$\gamma_c$ (shear peak of the wave)')
 ax.legend(fontsize=8); fig.savefig(f'{O}/fig3_gc_pred.png'); plt.close(fig)
 # ---- figure 4: predicted eigenfunction against the Floquet envelope (just above the Floquet threshold)
 C0 = json.load(open(f'{O}/C0_summary.json')); C0.update(c1.get('c0', {}))
@@ -59,14 +61,14 @@ for k_, v in C0.items():
 Lf = [LS[s] for s in fl]; sf = np.array([fl[s]['rms'] for s in fl]); kf = np.array([fl[s]['kabs'] for s in fl])
 ax[0].plot(Lf, sf/np.sqrt(Lf), 'o', color=C[1], label='Floquet (displacement field)')
 ax[1].plot(Lf, sf*kf, 'o', color=C[1], label='Floquet')
-Bw = json.load(open(f'{O}/B_weyl.json')); pr = {}
+Bw = json.load(open(f'{O}/B_weyl_pw.json')); pr = {}
 for f, v in Bw.items():
     if v['lam'] > 0 and v['gamma_wave'] < 0.4 and (v['size'] not in pr or v['gamma_wave'] < pr[v['size']]['gamma_wave']): pr[v['size']] = v
 Lp = [LS[s] for s in pr]; sp = np.array([pr[s]['rms'] for s in pr]); kp = np.array([np.hypot(pr[s]['ky'], pr[s]['kx']) for s in pr])
 ax[0].plot(Lp, sp/np.sqrt(Lp), 'D', color=C[3], label='local theory (Weyl), first unstable state'); ax[1].plot(Lp, sp*kp, 'D', color=C[3], label='local theory')
 for v, ls, lab in ((1.24, '--', r'hypothesis 0.2: 1.24$\sqrt{L}$'), (0.88, ':', r'hypothesis 0.3: 0.88$\sqrt{L}$')): ax[0].axhline(v, color='#52514e', ls=ls, lw=1, label=lab)
 ax[1].axhline(np.sqrt(2), color='#52514e', ls=':', lw=1, label=r'$\sqrt{2}$ (hypothesis 0.3)')
-for a_ in ax: a_.set_xscale('log'); a_.set_xticks(list(LS.values())); a_.set_xticklabels(list(LS.values())); a_.set_xlabel(r'$L_x$'); a_.legend(fontsize=7)
+for a_ in ax: a_.set_xscale('log'); a_.set_xticks(list(LS.values())); a_.set_xticklabels(list(LS.values())); a_.xaxis.set_minor_formatter(NullFormatter()); a_.set_xlabel(r'$L_x$'); a_.legend(fontsize=7)
 ax[0].set_ylabel(r'$\sigma/\sqrt{L}$'); ax[1].set_ylabel(r'$\sigma\,|k^*|$'); fig.savefig(f'{O}/fig5_width.png'); plt.close(fig)
 # ---- figure 6: margin profiles m(x) L under external strain
 D = json.load(open(f'{O}/D_margin.json'))

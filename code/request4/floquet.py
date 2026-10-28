@@ -46,12 +46,18 @@ def orth(vs, S0):
     for w in nb: M = M-np.outer(w, w@M)
     q, r = np.linalg.qr(M); return [q[:, j].reshape(S0.shape) for j in range(q.shape[1])], np.diag(r)
 Q, _ = orth(Q, S); logs = []; hist = []
-for it in range(A.iters):
+# restart safety (request 5): after every window the base state, the subspace and the exponents are checkpointed (plain arrays)
+ck = os.path.join(os.path.dirname(A.out) or '.', 'ckpt_'+os.path.basename(A.out).replace('.json', '.npz')); it0 = 0
+if os.path.exists(ck):
+    z = np.load(ck); S = z['S']; Q = list(z['Q']); logs = list(z['logs']); hist = [g.tolist() for g in logs]; it0 = len(logs); t0 -= float(z['wall'])
+    print(f'resumed from {ck} at it={it0}', flush=True)
+for it in range(it0, A.iters):
     Sn = integ(S, nT); D_ = []
     for q in Q:
         Sp = S+A.eps*q; Sp /= np.linalg.norm(Sp, axis=-1)[..., None]; D_.append(tang(Sn, (integ(Sp, nT)-Sn)/A.eps))
     Q, rd = orth(D_, Sn); S = clean(Sn); g = np.log(np.abs(rd))/T; logs.append(g); hist.append(g.tolist())
     print(f'it={it} Gamma_top={np.round(g[:4], 7)} wall={time.time()-t0:.0f}', flush=True)
+    np.savez(ck+'.tmp.npz', S=S, Q=np.array(Q), logs=np.array(logs), wall=time.time()-t0); os.replace(ck+'.tmp.npz', ck)
 L = np.array(logs); half = L[len(L)//2:]; Gm = half.mean(0); Ge = half.std(0)/np.sqrt(len(half))
 # leading vector: soft-band weight (2D FFT of the in-plane perturbation) and envelope along x
 q = Q[0]; F = np.fft.fft2(q, axes=(0, 1)); P = (np.abs(F)**2).sum(-1)
