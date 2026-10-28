@@ -1,0 +1,276 @@
+Slip of current-driven skyrmion lattices beyond the Doppler threshold
+ · 
+Abstract
+A spin-polarized current drives a chiral magnetic texture through a Doppler (Landau) instability once the effective drift u exceeds u_c = ω₀(k_min)/(λ k_min). For the gyrotropic phonons of a skyrmion lattice (SkX), ω₀ ∝ k², so u_c ∝ 1/L_x and an extended lattice is unstable at any current. We ask what happens beyond this threshold, using Landau–Lifshitz–Gilbert simulations of a Néel SkX and a chiral helix with Zhang–Li torques.
+The two textures end differently. A helix runs away from its threshold into phase slips, giving a winding-number staircase with topological hysteresis. A SkX first saturates on a continuous branch, a steadily moving strain wave whose amplitude depends only on u/u_c (scale invariance, verified for L_x = 76–608). It then slips when the wave's shear plus compression exceed the local Born stability of the homogeneously deformed lattice.
+The finite-size correction to this local criterion is the zero-point cost of confining the soft mode in a scale-invariant harmonic margin well, which gives Δγ_c ∝ 1/L. Three consequences follow. The slip threshold is independent of damping. A uniaxial strain ε₀ shifts it quantitatively (d ln u_s/dε₀ ≈ −2.2). The tilt of the slipped lattice is fixed by the skyrmion charge and is independent of the current direction, as required by the C₂z and M_y symmetries.
+I. Introduction
+Current-driven chiral textures have a pattern analogue of Walker breakdown: a static or rigidly drifting pattern turns unstable when the Doppler shift of its soft modes exceeds their frequency. A companion paper (B1) derives this threshold and its efficiency λ from the symmetry of nonreciprocal spin couplings. The present paper asks the next question: what does the pattern do beyond the threshold, and what sets where it finally breaks?
+Two textures answer differently.
+Helix. Its Goldstone mode is a phase, and its threshold u_L = D/√2 is finite. The instability grows without saturation and ends in phase slips, which reduce the winding number one step at a time.
+Skyrmion lattice. Its threshold vanishes as 1/L. The lattice first carries a saturated strain wave and slips only later, when a lattice-scale elastic mode fails.
+We show that both endings obey one rule: slip occurs where the locally, homogeneously deformed pattern loses static stability. For the helix this is local unwinding; for the SkX it is a Born instability of the sheared and compressed lattice.
+The main results are:
+Universal strain curve. Beyond u_c, the SkX strain amplitude is a universal function of u/u_c, a consequence of a scale invariance of the gyrotropic phase dynamics.
+Local Born criterion. The wave carries a fixed compression ε_xx = −0.19γ set by its elliptical polarization. The static Born threshold of that state, γ_s(H_peak) = 0.269, is the L → ∞ slip threshold.
+Harmonic finite-size correction. The correction is Δγ_c ≈ ℓ_K√m₂ ∝ 1/L, the zero-point cost of confining the soft mode in a scale-invariant margin well. It is independent of damping.
+Strain tuning. A uniaxial strain moves the threshold by dγ_c/dε₀ = 0.44, equal to the static dγ_s/dε_xx. This is a direct test of locality.
+Tilt selection rule. The tilt of the slipped lattice is selected by the field sign and not by the current sign, as the C₂z and M_y symmetries require.
+Weak barriers. Hysteresis at T = 0 is topological (winding, Bragg indices, frozen defects), but its barriers are a few percent of J.
+II. Model and the linear threshold
+We use a square-lattice classical spin model with exchange J = 1, interfacial (Néel) DMI D = 0.4 and field B = 0.5D²/J, which stabilizes a triangular SkX. In-plane Zhang–Li torques have adiabatic and non-adiabatic parts. Unless stated otherwise, α = 0.3 and β = 0.6, so that u_eff = (β/α − 1)u = u. In a frame moving with velocity V the LLG equation reads
+w₁ is time-reversal odd (reactive) and w₂ is even (dissipative). For a rigid lattice the Thiele projection fixes V: we find V_x/u = 1.1588 and V_y/V_x = 0.319 (skyrmion Hall angle) for all box sizes.
+The lattice displacement u(r, t) obeys gyrotropic (type-B) Goldstone dynamics, G ẑ×∂_t u + 𝒟∂_t u = −δE′/δu. The pseudo-energy E′ = F_el[∇u] − λu_eff Π_x contains the crystal momentum Π_x = (G/2)∫(ẑ×u)·∂_x u. The phonon frequency is ω₀(k) = √(C_L C_T) k²/G. The Landau condition ω₀(k) < λu_eff k_x is first met at the smallest allowed k_x = 2π/L_x:
+The simulations give u_c·L_x = 7.56–7.58 for L_x = 76–608 (0.3% scatter) and no dependence on L_y. With the measured ω₀/k² = 0.616, this implies λ = 0.511, within 1% of the independently computed dissipative Doppler overlap κ_P = 0.505 (paper B1). The elastic constants C_T = 0.0137 and C_L = 0.0449 give √(C_L C_T)/G = 0.647, 5% from the measured ω₀/k². An infinite lattice is therefore unstable at any current; the physics of interest is what happens beyond u_c.
+III. Beyond threshold: phase slips versus a saturated branch
+Helix: a winding staircase. We take a chain of N = 200 sites with D = J tan(2π·3/200), so that the ground state holds n = 3 turns.
+No saturation. Just above the linear threshold u_L(3) = 0.0707 the mode grows exponentially without saturating, accelerates, and ends in a phase slip, n = 3 → 2.
+Staircase. Raising u gives the steps 3 → 2 → 1 → 0. They sit at the linear thresholds of each winding, u_L(2) = 0.1094 and u_unw(1) = 0.158.
+Topological hysteresis. On lowering u, re-winding from the ferromagnet is reversible near u_unw(1), but n = 1 survives down to u = 0.
+The slip criterion is local unwinding. A helix of local pitch q unwinds when u exceeds
+which decreases with q. The phase mode has no restoring nonlinearity, so local compression grows until the most compressed region crosses q*(u), defined by u_unw(q*) = u. Past that point growth accelerates by a factor 1.4–5 and a slip follows. At u_L ≈ D/√2 this requires 25–30% compression. Longer chains (N = 600, 1200) follow u_L(n) on average but lose 2–4 turns at once. Strips (L_y = 8–32) slip uniformly across their width, because the fastest mode has k_y = 0.
+SkX: a continuous branch. A 4×1 supercell (76×33 sites, 8 skyrmions) bifurcates supercritically at u_c = 0.0994.
+Single attractor. For u/u_c = 1.03, 1.06 and 1.10, runs started from the perfect lattice and from a strongly deformed state converge to the same steady amplitude.
+Steady moving state. The final state is a moving lattice that carries a steady strain wave and keeps every skyrmion.
+No mobility drop. The drift velocity stays on the Thiele value to 10⁻⁴, unlike Walker breakdown.
+Registry as a winding number. Write the triple-q lattice as density waves ψ_a = |ψ|e^{iφ_a}, with φ_a = G_a·(r − u) and a = 1, 2, 3. In a periodic box the Bragg indices
+are integers, the exact two-dimensional analogue of the helix winding (1/2π)∮∂_xφ dx. They change only when a dislocation, a zero of ψ_a, crosses the cycle C_j; the change is ΔN_a = ±G_a·b/2π. A registry slip is therefore the SkX counterpart of a helix phase slip.
+We detect it topologically, through Burgers circuits on the Delaunay graph and box-cycle mismatches of the unwrapped phases. Reading the index from the strongest Fourier peak fails once G·U ≳ 1.5, because sidebands then outweigh the Bragg peak. That reading misclassifies intact large-amplitude states as slipped.
+IV. Scale invariance and the universal strain curve
+The long-wavelength phase dynamics of Sec. II is invariant under
+which leaves the strain ∇u unchanged.
+The elastic energy density F_el[∇u] is invariant.
+The Doppler density u_eff·u·∂u is invariant.
+Both G∂_t u and δF/δu scale as 1/s.
+Three predictions follow, and all hold.
+Threshold. u_c ∝ 1/L_x, as found in Sec. II.
+Universal strain. In the continuum limit the saturated strain is a universal function of u/u_c alone.
+Displacement. The saturated displacement amplitude grows ∝ L.
+The table lists the maximal local shear γ = ∂_x u_y of topologically intact saturated states.
+u/u_c
+1.01
+1.02
+1.03
+1.04
+1.05
+1.06
+1.07
+4×1 (L_x = 76)
+0.128
+0.181
+0.221
+0.254
+0.282
+0.307
+0.330
+8×2 (152)
+0.130
+0.183
+0.224
+0.256
+0.284
+0.309
+0.331
+12×3 (228)
+0.136
+0.188
+0.226
+0.257
+0.283
+0.306
+0.326
+16×4 (304)
+0.126
+0.178
+0.217
+0.247
+0.273
+0.296
+0.314
+The curves coincide within 1–3% over a sixfold range of L_x (24×6 and 32×8 fall on the same curve). The branch is supercritical, γ² ≈ c(u/u_c − 1), with c drifting from 1.65 to 1.55 because of higher-order terms. A practical corollary: a saturated state of a small box, rescaled by s, seeds a large box near its attractor. This seeding converges to the same state as noise-started runs and bypasses the slow (∝ L²) growth.
+Elliptical polarization fixes the local deformation. The gyrotropic mode is elliptical, with |U_L|/|U_T| = √(C_T/C_L) = 0.55. The measured ratio is U_x/U_y = 0.56–0.59.
+Shear peak. The displacement gradient is H = γŷx̂ᵀ + ε_xx x̂x̂ᵀ with a size-independent compression ε_xx/γ = −0.19 ± 0.01 (cleanest at 32×8).
+Other components. The y components vanish.
+Compression maximum. It lies slightly downstream of the shear peak.
+This compression, a direct consequence of the type-B dynamics, is what makes the slip criterion differ from that of pure shear (Sec. V).
+V. Slip is a local Born instability
+Static map. We impose a uniform H = γŷx̂ᵀ + ε_xx x̂x̂ᵀ through a twisted periodic cell, S(x + L_x, y) = S(x, y − s), and diagonalize the Bloch Jacobian of the relaxed state.
+Long-wavelength first. The instability appears first at k → 0, with λ ≈ c(γ, θ)k² along θ ≈ 116°–124°. It is the loss of positivity of an incremental elastic modulus: a Born instability, not the softening of a finite-k phonon.
+No collapse before it. Skyrmion number is conserved up to γ = 0.53, so no core-collapse or strip-out boundary precedes it.
+Not a stress maximum. The shear energy stiffens with γ, so this is not a Frenkel stress maximum either.
+ε_xx
+−0.079
+−0.053
+−0.026
+0
++0.026
++0.053
+γ_s
+0.254
+0.268
+0.281
+0.293
+0.305
+0.314
+A fit gives γ_s(ε) = 0.293 + 0.44ε − 0.74ε²: compression weakens the lattice against shear. Solving γ = γ_s(−0.19γ) for the state at the wave's shear peak gives
+Dynamic threshold and its limit. The slip threshold γ_c(L) is the wave amplitude at which a lattice-scale mode starts to grow. It does not depend on protocol, dwell time or noise. Its values are 0.362, 0.347, 0.333, 0.316 and 0.305 for L_x = 152, 228, 304, 456 and 608.
+Free fit. γ_c = γ∞ + A/L + B/L² gives γ∞ = 0.270 ± 0.008, in agreement with the independently computed 0.269.
+Pure-shear reference. Fixing γ∞ at the pure-shear value 0.293, or at the earlier finite-k estimate 0.308, is rejected (χ² = 9 and 24 for 3 degrees of freedom).
+Test 1: external strain. A uniaxial strain ε₀ applied through the box length shifts γ_c.
+Box
+ε₀ = −0.03
+0
++0.03
+dγ_c/dε₀
+16×4
+0.322
+0.333
+0.348
+0.44
+12×3
+0.336
+0.347
+0.361
+0.41
+The slope equals the static dγ_s/dε_xx = 0.44–0.48, with the right sign: compression lowers the threshold. A global or nonlocal mechanism makes no such quantitative prediction.
+Test 2: deterministic Floquet thresholds. The saturated state is periodic in the frame of the wave, because the lattice passes through the wave at v_rel ≈ 2.7/L_x and repeats every T = a/v_rel ≈ 7L_x. Its Floquet exponents, computed without noise, cross zero at γ = 0.362, 0.345 and 0.332 (8×2, 12×3, 16×4). These reproduce the dynamic γ_c inside its bracketing intervals.
+Test 3: damping independence. For 12×3 at α = 0.15, 0.3 and 0.6, the threshold is the same within ±0.004. Over the same range the growth-rate slope Γ′ ∝ 1/α changes 3.5-fold. Damping sets how fast the mode grows beyond threshold, not where the threshold lies.
+Where the mode sits. The critical Floquet mode belongs to the same branch as the static instability (direction 113°–121°). 76–84% of its weight lies inside the window of negative local stiffness, centered 14–19 sites downstream of the shear peak, where the compression is strongest.
+VI. Finite-size correction: harmonic confinement in a scale-invariant margin well
+Define the local Born margin of the moving wave,
+evaluated on the smooth wave profile. The threshold requires a positive margin that decays as 1/L.
+L_x
+152
+228
+304
+456
+608
+position of max m, downstream of shear peak (/L_x)
+0.044
+0.038
+0.037
+0.036
+0.036
+ε_xx at max m
+−0.116
+−0.109
+−0.104
+−0.093
+−0.087
+curvature m₂L_x²
+17.6
+18.6
+18.5
+17.3
+16.3
+m_max·L_x at threshold
+18.4
+22.5
+26.0
+27.9
+27.3
+The well itself is scale invariant: its position is ∝ L and its curvature m₂ ∝ 1/L². The excess margin at threshold approaches m_max ≈ 27/L.
+Candidates. Three mechanisms could produce a size-dependent correction.
+Advection. The wave moves through the lattice at v_rel ∝ 1/L. For a local instability in a flowing medium, the absolute-instability condition shifts the threshold by ∝ v_rel²/(Γ′K). That shift is ∝ 1/L² and depends on damping through Γ′, so it fails on both counts.
+Current Doppler term. The current acting on the local mode also enters relative to a kinetic rate, so it too would depend on damping. The uniform-cell threshold changes by only 1% up to u = 0.1, so it fails quantitatively.
+Static non-uniformity. Only this candidate is compatible with the damping independence of Sec. V.
+Harmonic confinement. Near its maximum, m(x) ≈ m_max − ½m₂x². The envelope A(x) of the soft mode then grows as
+so the threshold is
+Because m₂ ∝ 1/L², scale invariance alone gives Δγ_c ∝ 1/L. The length ℓ_K depends only on the ratio of two rates that share the same mobility, so it is static and independent of damping, as observed.
+Consistency with one fitted constant. From m_max·L = 27 and √(m₂L²) ≈ 4.2 we get ℓ_K ≈ 6.4 sites. The same ℓ_K then predicts the following.
+Quantity
+Prediction
+Measured
+rms width of the critical mode, √(ℓ_K/√m₂) ≈ 1.24√L
+18.7 (12×3), 21.6 (16×4)
+19.6–21.2 and 17.8 (half-weight 20–24)
+full width of the positive-margin window, 2√(2m_max/m₂) ≈ 3.5√L
+43, 53, 61 (L = 152, 228, 304)
+37, 49, 60
+A square-well picture, in which the mode fills a window of width ∝ L√Δ, is ruled out by the eigenvectors. The harmonic well, whose width grows only as √L, is not. The smaller boxes deviate because the mode width (≈ 1.24√L) is no longer small compared with L and is comparable to the mode wavelength (≈ 2a). This deviation appears as the negative B/L² term in the fit of Sec. V.
+The complete slip criterion is therefore
+The left side is the local Born margin of the universal strain wave; the right side is a static zero-point cost. Both are static, so the threshold is independent of damping, and an external strain acts only through γ_s. As L → ∞ the right side vanishes and the slip threshold becomes the local Born criterion γ_s(H_peak) = 0.269. With the universal curve this corresponds to u_s/u_c ≈ 1.045–1.05.
+VII. Symmetry selects the tilt
+The unstable wave travels along the current and is mainly transverse, so slip changes the Bragg indices N_a^{(x)} of the cycle along the current. In 8×1 and 8×2 boxes the change is m = (+1, −2) in the a₁, a₂ basis, a tilt of the lattice. All 22 slipped runs obey one rule:
+Condition
+8×1 (5 seeds)
+8×2 (3 seeds)
+reference (u > 0, B > 0)
+(+1, −2) × 5
+(+1, −2) × 3
+current reversed (−u)
+(+1, −2) × 5
+(+1, −2) × 2
+field reversed (−B)
+(−1, +2) × 5
+(−1, +2) × 2
+The two 8×2 runs not listed did not slip within 6×10⁵ time units. The rule follows from exact symmetries of the model, with spins transforming as axial vectors.
+C₂z. (x, y) → (−x, −y) and (S_x, S_y, S_z) → (−S_x, −S_y, S_z). Exchange, Néel DMI and B_z are invariant; only u → −u. A tilted lattice is C₂z-invariant because its Bragg set is closed under G → −G. Reversing the current therefore gives the same tilt.
+M_y. y → −y. Here u_x is invariant, Néel DMI is invariant, and the axial field flips, B_z → −B_z. Reversing the field therefore gives the mirror-image tilt.
+No third symmetry. No symmetry of the model flips the tilt at fixed (u, B). The selection is deterministic, not spontaneous.
+Write the tilt as a rotation angle θ. It is invariant under C₂z and odd under M_y, so the lowest-order allowed form is
+The sense of the current-induced lattice rotation is set by the skyrmion charge and is even in the current. This is a direct experimental signature that separates the mechanism from gradient-driven rotations, which reverse with the current.
+Velocity memory. There is no Walker-type mobility drop: while the original registry survives, V_x/u = 1.1588 and V_y/V_x = 0.319 hold to 10⁻⁴ across threshold. Velocity changes only stepwise, when the structure changes.
+Tilted lattice: V_x −3.6%.
+90°-rotated lattice: Hall ratio −17%.
+In an undistorted triangular lattice, C₆ makes the dissipation tensor 𝒟 isotropic, so rotation alone cannot change the Hall angle. The observed change comes from the residual strain (C₆ → C₂) that the box imposes after the slip. In samples, boundaries and pinning play the role of the box, which predicts a Hall-angle memory proportional to residual strain.
+VIII. Finite temperature and current memory
+At T = 0 every slip leaves a memory that survives to u = 0: lost helix turns, a changed Bragg registry, or frozen dislocations. Thermal fluctuations shrink this memory but do not erase it on simulation time scales; the barriers are a few percent of J.
+Helix (N = 200). The hysteresis area ∫(n_up − n_down)du falls from 0.21 (T = 0) to 0.15, 0.08, 0.055 and 0.03 at T = 0.002, 0.005, 0.01 and 0.02. Arrhenius fits of waiting times (6 seeds) give two barriers, each uncertain by about ±30%:
+Re-winding barrier (n = 1 → 2): ΔE ≈ 0.033 J, nearly the same at u = 0 and u = 0.06. The current hardly lowers it, so recovery on the descending branch is set by temperature.
+Slip barrier (n = 3 → 2) at 0.78 u_L: ΔE ≈ 0.015 J, vanishing as u → u_L.
+SkX (8×2). Defects frozen at u = 0 persist for 3×10⁵ time units at T = 0.05. At T ≳ 0.07 ≈ 0.35 T_m they heal within 10⁴–10⁵, and ψ₆ recovers from 0.6 to 0.85–0.9. At T = 0.2 the lattice melts, consistent with the KTHNY melting temperature T_m ≈ 0.19–0.21 found in paper B1.
+What this means for samples. In the monolayer model the barriers are a few percent of J. A slip or re-winding event in a film of N_z layers creates a defect line or wall through the thickness, so ΔE ∝ N_z is the natural expectation. If so, the memory survives near room temperature in films tens of layers thick. This scaling is not yet computed.
+IX. Experimental implications
+Where the model meets real samples. In a sample, L_x is not the system size but the length over which the lattice responds coherently along the current: a pinning or grain length, or the sample size in a nanostructure. The predictions below involve only ratios to u_c or static elastic properties, so they do not depend on that length.
+Bragg satellites, not drift velocity. Above u_c the lattice carries a strain wave, and its satellite intensity rises as ∝ (u − u_c). The mean drift and Hall angle stay on their Thiele values until a slip.
+Strain tunes the slip current. A uniaxial strain along the current shifts u_c through the elastic constants (d ln u_c/dε₀ ≈ −1.5) and u_s/u_c through the Born criterion.
+ε₀
+−0.03
+0
++0.03
+u_c·L_x
+7.92
+7.57
+7.22
+u_s/u_c
+1.105
+1.08
+1.065
+u_s·L_x
+8.75
+8.17
+7.69
+The values are for 16×4. They give d ln u_s/dε₀ ≈ −2.2: 3% tension lowers the slip current by about 6.5%, and compression raises it. Piezoelectric substrates or epitaxial strain can test this.
+Tilt rule. The slipped lattice tilts the same way when the current is reversed and the opposite way when the field is reversed.
+Current memory. After the current is switched off, the lattice keeps a tilted registry, a residual strain and a changed Hall angle. A helix keeps a longer pitch, reached through a staircase of phase slips at the thresholds u_L(n).
+X. Conclusion
+Beyond the Doppler threshold, a driven chiral texture fails where its locally deformed state loses static stability.
+Helix. The threshold is finite, so the phase mode runs directly into local unwinding.
+Skyrmion lattice. The threshold vanishes as 1/L, and scale invariance first produces a universal strain wave. The lattice slips when that wave's shear plus compression cross the Born boundary.
+Finite size. The correction is a static harmonic zero-point cost.
+Selection. The tilt is selected by the C₂z and M_y symmetries.
+Current therefore decides how strongly the lattice is deformed, and the static lattice decides where it breaks.
+Appendix: methods, figures, open checks
+Numerics. All simulations are classical spin dynamics on a square lattice with periodic boundaries.
+Integration. Heun integration with dt = 0.2 (dt = 0.1 for α = 0.15). The time step is verified by halving it; growth rates agree to 10⁻³.
+Boxes. n_x × n_y copies of the 19×33 two-skyrmion cell, from 4×1 to 32×8 (L_x = 76–608).
+Protocol. Quasi-static current ramps with a 10⁻⁶ noise re-seed at each step. Each step is held to equilibrium (< 1% change over the last half).
+Registry. Topological, from Bragg phases: Burgers circuits plus box-cycle index changes.
+Static stability. Twisted periodic cells, sparse shift-invert Bloch diagonalization, and the long-wavelength coefficient c(γ, θ).
+Floquet. Nonlinear finite-difference propagation of 6 vectors over T = a/v_rel with QR re-orthogonalization, with neutral directions projected out.
+Code and data are in the GitHub repository cywon-commits/NonReciprocalInteraction_SelfOrganizedPattern, branch claude/loving-cray-7g4ju9, folders results_request to results_request4.
+Figure plan.
+Helix winding staircase and its hysteresis; SkX continuous branch (existing figure hysteresis.png).
+Universal strain curve γ(u/u_c) for five box sizes, and u_c·L_x versus L_x.
+Static Born map γ_s(ε_xx), the self-consistent point, and γ_c(L) extrapolating to it.
+External-strain shift of γ_c against the static slope.
+Margin well m(x), the critical Floquet mode envelope, and the harmonic prediction.
+Tilt selection table and the C₂z/M_y diagram.
+Open checks before submission.
+Determine ℓ_K independently from the uniform-cell dispersion near threshold. The prediction is D/Γ′ = 2ℓ_K² ≈ 82 sites².
+Mode widths at 24×6 and 32×8 (predicted rms 26.5 and 30.6 sites).
+m₂L² and m_max·L under external strain ε₀ = ±0.03.
+Barrier scaling with film thickness (a multilayer model).
+Literature: current-induced SkX rotation by gradients (Jonietz et al., Everschor et al.) and its current-sign dependence, to support the tilt-signature claim. Also current-induced helix conicity and helix pitch changes.
+Reconcile the notation of λ, κ_P and the coupling dictionary with paper B1.

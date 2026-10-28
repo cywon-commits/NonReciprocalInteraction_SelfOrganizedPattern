@@ -30,3 +30,7 @@ results_request4/**/*.lock
 results_request4/**/log_*.txt
 results_request4/C1/test/
 results_request4/B/queue_*.log
+results_request5/**/pid_*
+results_request5/**/ckpt_*.npz
+results_request5/**/*.lock
+results_request5/**/log_*.txt
