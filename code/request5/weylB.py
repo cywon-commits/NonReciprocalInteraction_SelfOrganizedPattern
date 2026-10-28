@@ -9,7 +9,10 @@ from margin5 import margin, gs
 #   stable) take the most negative Q of their k row. Bilinear interpolation in (log k, theta); |k| < 0.005 uses the k = 0.005 value
 #   (lambda ~ k^2), |k| > 0.2 uses the k = 0.2 value of Q (stable, grows as k^2); theta clamped to [90, 150] (plateau, stable);
 #   eps interpolated linearly between the four lines and clamped to [-0.105, 0] (the margin always uses the full map gamma_s(eps));
-#   lambda(-k) = lambda(k).
+#   lambda(-k) = lambda(k). The soft branch is the larger of the two acoustic branches; the other one is insensitive to m and sits on
+#   the plateau Q ~ -0.23 seen at theta = 90 and 150 deg, so the linear form is floored there: Q = max(A m + B, F(k; eps)),
+#   F = min over theta of B (without the floor the linear extrapolation to the strongly negative margins of the strain wave,
+#   m down to -0.57, gives Q ~ -3 and a symbol so rough that the quantised operator has spurious positive eigenvalues).
 # Operator for every allowed k_y = 2 pi n/L_y (n = 0 ... with k_y <= 0.2): Weyl quantisation in the plane-wave basis
 #   k_x = 2 pi j/L_x, |k_x| <= kmax: <k|L|k'> = (1/L_x) int dx exp(-i(k-k')x) lambda((k+k')/2, k_y; H(x)).
 # Alternative ordering (scheme dependence, 'sym'): <k|L|k'> = (1/2)[lambda~(k; q) + lambda~(k'; q)], lambda~(k; q) = Fourier
@@ -35,7 +38,8 @@ def build_model():
             ms.append(d['gamma']-gs(eps)); Qs.append(Q)
         ms = np.array(ms); Qs = np.array(Qs); near = np.abs(ms) < 0.03
         X = np.stack([ms[near], np.ones(near.sum())], 1); cf = np.linalg.lstsq(X, Qs[near].reshape(near.sum(), -1), rcond=None)[0]
-        M[eps] = dict(A=cf[0].reshape(Qs.shape[1:]), B=cf[1].reshape(Qs.shape[1:]), lk=np.log(km))
+        A_, B_ = cf[0].reshape(Qs.shape[1:]), cf[1].reshape(Qs.shape[1:])
+        M[eps] = dict(A=A_, B=B_, F=B_.min(1), lk=np.log(km))
     return M
 MODEL = build_model(); EPS = np.array(sorted(MODEL)); LK = MODEL[EPS[0]]['lk']
 def lam_local(kx, ky, m, eps):
@@ -47,22 +51,25 @@ def lam_local(kx, ky, m, eps):
     j = int(np.clip(np.searchsorted(TH, th)-1, 0, len(TH)-2)); v = (th-TH[j])/(TH[j+1]-TH[j])
     def bil(G): return (1-u)*(1-v)*G[i, j]+u*(1-v)*G[i+1, j]+(1-u)*v*G[i, j+1]+u*v*G[i+1, j+1]
     a = np.array([bil(MODEL[e]['A']) for e in EPS]); b = np.array([bil(MODEL[e]['B']) for e in EPS])
-    e = np.clip(eps, EPS[0], EPS[-1]); A_ = np.interp(e, EPS, a); B_ = np.interp(e, EPS, b)
-    return (A_*m+B_)*k**2
+    fl = np.array([(1-u)*MODEL[e]['F'][i]+u*MODEL[e]['F'][i+1] for e in EPS])
+    e = np.clip(eps, EPS[0], EPS[-1]); A_ = np.interp(e, EPS, a); B_ = np.interp(e, EPS, b); F_ = np.interp(e, EPS, fl)
+    return np.maximum(A_*m+B_, F_)*k**2
 def operator(xs, m, eps, Lx, ky, scheme='weyl', vrel=0.0, kmax=0.2):
-    J = int(kmax*Lx/(2*np.pi)); ks = 2*np.pi*np.arange(-J, J+1)/Lx; n = len(ks); H = np.zeros((n, n), complex); N = len(xs)
+    J = int(kmax*Lx/(2*np.pi)); jj = np.arange(-J, J+1)
+    if ky == 0: jj = jj[jj != 0]                                           # k = 0: uniform translation (Goldstone), not a mode
+    ks = 2*np.pi*jj/Lx; n = len(ks); H = np.zeros((n, n), complex); N = len(xs)
     if scheme == 'weyl':
         cache = {}
         for a_ in range(n):
             for b_ in range(n):
                 kb = 0.5*(ks[a_]+ks[b_]); key = round(kb, 10)
                 if key not in cache: cache[key] = np.fft.fft(lam_local(kb, ky, m, eps))/N
-                q = a_-b_; H[a_, b_] = cache[key][(-q) % N] if False else cache[key][q % N]
+                q = jj[a_]-jj[b_]; H[a_, b_] = cache[key][q % N]
     else:
         F = [np.fft.fft(lam_local(k, ky, m, eps))/N for k in ks]
         for a_ in range(n):
             for b_ in range(n):
-                q = a_-b_; H[a_, b_] = 0.5*(F[a_][q % N]+F[b_][q % N])
+                q = jj[a_]-jj[b_]; H[a_, b_] = 0.5*(F[a_][q % N]+F[b_][q % N])
     H += np.diag(1j*vrel*ks)
     return ks, H
 def solve(xs, m, eps, Lx, Ly, scheme='weyl', vrel=0.0):

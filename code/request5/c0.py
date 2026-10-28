@@ -15,8 +15,8 @@ from regist import topo
 b1 = np.array([2*np.pi/19, -2*np.pi/33]); b2 = np.array([0., 4*np.pi/33])
 def reduce_bz(K):
     best = K.copy()
-    for n1 in range(-12, 13):
-        for n2 in range(-12, 13):
+    for n1 in range(-20, 21):
+        for n2 in range(-20, 21):
             c = K+n1*b1+n2*b2
             best = np.where((np.hypot(*c.T) < np.hypot(*best.T))[:, None], c, best)
     return best
@@ -45,7 +45,7 @@ def analyse(fj, iq):
     near = np.hypot(*(K-kpk).T) < 2.1*np.pi/Lx*1.01
     return dict(file=fj, iq=iq, r=d['r'], alpha=d['alpha'], Lx=Lx, Ly=Ly, Gamma=d['Gamma'][:4], gamma_wave=cr['gpeak'], k=kpk.tolist(), kabs=float(np.hypot(*kpk)),
                 theta=float(np.degrees(np.arctan2(kpk[1], kpk[0])) % 180), carrier_weight=float(Pw[near].sum()/Pw.sum()), rms=rms, half=half, offset=off,
-                sigma_k=rms*float(np.hypot(*kpk)))
+                sigma_k=rms*float(np.hypot(*kpk)), env_x=(((xs-cr['xpeak'])+Lx/2) % Lx-Lx/2).tolist(), env_w=(w2/w2.max()).tolist())
 if __name__ == '__main__':
     out = {}
     for fj in sorted(glob.glob('results_request4/C/C1/*/f_r*.json')):

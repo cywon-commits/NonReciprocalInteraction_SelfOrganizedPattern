@@ -16,3 +16,5 @@ running "dispA.py --Lx 144 --s 41,42,43 --alpha 0.15" || setsid nohup python3 co
 for r in 1.0700 1.0710 1.0720; do
   running "run_c1.sh 24x6 0.016601 $r" || setsid nohup sh code/request5/run_c1.sh 24x6 0.016601 $r > /dev/null 2>&1 < /dev/null &
 done
+[ -f $O/C1/states/24x6/S_r1.0730.json ] || running "rs 1.0730" || setsid nohup python3 code/request4/prep_c.py --start $O/C1/states/24x6/S_r1.0720.npy --uc 0.016601 --rs 1.0730 --hold 5e4 --out $O/C1/states/24x6 >> $O/C1/states/log_24x6.txt 2>&1 < /dev/null &
+running "run_c1.sh 24x6 0.016601 1.0730" || setsid nohup sh code/request5/run_c1.sh 24x6 0.016601 1.0730 > /dev/null 2>&1 < /dev/null &
