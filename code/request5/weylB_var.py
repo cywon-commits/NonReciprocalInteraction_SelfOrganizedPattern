@@ -15,7 +15,8 @@ def root(xs, m, e, Lx, Ly, scheme, vrel):
     for _ in range(14):
         mid = 0.5*(lo+hi); lo, hi = (mid, hi) if f(mid) > 0 else (lo, mid)
     return 0.5*(lo+hi)
-CASES = [('8x2', 8, 'results_request4/C/states/8x2/S_r1.0825.npy'), ('12x3', 12, 'results_request4/C/states/12x3/S_r1.0775.npy'),
+if __name__ != "__main__": CASES = []
+else: CASES = [('8x2', 8, 'results_request4/C/states/8x2/S_r1.0825.npy'), ('12x3', 12, 'results_request4/C/states/12x3/S_r1.0775.npy'),
          ('16x4', 16, 'results_request4/C/states/16x4/S_r1.0765.npy'), ('24x6', 24, 'results_request5/C1/states/24x6/S_r1.0720.npy'),
          ('32x8', 32, 'results_request3/A32/chain/S_r1.0650.npy')]
 BS = json.load(open(f'results_request5/B_shift{"" if FORM == "lin" else "_"+FORM}.json')); out = {}
@@ -28,4 +29,4 @@ for sz, nx, f in CASES:
             D = root(xs, m, e, Lx, ly, sc, v); r[f'{sc}_{var}'] = mg['g_peak']-D/sl
     out[sz] = r
     print(sz, ' '.join(f'{k} {v:.4f}' for k, v in r.items()), flush=True)
-json.dump(out, open(f'results_request5/B_variants{"" if FORM == "lin" else "_"+FORM}.json', 'w'), indent=1)
+if CASES: json.dump(out, open(f'results_request5/B_variants{"" if FORM == "lin" else "_"+FORM}.json', 'w'), indent=1)
