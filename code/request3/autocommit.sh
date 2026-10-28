@@ -3,7 +3,7 @@
 cd "$(dirname "$0")/../.."
 while true; do
   sleep 1200
-  git add -A results_request3 results_request4 >/dev/null 2>&1
+  git add -A results_request3 results_request4 results_request5 >/dev/null 2>&1
   if ! git diff --cached --quiet; then
     git commit -qm "Request 3/4: intermediate results
 

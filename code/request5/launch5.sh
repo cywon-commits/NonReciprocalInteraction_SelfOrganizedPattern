@@ -12,3 +12,4 @@ running "mpoint_loop.sh" || setsid nohup sh code/request5/mpoint_loop.sh > /dev/
 # extra states at large margins (the mode window has m ~ 0.09 at eps_xx ~ -0.1): polar grid only
 running "dispA.py --Lx 136 --s 45" || setsid nohup python3 code/request5/dispA.py --Lx 136 --s 45,47,49,51 --grid polar --out $O/A >> $O/A/log_Lx136x.txt 2>&1 < /dev/null &
 running "dispA.py --Lx 140 --s 47" || setsid nohup python3 code/request5/dispA.py --Lx 140 --s 47,49,51,53 --grid polar --out $O/A >> $O/A/log_Lx140x.txt 2>&1 < /dev/null &
+running "autocommit.sh" || setsid nohup sh code/request3/autocommit.sh > /dev/null 2>&1 < /dev/null &
