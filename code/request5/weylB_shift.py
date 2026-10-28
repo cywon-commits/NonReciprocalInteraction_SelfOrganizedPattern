@@ -1,7 +1,7 @@
 import sys, os, json, glob, numpy as np
 here = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, here)
 from margin5 import margin
-from weylB import solve
+from weylB import solve, FORM
 # Task B, threshold from the local theory: Lambda0 > 0 in every measured strain-wave state (B_weyl.json), so the predicted threshold
 # is read as the margin the local operator tolerates. For each state: the uniform downward shift Delta* of the measured margin
 # profile, m(x) -> m(x) - Delta, at which the largest Weyl (and 'sym') eigenvalue crosses zero (bisection). The local theory predicts
@@ -39,4 +39,4 @@ for size, (d, nx) in SETS.items():
         for r in rows: r['gc_pred_weyl'] = r['gamma_wave']-r['D_weyl']/sl; r['gc_pred_sym'] = r['gamma_wave']-r['D_sym']/sl
         print(size, 'd m_max/d gamma_wave = %.2f' % sl, 'gamma_c^pred weyl', np.round([r['gc_pred_weyl'] for r in rows], 4), 'sym', np.round([r['gc_pred_sym'] for r in rows], 4), flush=True)
     out[size] = rows
-json.dump(out, open('results_request5/B_shift.json', 'w'), indent=1)
+json.dump(out, open(f'results_request5/B_shift{"" if FORM == "lin" else "_"+FORM}.json', 'w'), indent=1)

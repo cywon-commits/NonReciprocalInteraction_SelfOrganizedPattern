@@ -4,8 +4,10 @@ from margin5 import margin, gs
 # Task B: parameter-free prediction of the threshold from the uniform-cell dispersion (task A) and the measured strain-wave profile.
 # Local dispersion model, taken directly from the polar grids of task A (no fit to the dynamics, no polynomial):
 #   Q(k, theta; state) = lambda/k^2 of the unfolded soft branch on the grid |k| in [0.005, 0.2] (22 log points) x theta in [90, 150];
-#   on every eps line Q is linear in the margin m = gamma - gamma_s(eps) at each grid point (fit over the states with |m| < 0.03):
-#   Q = A(k, theta; eps) m + B(k, theta; eps). Grid points without a soft-branch eigenpair (large k, outside the soft cone; strongly
+#   on every eps line Q is taken as a function of the margin m = gamma - gamma_s(eps) at each grid point, either linear
+#   (MODEL_FORM=lin, fit over the states with |m| < 0.03: Q = A(k, theta; eps) m + B(k, theta; eps)) or piecewise linear through all
+#   computed states (MODEL_FORM=pw; reproduces the independent k_x cuts at k_y = 0.127, 0.19 to 10-20 %, the linear form only to a
+#   factor 3 at m = 0.04). Grid points without a soft-branch eigenpair (large k, outside the soft cone; strongly
 #   stable) take the most negative Q of their k row. Bilinear interpolation in (log k, theta); |k| < 0.005 uses the k = 0.005 value
 #   (lambda ~ k^2), |k| > 0.2 uses the k = 0.2 value of Q (stable, grows as k^2); theta clamped to [90, 150] (plateau, stable);
 #   eps interpolated linearly between the four lines and clamped to [-0.105, 0] (the margin always uses the full map gamma_s(eps));
@@ -36,11 +38,21 @@ def build_model():
             for i in range(1, len(km)):                                   # whole rows missing: carry the previous row
                 if not np.isfinite(Q[i]).any(): Q[i] = Q[i-1]
             ms.append(d['gamma']-gs(eps)); Qs.append(Q)
-        ms = np.array(ms); Qs = np.array(Qs); near = np.abs(ms) < 0.03
+        o = np.argsort(ms); ms = np.array(ms)[o]; Qs = np.array(Qs)[o]; near = np.abs(ms) < 0.03
         X = np.stack([ms[near], np.ones(near.sum())], 1); cf = np.linalg.lstsq(X, Qs[near].reshape(near.sum(), -1), rcond=None)[0]
         A_, B_ = cf[0].reshape(Qs.shape[1:]), cf[1].reshape(Qs.shape[1:])
-        M[eps] = dict(A=A_, B=B_, F=B_.min(1), lk=np.log(km))
+        M[eps] = dict(A=A_, B=B_, F=B_.min(1), lk=np.log(km), ms=ms, Qs=Qs)
     return M
+# MODEL_FORM = 'lin' (default): Q linear in m from the states with |m| < 0.03; 'pw': piecewise linear in m through all the states of the
+# line (exact at every computed state), extrapolated beyond the computed range with the slope of the last two states at each end.
+FORM = os.environ.get('MODEL_FORM', 'lin')
+def q_of_m(M, G, m):
+    # G: Q values of the states at one interpolated grid point (len(ms)); m: array over x
+    if FORM == 'lin': return None
+    ms = M['ms']; q = np.interp(m, ms, G)
+    lo = m < ms[0]; hi = m > ms[-1]
+    q[lo] = G[0]+(m[lo]-ms[0])*(G[1]-G[0])/(ms[1]-ms[0]); q[hi] = G[-1]+(m[hi]-ms[-1])*(G[-1]-G[-2])/(ms[-1]-ms[-2])
+    return q
 MODEL = build_model(); EPS = np.array(sorted(MODEL)); LK = MODEL[EPS[0]]['lk']
 def lam_local(kx, ky, m, eps):
     # kx, ky scalars; m, eps arrays over x
@@ -50,10 +62,17 @@ def lam_local(kx, ky, m, eps):
     i = int(np.clip(np.searchsorted(LK, lk)-1, 0, len(LK)-2)); u = (lk-LK[i])/(LK[i+1]-LK[i])
     j = int(np.clip(np.searchsorted(TH, th)-1, 0, len(TH)-2)); v = (th-TH[j])/(TH[j+1]-TH[j])
     def bil(G): return (1-u)*(1-v)*G[i, j]+u*(1-v)*G[i+1, j]+(1-u)*v*G[i, j+1]+u*v*G[i+1, j+1]
-    a = np.array([bil(MODEL[e]['A']) for e in EPS]); b = np.array([bil(MODEL[e]['B']) for e in EPS])
     fl = np.array([(1-u)*MODEL[e]['F'][i]+u*MODEL[e]['F'][i+1] for e in EPS])
-    e = np.clip(eps, EPS[0], EPS[-1]); A_ = np.interp(e, EPS, a); B_ = np.interp(e, EPS, b); F_ = np.interp(e, EPS, fl)
-    return np.maximum(A_*m+B_, F_)*k**2
+    e = np.clip(eps, EPS[0], EPS[-1]); F_ = np.interp(e, EPS, fl)
+    if FORM == 'lin':
+        a = np.array([bil(MODEL[e_]['A']) for e_ in EPS]); b = np.array([bil(MODEL[e_]['B']) for e_ in EPS])
+        Q = np.interp(e, EPS, a)*m+np.interp(e, EPS, b)
+    else:
+        # Q on each eps line at the local m, then linear in eps between the lines
+        QL = np.array([q_of_m(MODEL[e_], bil(np.moveaxis(MODEL[e_]['Qs'], 0, -1)), m) for e_ in EPS])
+        t = np.clip(np.searchsorted(EPS, e)-1, 0, len(EPS)-2); w = (e-EPS[t])/(EPS[t+1]-EPS[t]); ix = np.arange(len(m))
+        Q = (1-w)*QL[t, ix]+w*QL[t+1, ix]
+    return np.maximum(Q, F_)*k**2
 def operator(xs, m, eps, Lx, ky, scheme='weyl', vrel=0.0, kmax=0.2):
     J = int(kmax*Lx/(2*np.pi)); jj = np.arange(-J, J+1)
     if ky == 0: jj = jj[jj != 0]                                           # k = 0: uniform translation (Goldstone), not a mode
@@ -114,4 +133,4 @@ if __name__ == '__main__':
         out[f] = dict(size=size, Lx=Lx, gamma_wave=mg['g_peak'], mmaxL=mg['mmaxL'], m2L2=mg['m2L2'], lam=lam, lam_sym=lams, lam_adv=lamv, n=n, ky=ky, kx=kxc,
                       rms=rms, offset=float(off), per_n=per_n)
         print(f"{size} {os.path.basename(f)} gw={mg['g_peak']:.4f} Lambda0={lam:+.3e} (sym {lams:+.3e}, adv {lamv:+.3e}) n={n} ky={ky:.4f} <|kx|>={kxc:.4f} rms={rms:.1f} offset={off:+.1f}", flush=True)
-    json.dump(out, open('results_request5/B_weyl.json', 'w'), indent=1)
+    json.dump(out, open(f'results_request5/B_weyl{"" if FORM == "lin" else "_"+FORM}.json', 'w'), indent=1)
