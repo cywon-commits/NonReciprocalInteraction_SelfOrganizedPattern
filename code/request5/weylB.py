@@ -11,7 +11,9 @@ from margin5 import margin, gs
 #   stable) take the most negative Q of their k row. Bilinear interpolation in (log k, theta); |k| < 0.005 uses the k = 0.005 value
 #   (lambda ~ k^2), beyond the largest |k| of the grid (0.2, or 0.4 with the disphi continuation) Q is held (stable); theta clamped to [90, 150] (plateau, stable);
 #   eps interpolated linearly between the four lines and clamped to [-0.105, 0] (the margin always uses the full map gamma_s(eps));
-#   lambda(-k) = lambda(k). The soft branch is the larger of the two acoustic branches; the other one is insensitive to m and sits on
+#   lambda(-k) = lambda(k). The margin is clamped from below at the smallest computed margin (m = -0.015): the computed states
+#   cover m in [-0.017, +0.10], every one of them has Q < 0 everywhere for m < 0, and extrapolating further (the strain wave has m down
+#   to -0.57) produced spurious positive Q at large k. The soft branch is the larger of the two acoustic branches; the other one is insensitive to m and sits on
 #   the plateau Q ~ -0.23 seen at theta = 90 and 150 deg, so the linear form is floored there: Q = max(A m + B, F(k; eps)),
 #   F = min over theta of B (without the floor the linear extrapolation to the strongly negative margins of the strain wave,
 #   m down to -0.57, gives Q ~ -3 and a symbol so rough that the quantised operator has spurious positive eigenvalues).
@@ -58,11 +60,12 @@ def q_of_m(M, G, m):
     lo = m < ms[0]; hi = m > ms[-1]
     q[lo] = G[0]+(m[lo]-ms[0])*(G[1]-G[0])/(ms[1]-ms[0]); q[hi] = G[-1]+(m[hi]-ms[-1])*(G[-1]-G[-2])/(ms[-1]-ms[-2])
     return q
-MODEL = build_model(); KHI = len(next(iter(MODEL.values()))['lk']) > 22; EPS = np.array(sorted(MODEL)); LK = MODEL[EPS[0]]['lk']
+MODEL = build_model(); KHI = len(next(iter(MODEL.values()))['lk']) > 22; EPS = np.array(sorted(MODEL)); MLO = max(M_['ms'][0] for M_ in MODEL.values()); LK = MODEL[EPS[0]]['lk']
 def lam_local(kx, ky, m, eps):
     # kx, ky scalars; m, eps arrays over x
     k = np.hypot(kx, ky)
     if k == 0: return np.zeros_like(m)
+    m = np.maximum(m, MLO)                # below the computed margins (m < -0.015) the branch is held at its value there (stable)
     th = np.clip(np.degrees(np.arctan2(ky, kx)) % 180, TH[0], TH[-1]); lk = np.clip(np.log(k), LK[0], LK[-1])
     i = int(np.clip(np.searchsorted(LK, lk)-1, 0, len(LK)-2)); u = (lk-LK[i])/(LK[i+1]-LK[i])
     j = int(np.clip(np.searchsorted(TH, th)-1, 0, len(TH)-2)); v = (th-TH[j])/(TH[j+1]-TH[j])
