@@ -18,3 +18,5 @@ for r in 1.0700 1.0710 1.0720; do
 done
 [ -f $O/C1/states/24x6/S_r1.0730.json ] || running "rs 1.0730" || setsid nohup python3 code/request4/prep_c.py --start $O/C1/states/24x6/S_r1.0720.npy --uc 0.016601 --rs 1.0730 --hold 5e4 --out $O/C1/states/24x6 >> $O/C1/states/log_24x6.txt 2>&1 < /dev/null &
 running "run_c1.sh 24x6 0.016601 1.0730" || setsid nohup sh code/request5/run_c1.sh 24x6 0.016601 1.0730 > /dev/null 2>&1 < /dev/null &
+running "dispA.py --Lx 136 --s 45" || setsid nohup python3 code/request5/dispA.py --Lx 136 --s 45,46,47,48,49,50,51,52 --grid polar --out $O/A >> $O/A/log_Lx136_hi.txt 2>&1 < /dev/null &
+running "dispA.py --Lx 140 --s 47" || setsid nohup python3 code/request5/dispA.py --Lx 140 --s 47,48,49,50,51,52,53 --grid polar --out $O/A >> $O/A/log_Lx140_hi.txt 2>&1 < /dev/null &
