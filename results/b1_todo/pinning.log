@@ -1,0 +1,7 @@
+pinned state resid 1.600207468923289e-11
+k: [0.0083 0.0165 0.0331 0.0551 0.0827]  omega: [0.0011183 0.0012618 0.0018056 0.0030139 0.0052328] 
+fit omega_pin=1.114e-03 c2=0.6067  k*=sqrt(wp/c2)=0.0429
+prediction u_eff* = 2 sqrt(wp c2)/lambda = 0.10298
+k=0.0331: stable to 0.8650
+k=0.0551: stable to 0.8663
+min over k: None

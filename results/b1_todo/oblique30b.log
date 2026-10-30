@@ -1,0 +1,4 @@
+phi=60 k=0.01: u_eff*=0.0728 resid=2e-15 M=0.1198  omega0(k;M)/(k sin phi)=0.0000  c0 sqrt(1-M^2)/sin(phi)=0.0728
+phi=60 k=0.04: u_eff*=0.0757 resid=3e-15 M=0.1245  omega0(k;M)/(k sin phi)=0.0000  c0 sqrt(1-M^2)/sin(phi)=0.0727
+phi=30 k=0.01: u_eff*=0.1170 resid=9e-14 M=0.3335  omega0(k;M)/(k sin phi)=0.0000  c0 sqrt(1-M^2)/sin(phi)=0.1197
+phi=30 k=0.04: u_eff*=0.1227 resid=1e-13 M=0.3496  omega0(k;M)/(k sin phi)=0.0000  c0 sqrt(1-M^2)/sin(phi)=0.1189

@@ -1,0 +1,4 @@
+a=13 B=0.5: kappa_tau dyn/static/aff = 0.1035/0.1051/0.9138 | kappa_P dyn/static/aff = 0.2283/0.2288/0.9642 | P dyn/static = 1.662/1.663
+a=23 B=0.6: kappa_tau dyn/static/aff = 0.2821/0.2836/0.9634 | kappa_P dyn/static/aff = 0.3387/0.3396/0.4692 | P dyn/static = 1.638/1.637
+a=15 B=0.5: kappa_tau dyn/static/aff = 0.2168/0.2186/0.9343 | kappa_P dyn/static/aff = 0.3267/0.3273/0.8579 | P dyn/static = 1.642/1.643
+a=23 B=0.4: kappa_tau dyn/static/aff = 1.7180/1.7098/0.9715 | kappa_P dyn/static/aff = 1.4395/1.4744/0.7515 | P dyn/static = 4.336/4.329
