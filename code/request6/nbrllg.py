@@ -2,7 +2,7 @@ import numpy as np
 from numba import njit, prange
 # Square-lattice Neel-DMI LLG (same equation and sign conventions as code/kt/fastllg.py) on an arbitrary periodic labelling of the
 # sites: S is (N, 3); xp, xm, yp, ym are the indices of the +x, -x, +y, -y lattice neighbours. Used for the sheared stripe box
-# (n = i + j, m = j): +x -> (n+1, m), -x -> (n-1, m), +y -> (n+1, m+1), -y -> (n-1, m-1), periodic in n (Nn) and m (Nm).
+# (n = i + j, m = j): +x -> (n+1, m), -x -> (n-1, m), +y -> (n+1, m+1), -y -> (n-1, m-1), helical in n (Nn) and periodic in m (Nm).
 @njit(parallel=True, fastmath=True, cache=True)
 def rhs(S, xi, out, xp, xm, yp, ym, J, D, B, a, w1x, w1y, w2x, w2y):
     N = S.shape[0]; c = 1.0/(1+a*a)
@@ -31,7 +31,12 @@ def heun_finish(S, f1, f2, dt):
         x = S[s, 0]+0.5*dt*(f1[s, 0]+f2[s, 0]); y = S[s, 1]+0.5*dt*(f1[s, 1]+f2[s, 1]); z = S[s, 2]+0.5*dt*(f1[s, 2]+f2[s, 2])
         n = 1/np.sqrt(x*x+y*y+z*z); S[s, 0] = x*n; S[s, 1] = y*n; S[s, 2] = z*n
 def sheared(Nn, Nm):
-    n, m = np.meshgrid(np.arange(Nn), np.arange(Nm), indexing='ij'); idx = lambda a, b: ((a % Nn)*Nm+(b % Nm)).ravel()
+    # helical boundary: (n + Nn, m) is the site (n, m - Nn/2), i.e. the periodicity across the stripes is the lattice translation
+    # (Nn/2, Nn/2) along q (Nn even, a multiple of the period); along the stripes (n, m + Nm) = (n, m), translation (-Nm, Nm).
+    # The allowed wavevectors are then k = kappa e + (multiples of 2 pi sqrt2/Nn) q with kappa = 2 pi j/(sqrt2 Nm): pure bending allowed.
+    n, m = np.meshgrid(np.arange(Nn), np.arange(Nm), indexing='ij')
+    def idx(a, b):
+        w = np.floor_divide(a, Nn); return ((a % Nn)*Nm+((b-w*(Nn//2)) % Nm)).ravel()
     return idx(n+1, m), idx(n-1, m), idx(n+1, m+1), idx(n-1, m-1)
 class Integrator:
     def __init__(s, S, nb, J, D, B, a, w1, w2, T, dt, seed=0):
