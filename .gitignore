@@ -34,3 +34,8 @@ results_request5/**/pid_*
 results_request5/**/ckpt_*.npz
 results_request5/**/*.lock
 results_request5/**/log_*.txt
+results_request6/**/pid_*
+results_request6/**/ckpt_*.npz
+results_request6/**/*.tmp.npz
+results_request6/**/log_*.txt
+results_request6/**/last_*.npy
