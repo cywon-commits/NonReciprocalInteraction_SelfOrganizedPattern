@@ -2,7 +2,12 @@
 
 의뢰인: 원창연 (경희대 물리학과). 논문 B1(도플러 문턱)의 첫 의뢰다. 같은 리포지토리 `cywon-commits/NonReciprocalInteraction_SelfOrganizedPattern`, 같은 브랜치 `claude/loving-cray-7g4ju9`에서 작업한다. 결과는 `results_request6/`, 코드는 `code/request6/`에 둔다.
 
-- **출발점:** B1 초안 rev 3(Claude 문서), 그리고 이 브랜치의 `results/b1_lambda_alpha/README_ko.md`, `results/b1_todo/README_ko.md`.
+- **출발점:** 이 브랜치의 `results/b1_lambda_alpha/README_ko.md`, `results/b1_todo/README_ko.md`, `results/b1_residual_group/README_ko.md`. B1 초안(rev 3)의 필요한 내용은 아래 §0에 옮겼다.
+- **재사용할 코드:**
+  - `code/skx/skx.py`: SkX 모형, `find_V`, `bloch_jac`
+  - `code/kt/`, `code/teff/`: 확률 LLG, 용융, 유효온도
+  - `code/stripe/conv.py`: 수렴 기준을 넣은 줄무늬 정지 상태
+  - `code/b1/sot.py`: δD 채널
 - **연구 우선순위:** 원리 → 해석식 → 계산 순서다. 보고는 "의존성과 그 의미" 중심으로 하고, 가설과 다르면 그대로 보고한다.
 - **수렴 기준(필수):** 모든 정지 상태는 잔차 max|ṁ| < 10⁻¹⁰까지 이완한다. 줄무늬에서 3000–4000 RK4 걸음(잔차 ~10⁻⁶)은 가짜 굽힘 간극을 만들었다(rev 3에서 발견). 정지 상태마다 잔차를 보고한다.
 
