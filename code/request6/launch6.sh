@@ -26,3 +26,5 @@ for list in "0.0:8:16:2 0.03:8:16:2 0.02:12:11:2 0.0:8:16:3 0.03:8:16:3 0.02:12:
   i=$((i+1))
   running "meltBh_queue_$i" || setsid nohup sh -c "for spec in $list; do u=\$(echo \$spec | cut -d: -f1); nx=\$(echo \$spec | cut -d: -f2); ny=\$(echo \$spec | cut -d: -f3); sd=\$(echo \$spec | cut -d: -f4); [ -f results_request6/B/done_u\${u}_\${nx}x\${ny}_s\${sd}_heat ] || { python3 code/request6/meltB.py \$u \$nx \$ny 0.16 0.24 0.01 5000 \$sd results_request6/B heat >> results_request6/B/log_u\${u}_\${nx}x\${ny}_s\${sd}_heat.txt 2>&1 && touch results_request6/B/done_u\${u}_\${nx}x\${ny}_s\${sd}_heat; }; done # meltBh_queue_$i" > /dev/null 2>&1 < /dev/null &
 done
+# task C2: slow cases (P = 60, 1.5 x threshold), larger seed noise and longer runs
+running "stripeC2long_queue" || setsid nohup sh -c 'for L in 256 512; do for phi in 90 60 30; do Nm=$(python3 -c "print(round($L/2**0.5))"); [ -f results_request6/C/last_C2_P60_phi${phi}_L${Nm}_f1.5_n0.01.npy ] || python3 code/request6/stripeC2.py 60 $phi $L 1.5 400000 0.01 >> results_request6/C/log_C2long.txt 2>&1; done; done # stripeC2long_queue' > /dev/null 2>&1 < /dev/null &
