@@ -19,7 +19,7 @@ def pred(u, Lx, Ly):
     c = np.mean([x(k)**2 for k in ks if np.hypot(*k) <= 2*kmin*1.0001])
     return dict(x_max=a, one=1-a**2, four=1-b, near=1-c)
 out = []
-for f in sorted(glob.glob('results_request6/B/melt_*.json')):
+for f in sorted(glob.glob('results_request6/B/melt_*_s1.json')):
     d = json.load(open(f)); st = d['steps']; H = [s for s in st if s['leg'] == 'heat']; C = [s for s in st if s['leg'] == 'cool']
     Th = np.array([s['T'] for s in H]); Tc = np.array([s['T'] for s in C])[::-1]
     r = dict(ue=d['ue'], Lx=d['Lx'], Ly=d['Ly'], N=float(np.mean([s['N'] for s in st])),
@@ -32,3 +32,17 @@ for r in out:
     print(f"Lx={r['Lx']} u={r['ue']:.2f} N={r['N']:.0f}: T_heat={r['Th_psi']:.4f} T_cool={r['Tc_psi']:.4f} (defects {r['Th_def']:.4f}/{r['Tc_def']:.4f}) T_m={r['Tm']:.4f} hyst={r['hyst']:.3f} | "
           f"ratio heat {r['ratio_heat']:.3f} cool {r['ratio_cool']:.3f} mid {r['ratio_mid']:.3f} | pred x_max={r['pred']['x_max']:.2f}: 1-x^2 {r['pred']['one']:.3f}, 4 modes {r['pred']['four']:.3f}, |k|<=2kmin {r['pred']['near']:.3f}")
 json.dump(out, open('results_request6/B_summary.json', 'w'), indent=1)
+
+# heating T_m over the three seeds (seed 1 full ramp, seeds 2, 3 heating leg 0.16 ... 0.24), mean and standard error
+seeds = {}
+for f in sorted(glob.glob('results_request6/B/melt_*.json')):
+    d = json.load(open(f)); H = [s for s in d['steps'] if s['leg'] == 'heat']; Th = np.array([s['T'] for s in H])
+    seeds.setdefault((d['Lx'], d['ue']), []).append(dict(seed=d['seed'], T_psi=cross(Th, [s['Psi6'] for s in H], 0.4, True), T_def=cross(Th, [s['f_def'] for s in H], 0.2, False)))
+summ = []
+for (Lx, ue), rs in sorted(seeds.items()):
+    t = np.array([r['T_psi'] for r in rs]); td = np.array([r['T_def'] for r in rs]); p = [o for o in out if o['Lx'] == Lx and o['ue'] == ue][0]['pred']
+    summ.append(dict(Lx=Lx, ue=ue, n=len(t), Tm=float(t.mean()), Tm_err=float(t.std(ddof=1)/np.sqrt(len(t))), Tm_def=float(td.mean()), Tm_def_err=float(td.std(ddof=1)/np.sqrt(len(td))), seeds=rs, pred=p))
+for r in summ:
+    r0 = [q for q in summ if q['Lx'] == r['Lx'] and q['ue'] == 0.0][0]; r['ratio'] = r['Tm']/r0['Tm']; r['ratio_err'] = r['ratio']*np.hypot(r['Tm_err']/r['Tm'], r0['Tm_err']/r0['Tm'])
+    print(f"seeds Lx={r['Lx']} u={r['ue']:.2f} n={r['n']}: T_m(heat, Psi6=0.4) = {r['Tm']:.4f} +- {r['Tm_err']:.4f} (defects 0.2: {r['Tm_def']:.4f} +- {r['Tm_def_err']:.4f}) ratio {r['ratio']:.3f} +- {r['ratio_err']:.3f} | pred one {r['pred']['one']:.3f} four {r['pred']['four']:.3f}")
+json.dump(dict(per_run=out, heating_seeds=summ), open('results_request6/B_summary.json', 'w'), indent=1)
