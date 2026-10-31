@@ -9,6 +9,7 @@ for P in (30, 60):
         for k in sorted(L, key=int):
             l = L[k]; d = Dy[k]; us = np.array([r['u'] for r in d['dyn']]); g = np.array([max(r['Gp'], r['Gm']) for r in d['dyn']])
             i = np.where((g[:-1] <= 0) & (g[1:] > 0))[0]; ud = float(us[i[0]]-g[i[0]]*(us[i[0]+1]-us[i[0]])/(g[i[0]+1]-g[i[0]])) if len(i) else float('nan')
-            ub = l['lin']['u']; out.append(dict(P=P, phi=phi, L=l['L'], u_bloch=ub, u_dyn=ud, u_pred=l['u_pred'], M=l['lin']['M'], rates=g.tolist(), us=us.tolist()))
+            if 'note' in d: ud = d['u_dyn']                                      # P = 60, phi = 30, L = 64, 128: wider bracket (c1fix)
+            ub = l['lin']['u']; out.append(dict(P=P, phi=phi, L=l['L'], u_bloch=ub, u_dyn=ud, u_pred=l['u_pred'], M=l['lin']['M'], rates=g.tolist(), us=us.tolist(), note=d.get('note', ''), bloch_top=d.get('bloch_top')))
             print(f"P={P} phi={phi:3d} L={l['L']:6.1f}: Bloch {ub:.5f} dynamics {ud:.5f} ({(ud/ub-1)*100:+.1f} %) closed form {l['u_pred']:.5f} ({(l['u_pred']/ub-1)*100:+.1f} %) M={l['lin']['M']:.3f}")
 json.dump(out, open('results_request6/C1_summary.json', 'w'), indent=1)

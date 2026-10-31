@@ -8,11 +8,13 @@ from anaA6 import snapshot, defects
 # u_eff = u along x, lab frame). Heating ramp T = Tlo ... Thi and cooling back in steps dT, each step held `hold` time units
 # (first 40 % discarded); every 100 time units: Psi6 = |<psi6>|, local |psi6|, defect fractions (anaA6.defects), translational
 # order Psi_T = mean over the three G (directions from the global psi6 phase, |G| from the density) of |<exp(i G.r)>|, N.
-# Heun dt = 0.15 (as code/kt). Restart-safe: checkpoint after every step.
+# Heun dt = 0.15 (as code/kt). Restart-safe: checkpoint after every step. Optional 10th argument 'heat': heating leg only
+# (extra seeds for the heating T_m).
 J, D = 1.0, 0.4; B = 0.5*D*D; a, b = 0.3, 0.6; dt = 0.15
 ue, nx, ny = float(sys.argv[1]), int(sys.argv[2]), int(sys.argv[3]); Tlo, Thi, dT, hold = map(float, sys.argv[4:8]); seed = int(sys.argv[8]); out = sys.argv[9]
-u = ue/(b/a-1); w1 = np.array([-u, 0.]); w2 = np.array([b*u, 0.]); tag = f'u{ue}_{nx}x{ny}_s{seed}'; ck = f'{out}/ckpt_{tag}.npz'; fo = f'{out}/melt_{tag}.json'
-up = np.round(np.arange(Tlo, Thi+1e-9, dT), 4); Ts = list(up)+list(up[::-1][1:]); Lx, Ly = 19*nx, 33*ny
+u = ue/(b/a-1); w1 = np.array([-u, 0.]); w2 = np.array([b*u, 0.]); tag = f'u{ue}_{nx}x{ny}_s{seed}'+('_heat' if len(sys.argv) > 10 and sys.argv[10] == 'heat' else ''); ck = f'{out}/ckpt_{tag}.npz'; fo = f'{out}/melt_{tag}.json'
+up = np.round(np.arange(Tlo, Thi+1e-9, dT), 4); heat_only = len(sys.argv) > 10 and sys.argv[10] == 'heat'
+Ts = list(up) if heat_only else list(up)+list(up[::-1][1:]); Lx, Ly = 19*nx, 33*ny
 if os.path.exists(ck):
     z = np.load(ck); S = z['S'].astype(float); done = int(z['done']); res = json.load(open(fo))['steps']
 else:

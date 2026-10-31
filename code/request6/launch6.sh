@@ -20,3 +20,9 @@ for list in "0.0:8:16 0.03:8:16 0.02:12:11" "0.01:8:16 0.0:12:11 0.03:12:11" "0.
 done
 # task C2: stripe end states above threshold (one single-thread queue, after C1)
 running "stripeC2_queue" || setsid nohup sh -c 'for L in 256 512; do for P in 60 30; do for phi in 90 60 30; do for f in 1.5 3.0; do t=40000; [ $L = 512 ] && t=60000; Nm=$(python3 -c "print(round($L/2**0.5))"); [ -f results_request6/C/last_C2_P${P}_phi${phi}_L${Nm}_f${f}.npy ] || python3 code/request6/stripeC2.py $P $phi $L $f $t >> results_request6/C/log_C2.txt 2>&1; done; done; done; done # stripeC2_queue' > /dev/null 2>&1 < /dev/null &
+# task B: extra seeds, heating leg only (T = 0.16 ... 0.24), three single-thread queues
+i=0
+for list in "0.0:8:16:2 0.03:8:16:2 0.02:12:11:2 0.0:8:16:3 0.03:8:16:3 0.02:12:11:3" "0.01:8:16:2 0.0:12:11:2 0.03:12:11:2 0.01:8:16:3 0.0:12:11:3 0.03:12:11:3" "0.02:8:16:2 0.01:12:11:2 0.02:8:16:3 0.01:12:11:3"; do
+  i=$((i+1))
+  running "meltBh_queue_$i" || setsid nohup sh -c "for spec in $list; do u=\$(echo \$spec | cut -d: -f1); nx=\$(echo \$spec | cut -d: -f2); ny=\$(echo \$spec | cut -d: -f3); sd=\$(echo \$spec | cut -d: -f4); [ -f results_request6/B/done_u\${u}_\${nx}x\${ny}_s\${sd}_heat ] || { python3 code/request6/meltB.py \$u \$nx \$ny 0.16 0.24 0.01 5000 \$sd results_request6/B heat >> results_request6/B/log_u\${u}_\${nx}x\${ny}_s\${sd}_heat.txt 2>&1 && touch results_request6/B/done_u\${u}_\${nx}x\${ny}_s\${sd}_heat; }; done # meltBh_queue_$i" > /dev/null 2>&1 < /dev/null &
+done
