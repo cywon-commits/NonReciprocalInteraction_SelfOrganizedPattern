@@ -11,7 +11,7 @@ running "request6/autocommit.sh" || setsid nohup sh code/request6/autocommit.sh 
 # task D: delta D scans (one single-thread queue)
 running "dD_queue" || setsid nohup sh -c 'for spec in "19 local 0,1,0" "19 full 0,1,0" "19 stiff 0,1,0" "19 full 1,0,0" "19 full 0,0,1" "76 full 0,1,0" "76 local 0,1,0"; do set -- $spec; f=results_request6/D/dD_$2_Lx$1_n$(echo $3 | tr , _).json; [ -f $f.done ] || { python3 code/request6/dD.py $1 $2 $3 0.0,0.0005,0.001,0.002,0.004,0.008 >> results_request6/D/log_dD.txt 2>&1 && touch $f.done; }; done # dD_queue' > /dev/null 2>&1 < /dev/null &
 # task C1: stripe finite-box thresholds (Bloch first, then dynamics), one single-thread queue
-running "stripeC_queue" || setsid nohup sh -c 'for mode in lin dyn; do for P in 60 30; do for phi in 90 60 30; do python3 code/request6/stripeC.py $P $phi 64,128,256,512 $mode >> results_request6/C/log_C1.txt 2>&1; done; done; done # stripeC_queue' > /dev/null 2>&1 < /dev/null &
+[ -f results_request6/C1_summary.json ] || running "stripeC_queue" || setsid nohup sh -c 'for mode in lin dyn; do for P in 60 30; do for phi in 90 60 30; do python3 code/request6/stripeC.py $P $phi 64,128,256,512 $mode >> results_request6/C/log_C1.txt 2>&1; done; done; done # stripeC_queue' > /dev/null 2>&1 < /dev/null &
 # task B: melting ramps, three single-thread queues; each waits for its task-A queue to finish (its 30x15 run done) first
 i=0
 for list in "0.0:8:16 0.03:8:16 0.02:12:11" "0.01:8:16 0.0:12:11 0.03:12:11" "0.02:8:16 0.01:12:11"; do
