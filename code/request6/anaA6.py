@@ -3,7 +3,8 @@ from scipy.spatial import Delaunay
 from scipy.sparse.csgraph import connected_components
 from scipy.sparse import coo_matrix
 # Request 6, task A analysis of the centre trajectories (hexA.py).
-# Per snapshot (t >= t_ss, every `every`-th): periodic Delaunay -> coordination z_i, bond-orientational psi6_i;
+# Steady window t >= 16000 (u_eff = 0.15 melts from the initial crystal at t = 12000-14000), every 4th stored snapshot
+# (200 time units), and the two halves (16000-28000, 28000-40000) separately. Per snapshot: periodic Delaunay -> coordination z_i, bond-orientational psi6_i;
 #   defects: clusters of z != 6 sites connected by Delaunay bonds; charge q = sum(6 - z): q != 0 -> free disclination(s) (|q| counted),
 #   q = 0 and 2 sites -> free dislocation (isolated 5-7 pair), q = 0 and >= 4 sites -> bound dislocation pairs / grain-boundary bits;
 #   structure factor S(q) of the centres on a polar grid around |G0| = 4 pi/(sqrt3 a0) -> three Bragg vectors G1..3 (one per 60 deg sector);
@@ -42,7 +43,7 @@ def corr(P, psi, Gs, Lx, Ly, dr=2.0):
     cnt = np.bincount(b, minlength=nb)
     g6 = np.bincount(b, weights=np.real(psi[:, None]*psi[None, :].conj())[iu][sel], minlength=nb)
     gG = sum(np.bincount(b, weights=np.cos(d[..., 0]*G[0]+d[..., 1]*G[1])[iu][sel], minlength=nb) for G in Gs)/len(Gs)
-    br = (r/1.0).astype(int); cr = np.bincount(br, minlength=int(rmax)+1)[:int(rmax)+1]
+    br = (r/1.0).astype(int); cr = np.bincount(br, minlength=int(rmax)+1)[:int(rmax)]          # complete rings only
     return cnt, g6, gG, cr
 def xi_fit(rc, g, N, a0, rmax, level=0.1):
     # envelope = running maximum from the right; exponential fit from a0 to where the envelope first drops below `level`;
@@ -53,8 +54,8 @@ def xi_fit(rc, g, N, a0, rmax, level=0.1):
     if use.sum() < 3: return float('nan'), False
     p = np.polyfit(rr[use], np.log(env[use]), 1); xi = -1/p[0] if p[0] < 0 else float('inf')
     return float(min(xi, 1e4)), bool(len(below) == 0)
-def analyse(f, t_ss=10000, every=4):
-    z_ = np.load(f); T = z_['times']; C = z_['C']; Lx, Ly = float(z_['Lx']), float(z_['Ly']); sel = np.where(T >= t_ss)[0][::every]
+def analyse(f, t_ss=16000, every=4, t_end=1e9):
+    z_ = np.load(f); T = z_['times']; C = z_['C']; Lx, Ly = float(z_['Lx']), float(z_['Ly']); sel = np.where((T >= t_ss) & (T < t_end))[0][::every]
     acc = None; rows_d = []; Ns = []; psi6 = []
     for k in sel:
         P = C[k][np.isfinite(C[k][:, 0])]; N = len(P); a0 = np.sqrt(2*Lx*Ly/(np.sqrt(3)*N)); Ns.append(N)
@@ -74,7 +75,9 @@ def analyse(f, t_ss=10000, every=4):
 if __name__ == '__main__':
     out = []
     for f in sorted(glob.glob('results_request6/A/centres_*.npz')):
-        r = analyse(f); out.append(r)
+        r = analyse(f); h1 = analyse(f, 16000, 4, 28000); h2 = analyse(f, 28000, 4)
+        r['halves'] = [dict(xi6=h['xi6'], xiT=h['xiT'], Psi6=h['Psi6'], f_def=h['defects']['f_def']) for h in (h1, h2)]; out.append(r)
         print(f"{os.path.basename(f)}: N={r['N']:.0f} snaps={r['nsnap']} Psi6={r['Psi6']:.3f} xi6={r['xi6']:.1f}{'(>)' if r['xi6_lower'] else ''} ({r['xi6_a0']:.2f} a0) "
-              f"xiT={r['xiT']:.1f}{'(>)' if r['xiT_lower'] else ''} ({r['xiT_a0']:.2f} a0) ratio={r['ratio']:.2f} | defects {r['defects']}", flush=True)
+              f"xiT={r['xiT']:.1f}{'(>)' if r['xiT_lower'] else ''} ({r['xiT_a0']:.2f} a0) ratio={r['ratio']:.2f} | halves xi6 {r['halves'][0]['xi6']:.1f}/{r['halves'][1]['xi6']:.1f} xiT {r['halves'][0]['xiT']:.1f}/{r['halves'][1]['xiT']:.1f} | "
+              + ' '.join(f'{k}={v:.4f}' for k, v in r['defects'].items()), flush=True)
     json.dump(out, open('results_request6/A_summary.json', 'w'))

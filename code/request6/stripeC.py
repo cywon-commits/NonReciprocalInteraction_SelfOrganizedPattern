@@ -59,7 +59,8 @@ if __name__ == '__main__':
             out[key] = dict(L=Lr, Nm=Nm, u_pred=up, lin=res, wall=time.time()-t0)
             print(f'P={P} phi={phi_deg:.0f} L={Lr:.1f}: u*(Bloch k=2pi/L)={res["u"] if res else None} pred={up:.5f} wall={time.time()-t0:.0f}', flush=True)
         else:
-            ul = out.get(key, {}).get('lin', {}) or {}; uc = (ul or {}).get('u', up)
+            fl = f'results_request6/C/C1_P{P}_phi{phi_deg:.0f}_lin.json'
+            ul = (json.load(open(fl)).get(key, {}).get('lin') if os.path.exists(fl) else None) or {}; uc = ul.get('u', up)   # bracket around the Bloch threshold
             k1 = 2*np.pi/Lr; tmax = float(np.clip(1.5/(0.3*cb*k1**2), 3000, 60000))         # ~ 1.5 damping times alpha*c_b*k^2 of the mode
             rows = [dyn_rate(P, phi, Nm, uc*f, m, D, S1, tmax) for f in (0.9, 1.0, 1.1)]
             g = np.array([max(r['Gp'], r['Gm']) for r in rows]); us = np.array([r['u'] for r in rows]); pfit = np.polyfit(us, g, 1); ud = float(-pfit[1]/pfit[0])
