@@ -1,0 +1,11 @@
+Q=-1.916  G=-24.078  Dxx=35.292 Dyy=34.524
+n=y: F/dD exact=[0.     6.8051] closed=[0.     6.5661] iso=[0.     3.8315] | V/dD from Thiele (+F)=[ 0.2377 -0.1045] (-F)=[-0.2377  0.1045]
+n=x: F/dD exact=[6.769 0.   ] closed=[6.5523 0.    ] iso=[3.8532 0.    ] | V/dD from Thiele (+F)=[-0.1017 -0.2364] (-F)=[0.1017 0.2364]
+k=0.0083||x: Re dlam/d(dD) (-,+): exact [-0.  0.] relaxed [-0.  0.] affine [-0.  0.] | half-split/k exact=0.0000 relaxed=0.0000
+k=0.0083||y: Re dlam/d(dD) (-,+): exact [ 0.00056 -0.00056] relaxed [ 0.00056 -0.00056] affine [ 0.00094 -0.00094] | half-split/k exact=0.0678 relaxed=0.0678
+k=0.0165||x: Re dlam/d(dD) (-,+): exact [-0.  0.] relaxed [-0.  0.] affine [-0.  0.] | half-split/k exact=0.0000 relaxed=0.0000
+k=0.0165||y: Re dlam/d(dD) (-,+): exact [ 0.00112 -0.00112] relaxed [ 0.00112 -0.00112] affine [ 0.00188 -0.00188] | half-split/k exact=0.0676 relaxed=0.0675
+k=0.0331||x: Re dlam/d(dD) (-,+): exact [-0.  0.] relaxed [-0.  0.] affine [-0.  0.] | half-split/k exact=0.0000 relaxed=0.0000
+k=0.0331||y: Re dlam/d(dD) (-,+): exact [ 0.00221 -0.00221] relaxed [ 0.00219 -0.00219] affine [ 0.00377 -0.00377] | half-split/k exact=0.0667 relaxed=0.0661
+k=0.0661||x: Re dlam/d(dD) (-,+): exact [-0.  0.] relaxed [-0.  0.] affine [-0.  0.] | half-split/k exact=0.0000 relaxed=0.0000
+k=0.0661||y: Re dlam/d(dD) (-,+): exact [ 0.00414 -0.00414] relaxed [ 0.004 -0.004] affine [ 0.00753 -0.00753] | half-split/k exact=0.0625 relaxed=0.0605
