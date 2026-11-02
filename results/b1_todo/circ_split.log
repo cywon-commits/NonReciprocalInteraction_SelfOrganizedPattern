@@ -1,0 +1,4 @@
+B=0.3: P=1.950 r=0.322 | pi+=0.8035 pi-=0.6807 | from split: kappa_P=0.7736 kappa_tau=0.8619 | cross/diag=1.6e-03
+B=0.5: P=1.700 r=0.259 | pi+=0.4856 pi-=0.5844 | from split: kappa_P=0.5059 kappa_tau=0.4510 | cross/diag=5.5e-03
+B=0.7: P=1.584 r=0.226 | pi+=0.1946 pi-=0.3740 | from split: kappa_P=0.2277 kappa_tau=0.1422 | cross/diag=1.1e-02
+B=0.85: P=1.548 r=0.215 | pi+=0.0843 pi-=0.2208 | from split: kappa_P=0.1084 kappa_tau=0.0469 | cross/diag=1.5e-02
