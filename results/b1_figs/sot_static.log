@@ -1,0 +1,3 @@
+k=0.0083: Re dlambda/dc (branch -,+)  exact [np.float64(0.0063), np.float64(-0.0063)] | relaxed [np.float64(0.0063), np.float64(-0.0063)] | affine [np.float64(-0.0), np.float64(-0.0)] | omega=4.21e-05
+k=0.0165: Re dlambda/dc (branch -,+)  exact [np.float64(0.0125), np.float64(-0.0125)] | relaxed [np.float64(0.0126), np.float64(-0.0126)] | affine [np.float64(-0.0), np.float64(-0.0)] | omega=1.68e-04
+k=0.0331: Re dlambda/dc (branch -,+)  exact [np.float64(0.0249), np.float64(-0.0249)] | relaxed [np.float64(0.0252), np.float64(-0.0252)] | affine [np.float64(-0.0), np.float64(-0.0)] | omega=6.71e-04

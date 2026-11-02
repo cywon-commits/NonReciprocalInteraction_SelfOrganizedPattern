@@ -1,0 +1,10 @@
+k=0.0083 angle= 0: Gamma0=1.810e-05 omega=3.413e-05  half-split=1.813e-05  x=split/Gamma0=1.002  x*k=0.00828
+k=0.0083 angle=45: Gamma0=1.828e-05 omega=3.562e-05  half-split=1.117e-05  x=split/Gamma0=0.611  x*k=0.00505
+k=0.0083 angle=90: Gamma0=1.847e-05 omega=3.671e-05  half-split=2.085e-06  x=split/Gamma0=0.113  x*k=0.00093
+k=0.0165 angle= 0: Gamma0=7.226e-05 omega=1.365e-04  half-split=4.393e-05  x=split/Gamma0=0.608  x*k=0.01005
+k=0.0165 angle=45: Gamma0=7.301e-05 omega=1.423e-04  half-split=2.594e-05  x=split/Gamma0=0.355  x*k=0.00587
+k=0.0165 angle=90: Gamma0=7.376e-05 omega=1.467e-04  half-split=4.667e-06  x=split/Gamma0=0.063  x*k=0.00105
+k=0.0331 angle= 0: Gamma0=2.871e-04 omega=5.449e-04  half-split=9.396e-05  x=split/Gamma0=0.327  x*k=0.01082
+k=0.0331 angle=45: Gamma0=2.900e-04 omega=5.670e-04  half-split=5.265e-05  x=split/Gamma0=0.182  x*k=0.00600
+k=0.0331 angle=90: Gamma0=2.929e-04 omega=5.835e-04  half-split=9.752e-06  x=split/Gamma0=0.033  x*k=0.00110
+drift V [0.00548219 0.01274355]
