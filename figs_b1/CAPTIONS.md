@@ -56,3 +56,18 @@ Data: `results/b1_residual_group/residual_bns.json`, `results/b1_figs/fig2_disto
 (a) Damping-like SOT (c = 0.004, n = ŷ, α = 0.3): pumping ratio x = ΔΓ/Γ₀ against k for three directions of k. x·k is nearly constant (dashed: 1/k), so the threshold vanishes in an infinite system.
 (b) First-order generator Re ∂λ/∂c on the exact mode, the static relaxed mode and the affine mode (α = 0). The relaxed mode carries all the pumping; the affine mode carries none.
 (c) Second-order nonreciprocal stiffness of δD (n = ŷ, α = 0.3): threshold δD* = Γ₀/(half-split per δD) for k ⊥ n (Doppler shift converted by damping) and k ∥ n (intrinsic splitting). Both are ∝ k.
+
+# Phenomenon figures (real-space configurations)
+
+## Fig. P1 — `figP1.py`
+**The three driven chiral patterns, and what a current does to each to first order.**
+(a) Bloch helix (exact driven cone of `code/helix`, every second spin of one period, oblique view): unbiased, and at u_eff = 0.9 u_L, where the spins tilt into a cone M = s u_eff/D along q.
+(b) Néel skyrmion lattice (B = 0.5D²/J; colour m_z from −1, blue, to +1, red; arrows in-plane spin): current u, Hall velocity v and the slot vector w₁ = v − u from the exact Thiele projection (α = 0.3, β = 0.6).
+(c) Diagonal Néel stripes (P = 30, converged state) with a current along the stripes, the direction that couples to the bending Goldstone mode.
+
+## Fig. P2 — `figP2.py`, data `phen/skx_dyn.py`, `phen/skx_mode.py`, `phen/stripe_dyn.py`
+**Above the Doppler threshold the Goldstone mode of the pattern grows at the rate of the Bloch analysis and then reorganizes the pattern.**
+(a) Skyrmion lattice at u_eff = 0.15 (1.5 times the threshold of the k₁ = 2π/76 mode; 76×66 box, 16 skyrmions, co-moving frame, noise 10⁻³ at t = 0). Arrows at t = 16000: skyrmion displacements since t = 0 (×4), a box-length wave along the current; at t = 18500 the lattice is strongly disordered (the flowing state is treated in paper B2).
+(b) Satellite amplitude |m_z(k₁)| against time: dynamics (points) follows the Bloch growth rate of the same mode on the driven stationary state (line, Γ = 7.26×10⁻⁴, no fit of the slope); below threshold (u_eff = 0.05) the noise decays.
+(c) Stripes (P = 30, box 85 × 256 across × along, sheared periodic box) driven along themselves at 1.5u*: the longest bending wave grows and saturates into a zigzag.
+(d) At 3u*: shorter bending waves, then dislocations and a disordered labyrinth. Panels (c, d) show m_z in the frame of the stripes.
