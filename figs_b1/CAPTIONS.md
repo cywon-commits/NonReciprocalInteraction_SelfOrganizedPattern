@@ -71,3 +71,8 @@ Data: `results/b1_residual_group/residual_bns.json`, `results/b1_figs/fig2_disto
 (b) Satellite amplitude |m_z(k₁)| against time: dynamics (points) follows the Bloch growth rate of the same mode on the driven stationary state (line, Γ = 7.26×10⁻⁴, no fit of the slope); below threshold (u_eff = 0.05) the noise decays.
 (c) Stripes (P = 30, box 85 × 256 across × along, sheared periodic box) driven along themselves at 1.5u*: the longest bending wave grows and saturates into a zigzag.
 (d) At 3u*: shorter bending waves, then dislocations and a disordered labyrinth. Panels (c, d) show m_z in the frame of the stripes.
+
+## Fig. P3 — `figP3.py`, data `phen/relax_maps.py`
+**λ in real space: under a long-wave strain the skyrmions keep their shape, and the internal canting that does this carries a counterflow that cancels part of the Doppler momentum.**
+(a, b) A longitudinal strain wave (wavelength two cells, displacement along x of amplitude 2 sites, exaggerated) on the lattice at B = 0.3D²/J (λ = 0.77) and 0.85D²/J (λ = 0.11). Left: affine mode, in which the skyrmions are squeezed and stretched with the lattice. Middle: static relaxed mode with the same skyrmion displacement, in which the skyrmions stay round. Right: their difference, the internal canting (colour δm_z, arrows in-plane). Dotted: m_z = 0 of the undeformed lattice.
+(c) Doppler-momentum density of the phonon (each mode with its own elliptic polarization), averaged across the strip and divided by k; the averages (in brackets) are the Doppler overlaps of the two modes at this wavelength. The affine mode carries nearly the full momentum at both fields; the relaxation removes a quarter of it in the dense lattice and almost all of it in the dilute one.
